@@ -1,0 +1,617 @@
+/* ──────────────────────────────────────────────────────────────────
+   PURPLE ICE — UNIFIED DESIGN SYSTEM TOKENS · v0.3
+   Foundations (colors, type, spacing, sizing, radius, border, motion,
+   elevation, z-index) + Buttons + Surface System.
+
+   Architecture
+   ────────────
+   1. Raw scales         · :root             (colors 50–900, etc.)
+   2. Semantic roles     · :root             (text-*, surface-*, border-*)
+   3. Theme overlay      · [data-theme=dark] (re-maps semantic roles)
+   4. Platform overlay   · [data-platform=*] (sets brand-primary accent)
+
+   Layer order matters — platform should win over theme should win over
+   raw. CSS specificity (combined selectors) handles this.
+
+   Default state = Student platform · light theme (backward compatible
+   with v0.2).
+   ────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ════════════════════════════════════════════════════════════════
+     COLORS — RAW SCALES
+     Naming: standard 50–900 scale. "Main"/"Default" from Figma map
+     to the -500 slot as the brand anchor. The original Figma "500"
+     stops (where present) are preserved as -450 (⚠️ renamed).
+     ════════════════════════════════════════════════════════════════ */
+
+  /* — Base — */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+
+  /* — Purple (primary brand · shared across all platforms) — */
+  --color-purple-50:  #FAF9FE;
+  --color-purple-100: #F4F2FF;
+  --color-purple-150: #E9E5FF;
+  --color-purple-200: #DFDAFE;
+  --color-purple-300: #D8D1FF;
+  --color-purple-400: #CDC5FC;
+  --color-purple-500: #B7ADF2;            /* renamed from --color-purple-450 */
+  --color-purple-550: #A99DED;
+  --color-purple-600: #9789E4;
+  --color-purple-650: #8474DB;
+  --color-purple-700: #6E5DCF;
+  --color-purple-800: #5F4DC7;            /* ← Figma "Main" · BRAND ANCHOR · renamed from --color-purple-500 */
+  --color-purple-850: #4A3BA3;
+  --color-purple-900: #312961;
+
+  /* — EDGE Blue (secondary brand · Teacher accent) — */
+  --color-edge-blue-50:  #F3F2F7;
+  --color-edge-blue-100: #E6E5EE;
+  --color-edge-blue-150: #DAD9E6;
+  --color-edge-blue-200: #CECCDD;
+  --color-edge-blue-300: #B7B5CD;
+  --color-edge-blue-400: #9F9CBC;
+  --color-edge-blue-500: #8783AB;         /* renamed from --color-edge-blue-450 */
+  --color-edge-blue-550: #726D9A;
+  --color-edge-blue-600: #5A5589;
+  --color-edge-blue-650: #433D79;
+  --color-edge-blue-700: #3A3470;
+  --color-edge-blue-800: #2F2868;         /* ← Figma "Default" · ANCHOR · renamed from --color-edge-blue-500 */
+  --color-edge-blue-850: #231C5F;
+  --color-edge-blue-900: #171157;
+
+  /* — EDGE Gold (accent · Parent accent) — sparse: no 50/400/500/600 — */
+  --color-edge-gold-100: #FFF2CC;
+  --color-edge-gold-200: #F5E5B8;
+  --color-edge-gold-300: #EBD3A4;
+  /* gap: 400, 500, 600 — no Main defined */
+  --color-edge-gold-700: #C2A56B;
+  --color-edge-gold-800: #B8995C;
+  --color-edge-gold-900: #AD8D4E;
+
+  /* — Accent Green (success / accent · Student accent) — */
+  --color-accent-green-100: #DCEDC9;
+  --color-accent-green-200: #C5E1A5;
+  --color-accent-green-300: #AED581;
+  --color-accent-green-400: #9CCC65;
+  --color-accent-green-500: #8BC34A;      /* ← Figma "Main" · ANCHOR */
+  --color-accent-green-600: #79BA40;
+  --color-accent-green-700: #618834;
+  --color-accent-green-800: #456125;
+  --color-accent-green-900: #293A16;
+  --color-accent-green-950: #1C270F;
+
+  /* — Yellow (warning) — */
+  --color-yellow-50:  #FFF5E6;
+  --color-yellow-100: #F8F3D8;
+  --color-yellow-200: #FFD699;
+  --color-yellow-300: #FFBC59;
+  --color-yellow-400: #FFA726;
+  --color-yellow-500: #FF9800;            /* ← Figma "Main" · ANCHOR */
+  --color-yellow-600: #D98100;
+  --color-yellow-700: #A66300;
+  --color-yellow-800: #663D00;
+  --color-yellow-900: #190F00;
+
+  /* — Red (danger · Admin accent) — */
+  --color-red-100: #FCC7C3;
+  --color-red-200: #FAA19B;
+  --color-red-300: #F77C73;
+  --color-red-400: #F65F54;
+  --color-red-500: #F44336;               /* ← Figma "Main" · ANCHOR */
+  --color-red-600: #D0392E;
+  --color-red-700: #AA2F26;
+  --color-red-800: #7A211B;
+  --color-red-900: #491410;
+
+  /* — Neutral (Grey) — */
+  --color-neutral-100: #F1F1F1;
+  --color-neutral-150: #DDDDDD;
+  --color-neutral-200: #CFCFCF;
+  --color-neutral-300: #B8B8B8;
+  --color-neutral-350: #ACACAC;
+  --color-neutral-400: #A0A0A0;
+  --color-neutral-450: #888888;
+  --color-neutral-500: #707070;
+  --color-neutral-550: #585858;
+  --color-neutral-600: #414141;
+  --color-neutral-650: #353535;
+  --color-neutral-700: #262626;
+  --color-neutral-800: #1D1D1D;
+  --color-neutral-850: #171717;
+  --color-neutral-900: #111111;           /* ← Figma "Main" · ANCHOR */
+
+  /* ════════════════════════════════════════════════════════════════
+     COLORS — SEMANTIC ROLES (light · Student default)
+     Light-mode mapping. The [data-theme="dark"] block below re-maps
+     these without touching raw scales.
+     ════════════════════════════════════════════════════════════════ */
+
+  --color-text-primary:   var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-muted:     var(--color-neutral-500);
+  --color-text-disabled:  var(--color-neutral-400);
+  --color-text-inverse:   var(--color-purple-100);
+  --color-text-brand:     var(--color-purple-800);
+  --color-text-link:      var(--color-purple-800);
+  --color-text-onbrand:   var(--color-purple-100);   /* foreground on brand-primary fill */
+
+  --color-surface-base:     var(--color-white);
+  --color-surface-subtle:   var(--color-neutral-100);
+  --color-surface-elevated: var(--color-white);      /* light: same as base; dark: lifts via lighter tone */
+  --color-surface-sunken:   var(--color-neutral-100);
+  --color-surface-brand:    var(--color-purple-100);
+  --color-surface-inverse:  var(--color-neutral-900);
+  --color-surface-overlay:  rgba(17, 17, 17, 0.48);  /* modal scrim */
+
+  --color-border-subtle:  var(--color-neutral-150);
+  --color-border-default: var(--color-neutral-300);
+  --color-border-strong:  var(--color-neutral-500);
+  --color-border-brand:   var(--color-purple-800);
+  --color-border-focus:   var(--color-purple-500);   /* used for focus rings */
+
+  --color-brand-primary:   var(--color-purple-800);
+  --color-brand-secondary: var(--color-edge-blue-800);
+  --color-brand-accent:    var(--color-edge-gold-700); /* ⚠️ Gold has no Main; 700 anchors it */
+
+  --color-success: var(--color-accent-green-500);
+  --color-warning: var(--color-yellow-500);
+  --color-danger:  var(--color-red-500);
+  --color-info:    var(--color-edge-blue-800);
+
+  --color-success-surface: var(--color-accent-green-100);
+  --color-warning-surface: var(--color-yellow-100);
+  --color-danger-surface:  var(--color-red-100);
+  --color-info-surface:    var(--color-edge-blue-100);
+
+  /* ════════════════════════════════════════════════════════════════
+     TYPOGRAPHY
+     Families: Poppins (Student) · Inter (Teacher / Parent / Admin).
+     The platform overlay below swaps --font-family-base automatically.
+     Weights from Brand.json.
+     ════════════════════════════════════════════════════════════════ */
+
+  --font-family-poppins: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-inter:   "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-base:    var(--font-family-poppins);
+  --font-family-display: var(--font-family-poppins);
+  --font-family-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+
+  /* — Type sizes (semantic + numeric alias) — */
+  --text-2xs: 0.5rem;       /* 8px  */
+  --text-xs:  0.625rem;     /* 10px */
+  --text-sm:  0.75rem;      /* 12px */
+  --text-base: 0.875rem;    /* 14px */
+  --text-md:  1rem;         /* 16px */
+  --text-lg:  1.25rem;      /* 20px */
+  --text-xl:  1.5rem;       /* 24px */
+  --text-2xl: 1.75rem;      /* 28px */
+  --text-3xl: 2rem;         /* 32px — new in v0.3, for display headings */
+  --text-4xl: 2.5rem;       /* 40px — new in v0.3, for marketing/hero */
+
+  /* numeric aliases */
+  --text-8:  var(--text-2xs);
+  --text-10: var(--text-xs);
+  --text-12: var(--text-sm);
+  --text-14: var(--text-base);
+  --text-16: var(--text-md);
+  --text-20: var(--text-lg);
+  --text-24: var(--text-xl);
+  --text-28: var(--text-2xl);
+  --text-32: var(--text-3xl);
+  --text-40: var(--text-4xl);
+
+  /* — Line heights (only those observed in Figma button components) — */
+  --line-height-base: 1.25rem;   /* 20px — pairs with text-base/14 */
+  --line-height-md:   1.5rem;    /* 24px — pairs with text-md/16   */
+  --line-height-lg:   1.75rem;   /* 28px — pairs with text-lg/20   */
+  /* line-heights for 8/10/12/24/28 — not yet defined in source */
+
+  /* ════════════════════════════════════════════════════════════════
+     SPACING — ⚠️ DERIVED 4px-base scale
+     ════════════════════════════════════════════════════════════════ */
+
+  --space-0:  0;
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px — new in v0.3, for section spacing in dense dashboards */
+  --space-24: 6rem;      /* 96px — new in v0.3 */
+
+  /* ════════════════════════════════════════════════════════════════
+     SIZING — ⚠️ DERIVED from observed component dimensions
+     ════════════════════════════════════════════════════════════════ */
+
+  --size-icon-sm: 1.25rem;  /* 20px — small icon  */
+  --size-icon-md: 1.5rem;   /* 24px — medium icon */
+  --size-icon-lg: 1.75rem;  /* 28px — large icon  */
+
+  --size-control-sm: 2.5rem;  /* 40px — small button height  */
+  --size-control-md: 3rem;    /* 48px — medium button height */
+  --size-control-lg: 3.75rem; /* 60px — large button height  */
+
+  /* ════════════════════════════════════════════════════════════════
+     BORDER RADIUS  (from Brand.json — exact)
+     ════════════════════════════════════════════════════════════════ */
+
+  --radius-none:  0;
+  --radius-2:     2px;
+  --radius-4:     4px;
+  --radius-6:     6px;
+  --radius-8:     8px;
+  --radius-12:    12px;
+  --radius-16:    16px;
+  --radius-round: 1000px;
+
+  /* ════════════════════════════════════════════════════════════════
+     BORDER WIDTH  (from Brand.json — exact)
+     ════════════════════════════════════════════════════════════════ */
+
+  --border-none: 0;
+  --border-sm:   1px;
+  --border-md:   2px;
+  --border-lg:   4px;
+
+  /* ════════════════════════════════════════════════════════════════
+     ELEVATION — v0.3 full scale
+     Light-mode shadows. Dark theme overrides below add stronger
+     contrast. shadow-button (v0.2) preserved as alias.
+     ════════════════════════════════════════════════════════════════ */
+
+  --shadow-0:  none;
+  --shadow-1:  0 1px 2px 0 rgba(17, 17, 17, 0.06), 0 1px 1px 0 rgba(17, 17, 17, 0.04);
+  --shadow-2:  0 2px 4px -1px rgba(17, 17, 17, 0.08), 0 1px 2px 0 rgba(17, 17, 17, 0.05);
+  --shadow-3:  0 6px 12px -2px rgba(17, 17, 17, 0.10), 0 2px 4px -1px rgba(17, 17, 17, 0.06);
+  --shadow-4:  0 12px 24px -6px rgba(17, 17, 17, 0.14), 0 4px 8px -2px rgba(17, 17, 17, 0.08);
+  --shadow-5:  0 24px 48px -12px rgba(17, 17, 17, 0.22), 0 8px 16px -4px rgba(17, 17, 17, 0.10);
+
+  --shadow-inset:        inset 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  --shadow-focus-ring:   0 0 0 4px var(--color-border-focus);
+
+  /* v0.2 backward-compat aliases */
+  --shadow-button:       1px 1px 4px 0 rgba(23, 23, 23, 0.4);
+  --shadow-button-inset: inset 0 0 4px 0 rgba(0, 0, 0, 0.25);
+
+  /* ════════════════════════════════════════════════════════════════
+     MOTION — v0.3
+     Durations are short by default (subtle motion principle). Easings
+     follow material/iOS interaction curves.
+     ════════════════════════════════════════════════════════════════ */
+
+  --duration-instant: 80ms;
+  --duration-fast:    120ms;
+  --duration-base:    180ms;
+  --duration-slow:    260ms;
+  --duration-slower:  400ms;
+
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);        /* default — entry & exit */
+  --easing-decelerate: cubic-bezier(0, 0, 0, 1);         /* entry — incoming UI */
+  --easing-accelerate: cubic-bezier(0.3, 0, 1, 1);       /* exit — leaving UI */
+  --easing-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);   /* large gestures */
+  --easing-linear:     linear;
+
+  /* — Transition presets (use these so motion stays consistent) — */
+  --transition-color:    color var(--duration-fast) var(--easing-standard), background-color var(--duration-fast) var(--easing-standard), border-color var(--duration-fast) var(--easing-standard);
+  --transition-transform: transform var(--duration-base) var(--easing-standard);
+  --transition-opacity:  opacity var(--duration-fast) var(--easing-standard);
+
+  /* ════════════════════════════════════════════════════════════════
+     Z-INDEX — v0.3 layering scale
+     ════════════════════════════════════════════════════════════════ */
+
+  --z-base:      0;
+  --z-raised:    1;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;   /* modal scrim */
+  --z-modal:     400;
+  --z-popover:   500;   /* tooltips, popovers */
+  --z-toast:     600;
+  --z-tooltip:   700;   /* highest — informational tooltips */
+
+  /* ════════════════════════════════════════════════════════════════
+     BUTTONS — size matrix (observed verbatim from Figma)
+     ════════════════════════════════════════════════════════════════ */
+
+  --btn-mobile-height:    2rem;     /* 32px */
+  --btn-mobile-pad-y:     0.5rem;   /*  8px */
+  --btn-mobile-pad-x:     1rem;     /* 16px */
+  --btn-mobile-font:      0.75rem;  /* 12px */
+  --btn-mobile-line:      1rem;     /* 16px */
+  --btn-mobile-icon:      1rem;     /* 16px */
+
+  --btn-small-height:     2.5rem;   /* 40px */
+  --btn-small-pad-y:      0.625rem; /* 10px */
+  --btn-small-pad-x:      1.25rem;  /* 20px */
+  --btn-small-font:       0.875rem; /* 14px */
+  --btn-small-line:       1.25rem;  /* 20px */
+  --btn-small-icon:       1.25rem;  /* 20px */
+
+  --btn-medium-height:    3rem;     /* 48px */
+  --btn-medium-pad-y:     0.75rem;  /* 12px */
+  --btn-medium-pad-x:     1.5rem;   /* 24px */
+  --btn-medium-font:      1rem;     /* 16px */
+  --btn-medium-line:      1.5rem;   /* 24px */
+  --btn-medium-icon:      1.5rem;   /* 24px */
+
+  --btn-large-height:     3.75rem;  /* 60px */
+  --btn-large-pad-y:      1rem;     /* 16px */
+  --btn-large-pad-x:      2rem;     /* 32px */
+  --btn-large-font:       1.25rem;  /* 20px */
+  --btn-large-line:       1.75rem;  /* 28px */
+  --btn-large-icon:       1.75rem;  /* 28px */
+
+  --btn-focus-ring-width: 4px;
+  --btn-font-weight:      var(--font-weight-medium);
+  --btn-border-width:     var(--border-sm);
+
+  /* ════════════════════════════════════════════════════════════════
+     FIELDS — v0.3
+     Observed verbatim from Figma /Fields/Fields/StateDefault*.
+     Theme-aware: borders and fills via semantic surface tokens.
+     ════════════════════════════════════════════════════════════════ */
+
+  --field-small-height:    2.5rem;   /* 40px */
+  --field-small-pad-y:     0.625rem; /* 10px */
+  --field-small-pad-x:     0.75rem;  /* 12px */
+  --field-small-font:      0.875rem; /* 14px */
+  --field-small-line:      1.25rem;  /* 20px */
+  --field-small-icon:      1.25rem;  /* 20px */
+  --field-small-title:     0.75rem;  /* 12px */
+  --field-small-desc:      0.625rem; /* 10px */
+
+  --field-medium-height:   3rem;     /* 48px */
+  --field-medium-pad-y:    0.75rem;  /* 12px */
+  --field-medium-pad-x:    1rem;     /* 16px */
+  --field-medium-font:     1rem;     /* 16px */
+  --field-medium-line:     1.5rem;   /* 24px */
+  --field-medium-icon:     1.5rem;   /* 24px */
+  --field-medium-title:    0.875rem; /* 14px */
+  --field-medium-desc:     0.75rem;  /* 12px */
+
+  --field-radius:          var(--radius-6);
+  --field-border-width:    var(--border-sm);
+  --field-gap-title:       var(--space-2);
+  --field-gap-desc:        var(--space-2);
+
+  /* ════════════════════════════════════════════════════════════════
+     CHIPS / TAGS — v0.3
+     Observed from Figma /Chips-Tags. Heights match button t-shirts.
+     ════════════════════════════════════════════════════════════════ */
+
+  --chip-mobile-height:   2rem;     /* 32px */
+  --chip-mobile-pad-y:    0.5rem;   /*  8px */
+  --chip-mobile-pad-x:    0.75rem;  /* 12px */
+  --chip-mobile-font:     0.75rem;  /* 12px */
+  --chip-mobile-line:     1rem;     /* 16px */
+  --chip-mobile-icon:     1rem;     /* 16px */
+  --chip-mobile-gap:      0.375rem; /*  6px */
+
+  --chip-small-height:    2.25rem;  /* 36px */
+  --chip-small-pad-y:     0.5rem;
+  --chip-small-pad-x:     0.875rem; /* 14px */
+  --chip-small-font:      0.875rem;
+  --chip-small-line:      1.25rem;
+  --chip-small-icon:      1.125rem; /* 18px */
+  --chip-small-gap:       0.5rem;
+
+  --chip-medium-height:   2.5rem;   /* 40px */
+  --chip-medium-pad-y:    0.5rem;
+  --chip-medium-pad-x:    1rem;     /* 16px */
+  --chip-medium-font:     0.875rem;
+  --chip-medium-line:     1.25rem;
+  --chip-medium-icon:     1.25rem;
+  --chip-medium-gap:      0.5rem;
+
+  --chip-radius:          var(--radius-4);
+  --chip-border-width:    var(--border-sm);
+
+  /* ════════════════════════════════════════════════════════════════
+     TABLES — v0.3
+     Observed from Figma /Tables/Tabular-View.
+     ════════════════════════════════════════════════════════════════ */
+
+  --table-header-height:  3rem;     /* 48px (was 80 in figma — trimmed for web) */
+  --table-row-height:     4rem;     /* 64px */
+  --table-row-compact:    3rem;     /* 48px — dense variant */
+  --table-cell-pad-y:     var(--space-3);   /* 12px */
+  --table-cell-pad-x:     var(--space-6);   /* 24px */
+  --table-row-gap:        1px;
+  --table-radius:         var(--radius-8);
+
+  /* ════════════════════════════════════════════════════════════════
+     GRIDS — v0.3.2
+     Unified responsive scale shared by ALL platforms (Student,
+     Teacher, Parent, Admin). Source: Figma /Grids/Grids — promoted
+     to the canonical system per v0.3.2 unification.
+
+     Five breakpoints. Padding = horizontal margin from screen edge
+     to first column. Gutter = space between columns. Both stay on
+     the 4px rhythm.
+     ════════════════════════════════════════════════════════════════ */
+
+  /* Breakpoints (use in @media queries) */
+  --bp-mobile-max:      390px;   /* ≤ this is "Mobile portrait"     */
+  --bp-tablet-p-max:    768px;   /* 391–768 is "Tablet portrait"   */
+  --bp-tablet-l-max:    1024px;  /* 769–1024 is "Tablet landscape" */
+  --bp-desktop-max:     1600px;  /* 1025–1600 is "Desktop"         */
+  /* ≥ 1601px is "Desktop XL" */
+
+  /* Padding (page margin) per breakpoint */
+  --grid-pad-mobile:     16px;
+  --grid-pad-tablet-p:   28px;
+  --grid-pad-tablet-l:   40px;
+  --grid-pad-desktop:    80px;
+  --grid-pad-desktop-xl: 144px;
+
+  /* Gutter (between columns) per breakpoint */
+  --grid-gutter-mobile:     16px;
+  --grid-gutter-tablet-p:   20px;
+  --grid-gutter-tablet-l:   24px;
+  --grid-gutter-desktop:    28px;
+  --grid-gutter-desktop-xl: 28px;
+
+  /* Column counts */
+  --grid-cols-mobile:     4;
+  --grid-cols-tablet-p:   8;
+  --grid-cols-tablet-l:   12;
+  --grid-cols-desktop:    12;
+  --grid-cols-desktop-xl: 12;
+
+  /* Live values — overridden by the media queries below. Use these in
+     product code: `padding-inline: var(--grid-pad)` etc. */
+  --grid-pad:    var(--grid-pad-desktop);
+  --grid-gutter: var(--grid-gutter-desktop);
+  --grid-cols:   var(--grid-cols-desktop);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   GRID — live responsive overrides
+   ══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 390px) {
+  :root {
+    --grid-pad: var(--grid-pad-mobile);
+    --grid-gutter: var(--grid-gutter-mobile);
+    --grid-cols: var(--grid-cols-mobile);
+  }
+}
+@media (min-width: 391px) and (max-width: 768px) {
+  :root {
+    --grid-pad: var(--grid-pad-tablet-p);
+    --grid-gutter: var(--grid-gutter-tablet-p);
+    --grid-cols: var(--grid-cols-tablet-p);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --grid-pad: var(--grid-pad-tablet-l);
+    --grid-gutter: var(--grid-gutter-tablet-l);
+    --grid-cols: var(--grid-cols-tablet-l);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1600px) {
+  :root {
+    --grid-pad: var(--grid-pad-desktop);
+    --grid-gutter: var(--grid-gutter-desktop);
+    --grid-cols: var(--grid-cols-desktop);
+  }
+}
+@media (min-width: 1601px) {
+  :root {
+    --grid-pad: var(--grid-pad-desktop-xl);
+    --grid-gutter: var(--grid-gutter-desktop-xl);
+    --grid-cols: var(--grid-cols-desktop-xl);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   DARK THEME OVERLAY  ·  data-theme="dark"
+   Re-maps semantic roles only. Raw scales stay intact.
+   Applied to Teacher / Parent / Admin by default; Student stays light.
+   ══════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"] {
+  --color-text-primary:   var(--color-neutral-100);
+  --color-text-secondary: var(--color-neutral-300);
+  --color-text-muted:     var(--color-neutral-400);
+  --color-text-disabled:  var(--color-neutral-550);
+  --color-text-inverse:   var(--color-neutral-900);
+  --color-text-brand:     var(--color-purple-400);
+  --color-text-link:      var(--color-purple-400);
+  --color-text-onbrand:   var(--color-purple-100);
+
+  --color-surface-base:     var(--color-neutral-900);
+  --color-surface-subtle:   var(--color-neutral-850);
+  --color-surface-elevated: var(--color-neutral-800);   /* lifts above base */
+  --color-surface-sunken:   var(--color-neutral-950, #0A0A0A);
+  --color-surface-brand:    var(--color-purple-900);
+  --color-surface-inverse:  var(--color-white);
+  --color-surface-overlay:  rgba(0, 0, 0, 0.64);
+
+  --color-border-subtle:  var(--color-neutral-700);
+  --color-border-default: var(--color-neutral-600);
+  --color-border-strong:  var(--color-neutral-450);
+  --color-border-brand:   var(--color-purple-500);
+  --color-border-focus:   var(--color-purple-400);
+
+  /* Status surfaces shift to deeper, less-saturated grounds in dark */
+  --color-success-surface: var(--color-accent-green-900);
+  --color-warning-surface: var(--color-yellow-900);
+  --color-danger-surface:  var(--color-red-900);
+  --color-info-surface:    var(--color-edge-blue-900);
+
+  /* Shadows: in dark, ambient shadow is weaker; we lean on borders.
+     But keep the scale defined so layered surfaces still get depth. */
+  --shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.40);
+  --shadow-2: 0 2px 4px -1px rgba(0, 0, 0, 0.50), 0 1px 2px 0 rgba(0, 0, 0, 0.30);
+  --shadow-3: 0 6px 12px -2px rgba(0, 0, 0, 0.55), 0 2px 4px -1px rgba(0, 0, 0, 0.35);
+  --shadow-4: 0 12px 24px -6px rgba(0, 0, 0, 0.60), 0 4px 8px -2px rgba(0, 0, 0, 0.40);
+  --shadow-5: 0 24px 48px -12px rgba(0, 0, 0, 0.70), 0 8px 16px -4px rgba(0, 0, 0, 0.50);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PLATFORM OVERLAYS  ·  data-platform="…"
+   Each platform shares the Purple-800 brand, but gets a distinct
+   accent for status indicators, charts, and navigation highlights.
+   Layered after [data-theme] so brand-accent stays platform-specific
+   in either theme.
+   ══════════════════════════════════════════════════════════════════ */
+
+[data-platform="student"] {
+  --color-brand-primary:   var(--color-purple-800);
+  --color-brand-accent:    var(--color-accent-green-500);
+  --platform-name:         "Student";
+  --font-family-base:      var(--font-family-poppins);
+  --font-family-display:   var(--font-family-poppins);
+}
+
+[data-platform="teacher"] {
+  --color-brand-primary:   var(--color-purple-800);
+  --color-brand-accent:    var(--color-edge-blue-500);
+  --platform-name:         "Teacher";
+  --font-family-base:      var(--font-family-inter);
+  --font-family-display:   var(--font-family-inter);
+}
+
+[data-platform="parent"] {
+  --color-brand-primary:   var(--color-purple-800);
+  --color-brand-accent:    var(--color-edge-gold-700);
+  --platform-name:         "Parent";
+  --font-family-base:      var(--font-family-inter);
+  --font-family-display:   var(--font-family-inter);
+}
+
+[data-platform="admin"] {
+  --color-brand-primary:   var(--color-purple-800);
+  --color-brand-accent:    var(--color-red-500);
+  --platform-name:         "Admin";
+  --font-family-base:      var(--font-family-inter);
+  --font-family-display:   var(--font-family-inter);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   REDUCED-MOTION RESPECT
+   ══════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast:    0ms;
+    --duration-base:    0ms;
+    --duration-slow:    0ms;
+    --duration-slower:  0ms;
+  }
+}
