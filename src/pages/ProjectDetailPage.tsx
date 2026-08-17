@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState, useCallback, useRef } from 'react'
 import { ArrowLeft, ArrowRight, X, ZoomIn, ChevronLeft, ChevronRight, Upload, Image as ImageIcon, RefreshCw } from 'lucide-react';
 import { WORK_ITEMS } from '../data/portfolioData';
 import { GuidedPracticeCaseStudy } from '../components/GuidedPracticeCaseStudy';
+import { Navbar } from '../components/Navbar';
 
 interface ProjectDetailPageProps {
   slug: string;
@@ -160,19 +161,14 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]">
-      {/* Sticky Header */}
-      <header className="sticky top-0 z-40 bg-[#0a0a0a]/85 backdrop-blur-xl border-b border-neutral-800/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a 
-            href="/work" 
-            onClick={(e) => { e.preventDefault(); onNavigate('/work'); }}
-            className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-medium">Back to Work</span>
-          </a>
+      <Navbar currentPath={`/project/${slug}`} onNavigate={onNavigate} />
 
-          <div className="flex items-center gap-3">
+      {/* Project Metadata Hero */}
+      <section className="pt-20 pb-6 sm:pt-24 sm:pb-8 mb-8 sm:mb-12 px-5 sm:px-8 max-w-6xl mx-auto relative text-center">
+        
+        {/* Top Navigation & Metadata Row */}
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <div className="flex-shrink-0">
             {prevItem && (
               <a
                 href={prevItem.isCustomHtml && prevItem.customHtmlPath ? prevItem.customHtmlPath : `/project/${prevItem.slug}`}
@@ -182,11 +178,22 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                     onNavigate(`/project/${prevItem.slug}`);
                   }
                 }}
-                className="text-xs text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-800"
+                className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-1 p-2 sm:px-4 sm:py-2 rounded-full bg-neutral-900/50 border border-neutral-800 hover:bg-neutral-900 hover:border-neutral-700"
+                aria-label="Previous Project"
               >
-                <span>Prev</span>
+                <ChevronLeft className="w-5 h-5 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Prev</span>
               </a>
             )}
+          </div>
+
+          <div className="flex-1 px-4 flex justify-center">
+            <span className="text-xs sm:text-sm font-medium text-neutral-500">
+              {item.year} <span className="mx-2 opacity-50">•</span> {item.discipline}
+            </span>
+          </div>
+
+          <div className="flex-shrink-0 flex justify-end">
             {nextItem && (
               <a
                 href={nextItem.isCustomHtml && nextItem.customHtmlPath ? nextItem.customHtmlPath : `/project/${nextItem.slug}`}
@@ -196,34 +203,29 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                     onNavigate(`/project/${nextItem.slug}`);
                   }
                 }}
-                className="text-xs text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-800"
+                className="text-xs sm:text-sm font-medium text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-1 p-2 sm:px-4 sm:py-2 rounded-full bg-neutral-900/50 border border-neutral-800 hover:bg-neutral-900 hover:border-neutral-700"
+                aria-label="Next Project"
               >
-                <span>Next</span>
+                <span className="hidden sm:inline">Next</span>
+                <ChevronRight className="w-5 h-5 sm:w-4 sm:h-4" />
               </a>
             )}
           </div>
         </div>
-      </header>
 
-      {/* Project Metadata Hero */}
-      <section className="pt-16 pb-12 sm:pt-24 sm:pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <div className="flex items-center justify-center gap-2.5 mb-6">
-          <span className="text-xs text-neutral-500">
-            {item.year} • {item.discipline}
-          </span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-6 tracking-tight">
+        {/* Title and Summary */}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl lg:leading-tight font-medium text-white mb-4 sm:mb-5 tracking-tight max-w-4xl mx-auto">
           {item.title}
         </h1>
         {item.summary && (
-          <p className="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-4xl mx-auto">
             {item.summary}
           </p>
         )}
       </section>
 
       {/* Main Content Area */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-24 max-w-7xl mx-auto">
+      <section className="px-5 sm:px-8 pb-24 max-w-6xl mx-auto">
         {/* External Link Touchpoint */}
         {item.customHtmlPath && !item.isCustomHtml && (
           <div className="relative mb-12 sm:mb-16 rounded-3xl overflow-hidden border border-neutral-800 text-center flex flex-col items-center group">

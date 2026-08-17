@@ -49,6 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           onClick={(e) => handleLinkClick('/', e)}
           className="text-lg sm:text-xl font-medium tracking-tight text-[#f5f5f7] hover:text-white transition-colors flex items-center gap-2.5 group"
         >
+          <img src="/favicons/dark.svg" alt="Logo" className="w-6 h-6 sm:w-7 sm:h-7 object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
           <span>{PERSONAL_INFO.name}</span>
         </a>
 
