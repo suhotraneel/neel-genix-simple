@@ -53,7 +53,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <h1 className="text-[68px] sm:text-[84px] lg:text-[120px] font-black leading-[0.85] text-white mb-6 tracking-tighter" style={{ fontFamily: 'Impact, sans-serif, system-ui' }}>
                 Complex?
                 <br />
-                <span className="block text-4xl sm:text-5xl lg:text-[72px] mt-4 lg:mt-6 font-bold tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>Let’s make it <span className="text-blue-600 relative inline-block">make sense.<svg className="absolute -bottom-1 lg:-bottom-2 left-0 w-full h-3 lg:h-5 text-blue-600" viewBox="0 0 200 20" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 15C50 5 150 5 195 15" stroke="currentColor" strokeWidth="6" strokeLinecap="round" /></svg></span></span>
+                <span className="block text-4xl sm:text-5xl lg:text-[72px] mt-4 lg:mt-6 font-bold tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>Let’s make it <span className="text-blue-600 relative inline-block">make sense.<svg className="absolute -bottom-1 lg:-bottom-2 left-0 w-full h-3 lg:h-5 text-blue-600" viewBox="0 0 200 20" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 15C50 5 150 5 195 15" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/></svg></span></span>
               </h1>
 
               {/* Tagline */}

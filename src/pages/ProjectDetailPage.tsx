@@ -33,7 +33,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
   useEffect(() => {
     window.scrollTo(0, 0);
     if (item) {
-      document.title = `${item.title} — Suhotra Chakraborty`;
+      document.title = `${item.title} - Suhotra Chakraborty`;
     }
   }, [slug, item]);
 
@@ -227,15 +227,53 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
         {/* External Link Touchpoint */}
         {item.customHtmlPath && !item.isCustomHtml && (
           <div className="relative mb-12 sm:mb-16 rounded-3xl overflow-hidden border border-neutral-800 text-center flex flex-col items-center group">
-            {/* Background Image Snippet */}
-            {item.touchpointCover && (
-              <div 
-                className="absolute inset-0 z-0 opacity-30 group-hover:opacity-40 transition-opacity duration-700 bg-cover bg-top"
-                style={{ backgroundImage: `url(${item.touchpointCover})` }}
-              />
+            {/* Background Image Snippet with Gradient Overlay */}
+            {item.touchpointCover ? (
+              <>
+                <div 
+                  className="absolute inset-0 z-0 transition-all duration-700"
+                  style={{ background: `linear-gradient(180deg, rgba(17, 17, 17, 0.40) 0%, #111 100%), url(${item.touchpointCover}) lightgray center top / cover no-repeat` }}
+                />
+                <div 
+                  className="absolute inset-0 z-0 pointer-events-none"
+                  style={{ 
+                    backdropFilter: 'blur(1px)',
+                    WebkitBackdropFilter: 'blur(1px)',
+                    maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)'
+                  }}
+                />
+                <div 
+                  className="absolute inset-0 z-0 pointer-events-none"
+                  style={{ 
+                    backdropFilter: 'blur(2px)',
+                    WebkitBackdropFilter: 'blur(2px)',
+                    maskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)'
+                  }}
+                />
+                <div 
+                  className="absolute inset-0 z-0 pointer-events-none"
+                  style={{ 
+                    backdropFilter: 'blur(4px)',
+                    WebkitBackdropFilter: 'blur(4px)',
+                    maskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)'
+                  }}
+                />
+                <div 
+                  className="absolute inset-0 z-0 pointer-events-none"
+                  style={{ 
+                    backdropFilter: 'blur(6px)',
+                    WebkitBackdropFilter: 'blur(6px)',
+                    maskImage: 'linear-gradient(to bottom, transparent 45%, black 80%, black 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 45%, black 80%, black 100%)'
+                  }}
+                />
+              </>
+            ) : (
+              <div className="absolute inset-0 z-0 bg-neutral-900" />
             )}
-            {/* Gradient Overlay for readability */}
-            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-neutral-900/80 to-neutral-900/40" />
 
             <div className="relative z-20 w-full p-8 sm:p-16 flex flex-col items-center">
               <div className="w-16 h-16 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 backdrop-blur-md">
@@ -243,17 +281,19 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 drop-shadow-md">Interactive Design System</h2>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 drop-shadow-md">
+                {item.touchpointTitle || 'Interactive Design System'}
+              </h2>
               <p className="text-neutral-300 max-w-xl mx-auto mb-8 text-sm sm:text-base drop-shadow-sm font-medium">
-                Explore the living component library, tokens, and documentation for {item.title}. The app is fully interactive and responsive.
+                {item.touchpointDescription || `Explore the living component library, tokens, and documentation for ${item.title}. The app is fully interactive and responsive.`}
               </p>
               <a 
                 href={item.customHtmlPath} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-full transition-all shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm sm:text-base sm:px-8 sm:py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-full transition-all shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95"
               >
-                <span>Launch Design System App</span>
+                <span>{item.touchpointButtonText || 'Launch Design System App'}</span>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>

@@ -16,6 +16,9 @@ export interface WorkItem {
   isCustomHtml?: boolean;
   customHtmlPath?: string;
   touchpointCover?: string;
+  touchpointTitle?: string;
+  touchpointDescription?: string;
+  touchpointButtonText?: string;
 }
 
 export interface BrandItem {

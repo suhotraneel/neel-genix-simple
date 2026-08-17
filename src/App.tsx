@@ -7,7 +7,7 @@ import { WorkPage } from './pages/WorkPage';
 import { AboutPage } from './pages/AboutPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { WorkItem } from './types';
-import { PERSONAL_INFO } from './data/portfolioData';
+import { PERSONAL_INFO, WORK_ITEMS } from './data/portfolioData';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -37,20 +37,22 @@ export default function App() {
 
   // Update Page Title and Meta Description on route change
   useEffect(() => {
-    let title = 'Suhotra Chakraborty — UX/UI & Product Designer';
+    let title = 'Suhotra Chakraborty - UX/UI & Product Designer';
     let description =
       'Portfolio of Suhotra Chakraborty, a UX/UI & Product Designer working across digital products, user experience, interaction design, design systems and emerging technologies.';
 
     if (currentPath === '/work') {
-      title = 'Work — Suhotra Chakraborty';
+      title = 'Work - Suhotra Chakraborty';
       description =
         'Selected digital product design, UX research, design systems, and interface projects by Suhotra Chakraborty.';
     } else if (currentPath === '/about') {
-      title = 'About — Suhotra Chakraborty';
+      title = 'About - Suhotra Chakraborty';
       description =
         'About Suhotra Chakraborty (aka Neel Genix), UX/UI & Product Designer working across digital products, AI systems, and design systems.';
     } else if (currentPath.startsWith('/project/')) {
-      title = 'Project — Suhotra Chakraborty';
+      const slug = currentPath.replace('/project/', '');
+      const project = WORK_ITEMS.find((w) => w.slug === slug || w.slug.replace(/-hsbc$/, '') === slug || slug.replace(/-hsbc$/, '') === w.slug);
+      title = project ? `${project.title} - Suhotra Chakraborty` : 'Project - Suhotra Chakraborty';
     }
 
     document.title = title;
