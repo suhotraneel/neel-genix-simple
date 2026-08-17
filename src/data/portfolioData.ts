@@ -48,7 +48,7 @@ export const WORK_ITEMS: WorkItem[] = [
     id: 'purple-ice-design-system',
     number: '02',
     title: 'Purple Ice Design System',
-    year: '2024',
+    year: '2025',
     discipline: 'Design Systems',
     slug: 'purple-ice-design-system',
     summary: 'A comprehensive design language and component library built to scale enterprise workflows with accessibility and clarity.',
@@ -56,8 +56,8 @@ export const WORK_ITEMS: WorkItem[] = [
     isSelected: true,
     platform: 'Web & Desktop',
     role: 'Lead Systems Designer',
-    isCustomHtml: true,
     customHtmlPath: '/projects/purple-ice-design-system/design-system.html',
+    touchpointCover: '/projects/purple-ice-design-system/cover.webp',
   },
   {
     id: 'the-edge-schoolai',
@@ -100,6 +100,10 @@ export const WORK_ITEMS: WorkItem[] = [
     isSelected: false,
     platform: 'Digital Campaign & Social',
     role: 'Visual & Campaign Designer',
+    media: [
+      { type: 'youtube', src: 'https://www.youtube.com/embed/e7jm92Q0DAQ', num: 1.4 },
+      { type: 'youtube', src: 'https://www.youtube.com/embed/fa9lEn_yUbY', num: 1.5 }
+    ],
   },
   {
     id: 'right-to-look-space118',
@@ -128,6 +132,9 @@ export const WORK_ITEMS: WorkItem[] = [
     isSelected: false,
     platform: 'Brand & Digital Identity',
     role: 'Brand & Communication Designer',
+    media: [
+      { type: 'vimeo', src: 'https://player.vimeo.com/video/1050371949?h=862d69c399', num: 16.5 }
+    ],
   },
   {
     id: 'maze-blaze-vr-game',
@@ -142,6 +149,9 @@ export const WORK_ITEMS: WorkItem[] = [
     isSelected: false,
     platform: 'Virtual Reality (VR)',
     role: 'Spatial Game Designer',
+    media: [
+      { type: 'youtube', src: 'https://www.youtube.com/embed/75uVig356WI', num: 1.5 }
+    ],
   },
   {
     id: 'prickle-typeface',

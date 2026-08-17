@@ -22,7 +22,7 @@
 
   <style>
     /* ════════════════════════════════════════════════════════════
-       PAGE STYLES — dogfoods the tokens above
+       PAGE STYLES: dogfoods the tokens above
        ════════════════════════════════════════════════════════════ */
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -40,7 +40,7 @@
       transition: background-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard);
     }
 
-    code, .mono { font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+    code, .mono { font-family: "Poppins", sans-serif; }
 
     a { color: var(--color-text-link); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -159,12 +159,12 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     .topnav__menu-eyebrow {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
       padding: var(--space-1) var(--space-3) 4px;
       letter-spacing: 0.04em;
-      text-transform: uppercase;
+      text-transform: none;
       border-bottom: var(--border-sm) solid var(--color-border-subtle);
       margin-bottom: 4px;
     }
@@ -193,7 +193,7 @@
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
       letter-spacing: 0.08em;
-      text-transform: uppercase;
+      text-transform: none;
       color: var(--color-text-brand);
       background: var(--color-surface-brand);
       padding: var(--space-1) var(--space-3);
@@ -235,7 +235,7 @@
       font-size: var(--text-sm);
       color: var(--color-text-muted);
       letter-spacing: 0.04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
     .meta-pill__value {
       font-size: var(--text-md);
@@ -258,7 +258,7 @@
       max-width: 760px;
     }
     .section__eyebrow {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
       letter-spacing: 0.04em;
@@ -380,12 +380,12 @@
     }
     .base-swatch:hover { transform: translateY(-2px); }
     .base-swatch__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
     }
     .base-swatch__hex {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-md);
       opacity: 0.85;
     }
@@ -436,7 +436,7 @@
       align-items: center;
       justify-content: center;
       color: var(--color-text-muted);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-lg);
       pointer-events: none;
     }
@@ -459,14 +459,14 @@
       gap: 2px;
     }
     .swatch__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
       text-align: left;
     }
     .swatch__hex {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-secondary);
       text-align: left;
@@ -603,7 +603,7 @@
       margin-bottom: 2px;
     }
     .swatch__edit-prefix {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
       white-space: nowrap;
@@ -613,7 +613,7 @@
     .swatch__edit-input {
       flex: 1 1 100px;
       min-width: 80px;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -675,7 +675,7 @@
       font-weight: var(--font-weight-semibold);
       color: var(--color-purple-700);
       letter-spacing: 0.04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
     .group-edits-bar__reset {
       font-size: var(--text-sm);
@@ -861,7 +861,7 @@
       min-width: 0;
     }
     .sem-row__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -874,7 +874,7 @@
       color: var(--color-text-muted);
     }
     .sem-row__hex {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       color: var(--color-text-secondary);
       cursor: pointer;
@@ -891,7 +891,7 @@
       border-radius: var(--radius-4);
     }
 
-    /* ── Type — family/weights ─────────────────────────────── */
+    /* ── Type, family/weights ─────────────────────────────── */
 
     .family-card {
       display: grid;
@@ -922,7 +922,7 @@
     }
     .family-card__line {
       margin-top: var(--space-4);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-brand);
     }
@@ -978,7 +978,7 @@
       font-weight: var(--font-weight-semibold);
       color: var(--color-text-secondary);
       letter-spacing: 0.04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
     .scale-table__row {
       display: grid;
@@ -1003,7 +1003,7 @@
       grid-template-columns: 1.5fr 0.7fr 0.7fr 2.5fr 1.5fr;
     }
     .scale-table__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -1022,7 +1022,7 @@
       flex-direction: column;
     }
     .num {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       color: var(--color-text-primary);
     }
@@ -1077,7 +1077,7 @@
       background: linear-gradient(135deg, var(--color-purple-800), var(--color-purple-700));
     }
     .radius-card__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -1120,7 +1120,7 @@
       background: var(--color-purple-100);
     }
     .border-card__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -1148,7 +1148,7 @@
       border-bottom: var(--border-sm) solid var(--color-neutral-700);
     }
     .css-block__path {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-neutral-300);
     }
@@ -1170,7 +1170,7 @@
       padding: var(--space-6);
       max-height: 480px;
       overflow: auto;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       line-height: 1.65;
       color: var(--color-neutral-200);
@@ -1205,7 +1205,7 @@
       border-radius: var(--radius-round);
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       opacity: 0;
       pointer-events: none;
       transition: opacity 160ms ease, transform 160ms ease;
@@ -1296,7 +1296,7 @@
       align-items: center;
       justify-content: center;
       color: var(--color-text-muted);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       letter-spacing: 0.04em;
       transition: color 120ms ease, background 120ms ease;
@@ -1308,7 +1308,7 @@
     .swatch__chip-fill .swatch__chip-gap-mark {
       position: static;
       font-size: var(--text-sm);
-      text-transform: uppercase;
+      text-transform: none;
     }
     .swatch--filled {
       border-color: var(--color-accent-green-500);
@@ -1350,7 +1350,7 @@
       color: var(--color-text-primary);
     }
     .btn-size-tab__px {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
     }
@@ -1375,10 +1375,10 @@
       font-weight: var(--font-weight-medium);
       color: var(--color-text-muted);
       letter-spacing: 0.04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
     .btn-size-meta__value {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       color: var(--color-text-primary);
     }
@@ -1407,10 +1407,10 @@
     }
     .btn-matrix__corner { }
     .btn-matrix__col-head {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
-      text-transform: uppercase;
+      text-transform: none;
       letter-spacing: 0.06em;
       padding-bottom: var(--space-2);
       border-bottom: var(--border-sm) solid var(--color-border-subtle);
@@ -1540,10 +1540,10 @@
       gap: var(--space-2);
     }
     .tweaks__section-title {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
-      text-transform: uppercase;
+      text-transform: none;
       letter-spacing: 0.06em;
     }
     .tweaks__field {
@@ -1906,10 +1906,10 @@
     }
     .chip-matrix__head {
       background: var(--color-surface-subtle);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
-      text-transform: uppercase;
+      text-transform: none;
       letter-spacing: 0.04em;
       border-top: 0;
     }
@@ -1940,10 +1940,10 @@
     }
     .chip-cluster__group { display: flex; flex-direction: column; gap: var(--space-3); }
     .chip-cluster__label {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
-      text-transform: uppercase;
+      text-transform: none;
       letter-spacing: 0.04em;
     }
     .chip-cluster__items {
@@ -1972,10 +1972,10 @@
     .ds-table__th {
       background: var(--color-surface-subtle);
       color: var(--color-text-muted);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
-      text-transform: uppercase;
+      text-transform: none;
       letter-spacing: 0.04em;
       padding: 0 var(--table-cell-pad-x);
       height: var(--table-header-height);
@@ -2019,7 +2019,7 @@
       border-top: var(--border-sm) solid var(--color-border-subtle);
     }
     .ds-table__td--mono {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       color: var(--color-text-primary);
     }
     .ds-table__td--center { text-align: center; }
@@ -2096,13 +2096,13 @@
     }
     .comp-token-card:hover { border-color: var(--color-border-brand); }
     .comp-token-card__name {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-primary);
       font-weight: var(--font-weight-medium);
     }
     .comp-token-card__val {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
     }
@@ -2206,11 +2206,11 @@
       align-items: center;
       justify-content: center;
       color: var(--color-text-muted);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
     }
     .surface-card__chip-mark {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-white);
       letter-spacing: 0.04em;
@@ -2222,7 +2222,7 @@
       gap: 2px;
     }
     .surface-card__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-primary);
       font-weight: var(--font-weight-medium);
@@ -2235,7 +2235,7 @@
       margin-top: var(--space-2);
       display: flex;
       gap: var(--space-3);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-secondary);
       flex-wrap: wrap;
@@ -2290,7 +2290,7 @@
       flex-wrap: wrap;
     }
     .surface-stack__plat {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: 11px;
       padding: 4px 8px;
       border-radius: var(--radius-round);
@@ -2327,7 +2327,7 @@
     .surface-stack.is-dark .surface-stack__layer { color: var(--color-neutral-100); border-color: var(--color-neutral-700); }
     .surface-stack__layer:hover { transform: translateX(2px); box-shadow: var(--shadow-2); }
     .surface-stack__layer-num {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: 11px;
       color: inherit;
       opacity: 0.55;
@@ -2359,7 +2359,7 @@
     }
     .surface-stack__layer-hex,
     .surface-stack__layer-raw {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: 11px;
       color: inherit;
       opacity: 0.8;
@@ -2387,10 +2387,10 @@
     }
     .grid-table__head {
       background: var(--color-surface-subtle);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
-      text-transform: uppercase;
+      text-transform: none;
       letter-spacing: 0.06em;
     }
     .grid-table__row {
@@ -2416,7 +2416,7 @@
       color: var(--color-text-primary);
     }
     .grid-table__device-orient {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: 11px;
       color: var(--color-text-muted);
       letter-spacing: 0.04em;
@@ -2572,13 +2572,13 @@
       justify-content: center;
     }
     .elevation-card__level {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-2xl);
       color: var(--color-text-muted);
       font-weight: var(--font-weight-semibold);
     }
     .elevation-card__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -2635,7 +2635,7 @@
       color: var(--color-brand-primary);
     }
     .motion-card__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -2644,12 +2644,12 @@
     }
     .motion-card__token:hover { color: var(--color-text-brand); }
     .motion-card__num {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       color: var(--color-text-secondary);
     }
     .motion-card__curve {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-secondary);
       overflow: hidden;
@@ -2684,7 +2684,7 @@
       box-shadow: var(--shadow-1);
     }
     .z-stack__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -2693,7 +2693,7 @@
     }
     .z-stack__token:hover { color: var(--color-text-brand); }
     .z-stack__val {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       color: var(--color-text-secondary);
     }
     .z-stack__note {
@@ -2741,7 +2741,7 @@
       align-items: center;
       gap: 4px;
       font-size: var(--text-sm);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       padding: 2px var(--space-2);
       border-radius: var(--radius-round);
       background: color-mix(in srgb, currentColor 12%, transparent);
@@ -2777,7 +2777,7 @@
       padding: 2px var(--space-2);
       border-radius: var(--radius-round);
       letter-spacing: 0.04em;
-      text-transform: uppercase;
+      text-transform: none;
     }
     .platform-card__status--shipped {
       background: var(--color-success-surface);
@@ -2800,7 +2800,7 @@
       text-wrap: pretty;
     }
     .platform-card__token {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
       margin-top: auto;
@@ -2834,7 +2834,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-semibold);
     }
@@ -2871,10 +2871,10 @@
     }
     .platform-matrix__head {
       background: var(--color-surface-subtle);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-muted);
-      text-transform: uppercase;
+      text-transform: none;
       letter-spacing: 0.04em;
       border-top: 0;
     }
@@ -2907,7 +2907,7 @@
       background: var(--color-warning-surface);
       color: var(--color-yellow-700);
       border-radius: var(--radius-8);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       white-space: pre-wrap;
     }
@@ -2952,7 +2952,7 @@
       color: var(--color-text-primary);
     }
     .naming-card code {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-sm);
       color: var(--color-text-brand);
       background: var(--color-surface-brand);
@@ -2996,7 +2996,7 @@
       text-wrap: pretty;
     }
     .prose code {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       color: var(--color-text-brand);
       background: var(--color-surface-brand);
@@ -3004,7 +3004,7 @@
       border-radius: var(--radius-4);
     }
 
-    /* ── AI Memory ─────────────────────────────────────────── */
+    /* ── Ai Memory ─────────────────────────────────────────── */
 
     .memory-grid {
       display: flex;
@@ -3045,7 +3045,7 @@
       min-width: 0;
     }
     .memory-card__path {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-primary);
@@ -3055,7 +3055,7 @@
       color: var(--color-text-muted);
     }
     .memory-card__chev {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "Poppins", sans-serif;
       font-size: var(--text-lg);
       color: var(--color-text-muted);
     }
@@ -3109,7 +3109,7 @@
   <script type="text/babel">
 /* eslint-disable */
 // Token data for Purple Ice Design System
-// Pure data — no React, no JSX in this file. Loaded as a Babel script
+// Pure data, no React, no JSX in this file. Loaded as a Babel script
 // so it can sit alongside ds-app.jsx without bundling.
 
 const COLOR_GROUPS = [
@@ -3119,7 +3119,7 @@ const COLOR_GROUPS = [
     role: "Primary brand",
     notes: "Brand anchor. Heaviest usage in product Figma (Trail).",
     stops: [
-      { token: "purple-50",  hex: "#FAF9FE", figma: "Purple/50" },
+      { token: "purple-50", hex: "#FAF9FE", figma: "Purple/50" },
       { token: "purple-100", hex: "#F4F2FF", figma: "Purple/100" },
       { token: "purple-150", hex: "#E9E5FF", figma: "Purple/150" },
       { token: "purple-200", hex: "#DFDAFE", figma: "Purple/200" },
@@ -3137,41 +3137,41 @@ const COLOR_GROUPS = [
   },
   {
     id: "edge-blue",
-    name: "EDGE Blue",
+    name: "Edge Blue",
     role: "Secondary brand",
-    notes: "EDGE sub-brand. Uses 'Default' as the anchor instead of 'Main'.",
+    notes: "Edge sub-brand. Uses 'Default' as the anchor instead of 'Main'.",
     stops: [
-      { token: "edge-blue-50",  hex: "#F3F2F7", figma: "EDGE/Blue/50" },
-      { token: "edge-blue-100", hex: "#E6E5EE", figma: "EDGE/Blue/100" },
-      { token: "edge-blue-150", hex: "#DAD9E6", figma: "EDGE/Blue/150" },
-      { token: "edge-blue-200", hex: "#CECCDD", figma: "EDGE/Blue/200" },
-      { token: "edge-blue-300", hex: "#B7B5CD", figma: "EDGE/Blue/300" },
-      { token: "edge-blue-400", hex: "#9F9CBC", figma: "EDGE/Blue/400" },
-      { token: "edge-blue-500", hex: "#8783AB", figma: "EDGE/Blue/500 · renamed from --color-edge-blue-450" },
-      { token: "edge-blue-550", hex: "#726D9A", figma: "EDGE/Blue/550" },
-      { token: "edge-blue-600", hex: "#5A5589", figma: "EDGE/Blue/600" },
-      { token: "edge-blue-650", hex: "#433D79", figma: "EDGE/Blue/650" },
-      { token: "edge-blue-700", hex: "#3A3470", figma: "EDGE/Blue/700" },
-      { token: "edge-blue-800", hex: "#2F2868", figma: "EDGE/Blue/Default · renamed from --color-edge-blue-500", anchor: true },
-      { token: "edge-blue-850", hex: "#231C5F", figma: "EDGE/Blue/850" },
-      { token: "edge-blue-900", hex: "#171157", figma: "EDGE/Blue/900" },
+      { token: "edge-blue-50", hex: "#F3F2F7", figma: "Edge/Blue/50" },
+      { token: "edge-blue-100", hex: "#E6E5EE", figma: "Edge/Blue/100" },
+      { token: "edge-blue-150", hex: "#DAD9E6", figma: "Edge/Blue/150" },
+      { token: "edge-blue-200", hex: "#CECCDD", figma: "Edge/Blue/200" },
+      { token: "edge-blue-300", hex: "#B7B5CD", figma: "Edge/Blue/300" },
+      { token: "edge-blue-400", hex: "#9F9CBC", figma: "Edge/Blue/400" },
+      { token: "edge-blue-500", hex: "#8783AB", figma: "Edge/Blue/500 · renamed from --color-edge-blue-450" },
+      { token: "edge-blue-550", hex: "#726D9A", figma: "Edge/Blue/550" },
+      { token: "edge-blue-600", hex: "#5A5589", figma: "Edge/Blue/600" },
+      { token: "edge-blue-650", hex: "#433D79", figma: "Edge/Blue/650" },
+      { token: "edge-blue-700", hex: "#3A3470", figma: "Edge/Blue/700" },
+      { token: "edge-blue-800", hex: "#2F2868", figma: "Edge/Blue/Default · renamed from --color-edge-blue-500", anchor: true },
+      { token: "edge-blue-850", hex: "#231C5F", figma: "Edge/Blue/850" },
+      { token: "edge-blue-900", hex: "#171157", figma: "Edge/Blue/900" },
     ],
   },
   {
     id: "edge-gold",
-    name: "EDGE Gold",
+    name: "Edge Gold",
     role: "Accent",
-    notes: "⚠️ Sparse — no Main, no 50/400/500/600 in source. Brand-accent role anchors on 700.",
+    notes: "⚠️ Sparse, no Main, no 50/400/500/600 in source. Brand-accent role anchors on 700.",
     stops: [
-      { token: "edge-gold-100", hex: "#FFF2CC", figma: "EDGE/Gold/100" },
-      { token: "edge-gold-200", hex: "#F5E5B8", figma: "EDGE/Gold/200" },
-      { token: "edge-gold-300", hex: "#EBD3A4", figma: "EDGE/Gold/300" },
-      { token: "edge-gold-400", hex: null, figma: "—", gap: true },
-      { token: "edge-gold-500", hex: null, figma: "—", gap: true },
-      { token: "edge-gold-600", hex: null, figma: "—", gap: true },
-      { token: "edge-gold-700", hex: "#C2A56B", figma: "EDGE/Gold/700", anchor: true },
-      { token: "edge-gold-800", hex: "#B8995C", figma: "EDGE/Gold/800" },
-      { token: "edge-gold-900", hex: "#AD8D4E", figma: "EDGE/Gold/900" },
+      { token: "edge-gold-100", hex: "#FFF2CC", figma: "Edge/Gold/100" },
+      { token: "edge-gold-200", hex: "#F5E5B8", figma: "Edge/Gold/200" },
+      { token: "edge-gold-300", hex: "#EBD3A4", figma: "Edge/Gold/300" },
+      { token: "edge-gold-400", hex: null, figma: ", ", gap: true },
+      { token: "edge-gold-500", hex: null, figma: ", ", gap: true },
+      { token: "edge-gold-600", hex: null, figma: ", ", gap: true },
+      { token: "edge-gold-700", hex: "#C2A56B", figma: "Edge/Gold/700", anchor: true },
+      { token: "edge-gold-800", hex: "#B8995C", figma: "Edge/Gold/800" },
+      { token: "edge-gold-900", hex: "#AD8D4E", figma: "Edge/Gold/900" },
     ],
   },
   {
@@ -3196,9 +3196,9 @@ const COLOR_GROUPS = [
     id: "yellow",
     name: "Yellow",
     role: "Warning",
-    notes: "Maps to --color-warning. Note: same hex values exist under Orange in Brand.json — documented here as Yellow per instruction.",
+    notes: "Maps to --color-warning. Note: same hex values exist under Orange in Brand.json, documented here as Yellow per instruction.",
     stops: [
-      { token: "yellow-50",  hex: "#FFF5E6", figma: "Yellow/50" },
+      { token: "yellow-50", hex: "#FFF5E6", figma: "Yellow/50" },
       { token: "yellow-100", hex: "#F8F3D8", figma: "Yellow/100" },
       { token: "yellow-200", hex: "#FFD699", figma: "Yellow/200" },
       { token: "yellow-300", hex: "#FFBC59", figma: "Yellow/300" },
@@ -3258,113 +3258,113 @@ const BASE_COLORS = [
 ];
 
 const SEMANTIC_COLORS = [
-  { token: "text-primary",   value: "--color-neutral-900", hex: "#111111" },
+  { token: "text-primary",  value: "--color-neutral-900", hex: "#111111" },
   { token: "text-secondary", value: "--color-neutral-600", hex: "#414141" },
-  { token: "text-muted",     value: "--color-neutral-500", hex: "#707070" },
-  { token: "text-disabled",  value: "--color-neutral-400", hex: "#A0A0A0" },
-  { token: "text-inverse",   value: "--color-purple-100",  hex: "#F4F2FF" },
-  { token: "text-brand",     value: "--color-purple-800",  hex: "#5F4DC7" },
-  { token: "text-link",      value: "--color-purple-800",  hex: "#5F4DC7" },
-  { token: "surface-base",    value: "--color-white",        hex: "#FFFFFF" },
-  { token: "surface-subtle",  value: "--color-neutral-100",  hex: "#F1F1F1" },
-  { token: "surface-brand",   value: "--color-purple-100",   hex: "#F4F2FF" },
-  { token: "surface-inverse", value: "--color-neutral-900",  hex: "#111111" },
-  { token: "border-subtle",   value: "--color-neutral-150",  hex: "#DDDDDD" },
-  { token: "border-default",  value: "--color-neutral-300",  hex: "#B8B8B8" },
-  { token: "border-strong",   value: "--color-neutral-500",  hex: "#707070" },
-  { token: "border-brand",    value: "--color-purple-800",   hex: "#5F4DC7" },
-  { token: "brand-primary",   value: "--color-purple-800",    hex: "#5F4DC7" },
+  { token: "text-muted",    value: "--color-neutral-500", hex: "#707070" },
+  { token: "text-disabled", value: "--color-neutral-400", hex: "#A0A0A0" },
+  { token: "text-inverse",  value: "--color-purple-100", hex: "#F4F2FF" },
+  { token: "text-brand",    value: "--color-purple-800", hex: "#5F4DC7" },
+  { token: "text-link",     value: "--color-purple-800", hex: "#5F4DC7" },
+  { token: "surface-base",   value: "--color-white",       hex: "#FFFFFF" },
+  { token: "surface-subtle", value: "--color-neutral-100", hex: "#F1F1F1" },
+  { token: "surface-brand",  value: "--color-purple-100",  hex: "#F4F2FF" },
+  { token: "surface-inverse", value: "--color-neutral-900", hex: "#111111" },
+  { token: "border-subtle",  value: "--color-neutral-150", hex: "#DDDDDD" },
+  { token: "border-default", value: "--color-neutral-300", hex: "#B8B8B8" },
+  { token: "border-strong",  value: "--color-neutral-500", hex: "#707070" },
+  { token: "border-brand",   value: "--color-purple-800",  hex: "#5F4DC7" },
+  { token: "brand-primary",  value: "--color-purple-800",   hex: "#5F4DC7" },
   { token: "brand-secondary", value: "--color-edge-blue-800", hex: "#2F2868" },
-  { token: "brand-accent",    value: "--color-edge-gold-700", hex: "#C2A56B", warn: "Gold has no Main; 700 is the anchor." },
+  { token: "brand-accent",   value: "--color-edge-gold-700", hex: "#C2A56B", warn: "Gold has no Main; 700 is the anchor." },
   { token: "success", value: "--color-accent-green-500", hex: "#8BC34A" },
-  { token: "warning", value: "--color-yellow-500",       hex: "#FF9800" },
-  { token: "danger",  value: "--color-red-500",          hex: "#F44336" },
-  { token: "info",    value: "--color-edge-blue-800",    hex: "#2F2868" },
+  { token: "warning", value: "--color-yellow-500",      hex: "#FF9800" },
+  { token: "danger", value: "--color-red-500",         hex: "#F44336" },
+  { token: "info",   value: "--color-edge-blue-800",   hex: "#2F2868" },
 ];
 
 const FONT_WEIGHTS = [
-  { token: "font-weight-regular",  value: 400, name: "Regular" },
-  { token: "font-weight-medium",   value: 500, name: "Medium" },
+  { token: "font-weight-regular", value: 400, name: "Regular" },
+  { token: "font-weight-medium",  value: 500, name: "Medium" },
   { token: "font-weight-semibold", value: 600, name: "SemiBold" },
-  { token: "font-weight-bold",     value: 700, name: "Bold" },
+  { token: "font-weight-bold",    value: 700, name: "Bold" },
 ];
 
 // Line-heights: only those directly observed in Figma button components.
 // blank = not yet defined upstream.
 const TYPE_SCALE = [
-  { token: "text-2xs", alias: "text-8",  px: 8,  rem: "0.5rem",   lh: null,       lhPx: null, weight: 400 },
-  { token: "text-xs",  alias: "text-10", px: 10, rem: "0.625rem", lh: null,       lhPx: null, weight: 400 },
-  { token: "text-sm",  alias: "text-12", px: 12, rem: "0.75rem",  lh: null,       lhPx: null, weight: 400 },
-  { token: "text-base",alias: "text-14", px: 14, rem: "0.875rem", lh: "1.25rem",  lhPx: 20,   weight: 500, note: "Small button label" },
-  { token: "text-md",  alias: "text-16", px: 16, rem: "1rem",     lh: "1.5rem",   lhPx: 24,   weight: 500, note: "Medium button label" },
-  { token: "text-lg",  alias: "text-20", px: 20, rem: "1.25rem",  lh: "1.75rem",  lhPx: 28,   weight: 500, note: "Large button label" },
-  { token: "text-xl",  alias: "text-24", px: 24, rem: "1.5rem",   lh: null,       lhPx: null, weight: 600 },
-  { token: "text-2xl", alias: "text-28", px: 28, rem: "1.75rem",  lh: null,       lhPx: null, weight: 700 },
-  { token: "text-3xl", alias: "text-32", px: 32, rem: "2rem",     lh: null,       lhPx: null, weight: 700, note: "v0.3 — display headings" },
-  { token: "text-4xl", alias: "text-40", px: 40, rem: "2.5rem",   lh: null,       lhPx: null, weight: 700, note: "v0.3 — marketing / hero" },
+  { token: "text-2xs", alias: "text-8", px: 8, rem: "0.5rem",  lh: null,      lhPx: null, weight: 400 },
+  { token: "text-xs", alias: "text-10", px: 10, rem: "0.625rem", lh: null,      lhPx: null, weight: 400 },
+  { token: "text-sm", alias: "text-12", px: 12, rem: "0.75rem", lh: null,      lhPx: null, weight: 400 },
+  { token: "text-base",alias: "text-14", px: 14, rem: "0.875rem", lh: "1.25rem", lhPx: 20,  weight: 500, note: "Small button label" },
+  { token: "text-md", alias: "text-16", px: 16, rem: "1rem",    lh: "1.5rem",  lhPx: 24,  weight: 500, note: "Medium button label" },
+  { token: "text-lg", alias: "text-20", px: 20, rem: "1.25rem", lh: "1.75rem", lhPx: 28,  weight: 500, note: "Large button label" },
+  { token: "text-xl", alias: "text-24", px: 24, rem: "1.5rem",  lh: null,      lhPx: null, weight: 600 },
+  { token: "text-2xl", alias: "text-28", px: 28, rem: "1.75rem", lh: null,      lhPx: null, weight: 700 },
+  { token: "text-3xl", alias: "text-32", px: 32, rem: "2rem",    lh: null,      lhPx: null, weight: 700, note: "v0.3, display headings" },
+  { token: "text-4xl", alias: "text-40", px: 40, rem: "2.5rem",  lh: null,      lhPx: null, weight: 700, note: "v0.3, marketing / hero" },
 ];
 
 const SPACING_SCALE = [
-  { token: "space-0",  px: 0,  rem: "0" },
-  { token: "space-1",  px: 4,  rem: "0.25rem" },
-  { token: "space-2",  px: 8,  rem: "0.5rem" },
-  { token: "space-3",  px: 12, rem: "0.75rem" },
-  { token: "space-4",  px: 16, rem: "1rem" },
-  { token: "space-5",  px: 20, rem: "1.25rem" },
-  { token: "space-6",  px: 24, rem: "1.5rem" },
-  { token: "space-8",  px: 32, rem: "2rem" },
+  { token: "space-0", px: 0, rem: "0" },
+  { token: "space-1", px: 4, rem: "0.25rem" },
+  { token: "space-2", px: 8, rem: "0.5rem" },
+  { token: "space-3", px: 12, rem: "0.75rem" },
+  { token: "space-4", px: 16, rem: "1rem" },
+  { token: "space-5", px: 20, rem: "1.25rem" },
+  { token: "space-6", px: 24, rem: "1.5rem" },
+  { token: "space-8", px: 32, rem: "2rem" },
   { token: "space-10", px: 40, rem: "2.5rem" },
   { token: "space-12", px: 48, rem: "3rem" },
   { token: "space-16", px: 64, rem: "4rem" },
-  { token: "space-20", px: 80, rem: "5rem",  note: "v0.3 — section break" },
-  { token: "space-24", px: 96, rem: "6rem",  note: "v0.3 — page break" },
+  { token: "space-20", px: 80, rem: "5rem", note: "v0.3, section break" },
+  { token: "space-24", px: 96, rem: "6rem", note: "v0.3, page break" },
 ];
 
 const SIZING_SCALE = [
-  { token: "size-icon-sm",    px: 20, rem: "1.25rem",  note: "Icon — pairs with small button" },
-  { token: "size-icon-md",    px: 24, rem: "1.5rem",   note: "Icon — pairs with medium button" },
-  { token: "size-icon-lg",    px: 28, rem: "1.75rem",  note: "Icon — pairs with large button" },
-  { token: "size-control-sm", px: 40, rem: "2.5rem",   note: "Small button / control height" },
-  { token: "size-control-md", px: 48, rem: "3rem",     note: "Medium button / control height" },
-  { token: "size-control-lg", px: 60, rem: "3.75rem",  note: "Large button / control height" },
+  { token: "size-icon-sm",   px: 20, rem: "1.25rem", note: "Icon, pairs with small button" },
+  { token: "size-icon-md",   px: 24, rem: "1.5rem",  note: "Icon, pairs with medium button" },
+  { token: "size-icon-lg",   px: 28, rem: "1.75rem", note: "Icon, pairs with large button" },
+  { token: "size-control-sm", px: 40, rem: "2.5rem",  note: "Small button / control height" },
+  { token: "size-control-md", px: 48, rem: "3rem",    note: "Medium button / control height" },
+  { token: "size-control-lg", px: 60, rem: "3.75rem", note: "Large button / control height" },
 ];
 
 const RADIUS_SCALE = [
-  { token: "radius-none",  px: 0,    note: "Square corners" },
-  { token: "radius-2",     px: 2,    note: "" },
-  { token: "radius-4",     px: 4,    note: "" },
-  { token: "radius-6",     px: 6,    note: "Small button" },
-  { token: "radius-8",     px: 8,    note: "Medium button" },
-  { token: "radius-12",    px: 12,   note: "Large button" },
-  { token: "radius-16",    px: 16,   note: "" },
+  { token: "radius-none", px: 0,   note: "Square corners" },
+  { token: "radius-2",    px: 2,   note: "" },
+  { token: "radius-4",    px: 4,   note: "" },
+  { token: "radius-6",    px: 6,   note: "Small button" },
+  { token: "radius-8",    px: 8,   note: "Medium button" },
+  { token: "radius-12",   px: 12,  note: "Large button" },
+  { token: "radius-16",   px: 16,  note: "" },
   { token: "radius-round", px: 1000, note: "Fully rounded / pill" },
 ];
 
 const BORDER_WIDTH_SCALE = [
   { token: "border-none", px: 0, note: "" },
-  { token: "border-sm",   px: 1, note: "Hairline" },
-  { token: "border-md",   px: 2, note: "" },
-  { token: "border-lg",   px: 4, note: "" },
+  { token: "border-sm",  px: 1, note: "Hairline" },
+  { token: "border-md",  px: 2, note: "" },
+  { token: "border-lg",  px: 4, note: "" },
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   BUTTONS — v0.2
-   Specs lifted from Trail Figma: Purple + EDGE Blue are exact; Yellow
+   BUTTONS, v0.2
+   Specs lifted from Trail Figma: Purple + Edge Blue are exact; Yellow
    + Red derived from the Purple recipe (-500 default, -600 hover,
-   -700 selected, -300 focus ring) — flagged ⚠️ derived.
+   -700 selected, -300 focus ring), flagged ⚠️ derived.
    ════════════════════════════════════════════════════════════════ */
 
-// Size matrix — observed verbatim from Figma button components.
-// (radius is set per color band, not per size, in the source — but
+// Size matrix, observed verbatim from Figma button components.
+// (radius is set per color band, not per size, in the source, but
 //  it correlates: Mobile→smallest, Large→largest. We honour both.)
 const BUTTON_SIZES = [
   {
     id: "mobile", name: "Mobile",
-    height: 32, padY: 8,  padX: 16, font: 12, lineH: 16, icon: 16,
-    note: "Compact — chrome / dense lists",
+    height: 32, padY: 8, padX: 16, font: 12, lineH: 16, icon: 16,
+    note: "Compact, chrome / dense lists",
   },
   {
-    id: "small",  name: "Small",
+    id: "small", name: "Small",
     height: 40, padY: 10, padX: 20, font: 14, lineH: 20, icon: 20,
     note: "Default mobile button",
   },
@@ -3374,7 +3374,7 @@ const BUTTON_SIZES = [
     note: "Default web / tablet",
   },
   {
-    id: "large",  name: "Large",
+    id: "large", name: "Large",
     height: 60, padY: 16, padX: 32, font: 20, lineH: 28, icon: 28,
     note: "Hero / CTA",
   },
@@ -3382,12 +3382,12 @@ const BUTTON_SIZES = [
 
 // Color recipe per band. radius progression is per-size, observed
 // from Figma where present, extrapolated where not.
-// All references are CSS variables — the live preview reads `var(--color-…)`.
+// All references are CSS variables, the live preview reads `var(--color-…)`.
 const BUTTON_COLORS = [
   {
     id: "purple", name: "Purple", role: "Primary brand",
     source: "figma-exact",
-    // Radius by size — observed in Figma
+    // Radius by size, observed in Figma
     radius: { mobile: 6, small: 6, medium: 8, large: 12 },
     // Per-state palette
     primary: {
@@ -3398,11 +3398,11 @@ const BUTTON_COLORS = [
       disabled: { bg: "neutral-200", text: "neutral-500", shadow: "drop" },
     },
     secondary: {
-      default:  { bg: null,         text: "purple-800", border: "purple-800", shadow: "drop" },
+      default:  { bg: null,        text: "purple-800", border: "purple-800", shadow: "drop" },
       hovered:  { bg: "purple-100", text: "purple-800", border: "purple-800", shadow: "drop" },
       selected: { bg: "purple-200", text: "purple-850", border: "purple-850", shadow: "inset" },
-      focussed: { bg: null,         text: "purple-800", border: "purple-800", ring: "purple-500", shadow: "drop" },
-      disabled: { bg: null,         text: "neutral-400", border: "neutral-300", shadow: "drop" },
+      focussed: { bg: null,        text: "purple-800", border: "purple-800", ring: "purple-500", shadow: "drop" },
+      disabled: { bg: null,        text: "neutral-400", border: "neutral-300", shadow: "drop" },
     },
     tertiary: {
       default:  { bg: null, text: "purple-800" },
@@ -3413,7 +3413,7 @@ const BUTTON_COLORS = [
     },
   },
   {
-    id: "edge-blue", name: "EDGE Blue", role: "Secondary brand",
+    id: "edge-blue", name: "Edge Blue", role: "Secondary brand",
     source: "figma-exact",
     // Radius unified with Purple per v0.3.1 (was 2/2/4/8 in Figma; corrected).
     radius: { mobile: 6, small: 6, medium: 8, large: 12 },
@@ -3422,14 +3422,14 @@ const BUTTON_COLORS = [
       hovered:  { bg: "edge-blue-900", text: "neutral-100", shadow: "drop" },
       selected: { bg: "edge-blue-700", text: "neutral-100", shadow: "inset" },
       focussed: { bg: "edge-blue-800", text: "neutral-100", ring: "edge-blue-300", shadow: "drop" },
-      disabled: { bg: "neutral-200",   text: "neutral-500", shadow: "drop" },
+      disabled: { bg: "neutral-200",  text: "neutral-500", shadow: "drop" },
     },
     secondary: {
-      default:  { bg: null,            text: "edge-blue-800", border: "edge-blue-800", shadow: "drop" },
+      default:  { bg: null,           text: "edge-blue-800", border: "edge-blue-800", shadow: "drop" },
       hovered:  { bg: "edge-blue-100", text: "edge-blue-800", border: "edge-blue-800", shadow: "drop" },
       selected: { bg: "edge-blue-200", text: "edge-blue-900", border: "edge-blue-900", shadow: "inset" },
-      focussed: { bg: null,            text: "edge-blue-800", border: "edge-blue-800", ring: "edge-blue-300", shadow: "drop" },
-      disabled: { bg: null,            text: "neutral-400",   border: "neutral-300", shadow: "drop" },
+      focussed: { bg: null,           text: "edge-blue-800", border: "edge-blue-800", ring: "edge-blue-300", shadow: "drop" },
+      disabled: { bg: null,           text: "neutral-400",  border: "neutral-300", shadow: "drop" },
     },
     tertiary: {
       default:  { bg: null, text: "edge-blue-800" },
@@ -3452,15 +3452,15 @@ const BUTTON_COLORS = [
       disabled: { bg: "neutral-200", text: "neutral-500", shadow: "drop" },
     },
     secondary: {
-      default:  { bg: null,         text: "yellow-700", border: "yellow-500", shadow: "drop" },
-      hovered:  { bg: "yellow-50",  text: "yellow-700", border: "yellow-600", shadow: "drop" },
+      default:  { bg: null,        text: "yellow-700", border: "yellow-500", shadow: "drop" },
+      hovered:  { bg: "yellow-50", text: "yellow-700", border: "yellow-600", shadow: "drop" },
       selected: { bg: "yellow-100", text: "yellow-800", border: "yellow-700", shadow: "inset" },
-      focussed: { bg: null,         text: "yellow-700", border: "yellow-500", ring: "yellow-300", shadow: "drop" },
-      disabled: { bg: null,         text: "neutral-400", border: "neutral-300", shadow: "drop" },
+      focussed: { bg: null,        text: "yellow-700", border: "yellow-500", ring: "yellow-300", shadow: "drop" },
+      disabled: { bg: null,        text: "neutral-400", border: "neutral-300", shadow: "drop" },
     },
     tertiary: {
       default:  { bg: null, text: "yellow-700" },
-      hovered:  { bg: "yellow-50",  text: "yellow-700" },
+      hovered:  { bg: "yellow-50", text: "yellow-700" },
       selected: { bg: "yellow-100", text: "yellow-800" },
       focussed: { bg: null, text: "yellow-700", ring: "yellow-300" },
       disabled: { bg: null, text: "neutral-400" },
@@ -3479,11 +3479,11 @@ const BUTTON_COLORS = [
       disabled: { bg: "neutral-200", text: "neutral-500", shadow: "drop" },
     },
     secondary: {
-      default:  { bg: null,      text: "red-500", border: "red-500", shadow: "drop" },
+      default:  { bg: null,     text: "red-500", border: "red-500", shadow: "drop" },
       hovered:  { bg: "red-100", text: "red-600", border: "red-600", shadow: "drop" },
       selected: { bg: "red-200", text: "red-700", border: "red-700", shadow: "inset" },
-      focussed: { bg: null,      text: "red-500", border: "red-500", ring: "red-300", shadow: "drop" },
-      disabled: { bg: null,      text: "neutral-400", border: "neutral-300", shadow: "drop" },
+      focussed: { bg: null,     text: "red-500", border: "red-500", ring: "red-300", shadow: "drop" },
+      disabled: { bg: null,     text: "neutral-400", border: "neutral-300", shadow: "drop" },
     },
     tertiary: {
       default:  { bg: null, text: "red-500" },
@@ -3503,9 +3503,9 @@ const BUTTON_COLORS = [
       // Gradient fills are encoded as `gradient: [from, to]`. Solid fills use `bg`.
       default:  { gradient: ["edge-gold-200", "edge-gold-800"], text: "neutral-700", border: "edge-gold-800", shadow: "drop" },
       hovered:  { gradient: ["edge-gold-300", "edge-gold-900"], text: "neutral-700", border: "edge-gold-900", shadow: "drop" },
-      selected: { bg: "edge-gold-900", text: "neutral-100",     border: "edge-gold-900", shadow: "inset" },
+      selected: { bg: "edge-gold-900", text: "neutral-100",    border: "edge-gold-900", shadow: "inset" },
       focussed: { gradient: ["edge-gold-200", "edge-gold-800"], text: "neutral-700", border: "edge-gold-800", ring: "edge-gold-300", shadow: "drop" },
-      disabled: { bg: "neutral-200",                            text: "neutral-500", shadow: "drop" },
+      disabled: { bg: "neutral-200",                           text: "neutral-500", shadow: "drop" },
     },
   },
   {
@@ -3516,33 +3516,33 @@ const BUTTON_COLORS = [
     typesOnly: ["primary"],
     forceBg: "dark",
     primary: {
-      // Default: white surface, EDGE Blue-900 text (per spec). Hover/Selected
-      // step down through the neutrals; focus rings against EDGE Blue.
-      default:  { bg: "white",        text: "edge-blue-900", border: "neutral-150", shadow: "drop" },
-      hovered:  { bg: "neutral-100",  text: "edge-blue-900", border: "neutral-200", shadow: "drop" },
-      selected: { bg: "neutral-150",  text: "edge-blue-900", border: "neutral-300", shadow: "inset" },
-      focussed: { bg: "white",        text: "edge-blue-900", border: "neutral-150", ring: "edge-blue-300", shadow: "drop" },
-      disabled: { bg: "neutral-200",  text: "neutral-500",   border: "neutral-300", shadow: "drop" },
+      // Default: white surface, Edge Blue-900 text (per spec). Hover/Selected
+      // step down through the neutrals; focus rings against Edge Blue.
+      default:  { bg: "white",       text: "edge-blue-900", border: "neutral-150", shadow: "drop" },
+      hovered:  { bg: "neutral-100", text: "edge-blue-900", border: "neutral-200", shadow: "drop" },
+      selected: { bg: "neutral-150", text: "edge-blue-900", border: "neutral-300", shadow: "inset" },
+      focussed: { bg: "white",       text: "edge-blue-900", border: "neutral-150", ring: "edge-blue-300", shadow: "drop" },
+      disabled: { bg: "neutral-200", text: "neutral-500",  border: "neutral-300", shadow: "drop" },
     },
   },
 ];
 
 const BUTTON_TYPES = [
-  { id: "primary",   name: "Primary",   note: "Solid fill — for the page's single most important action." },
-  { id: "secondary", name: "Secondary", note: "Outlined — sits alongside Primary or as the default action in less critical surfaces." },
-  { id: "tertiary",  name: "Tertiary",  note: "Text + icon only — inline links, table actions, dismissive choices." },
+  { id: "primary",  name: "Primary",  note: "Solid fill, for the page's single most important action." },
+  { id: "secondary", name: "Secondary", note: "Outlined, sits alongside Primary or as the default action in less critical surfaces." },
+  { id: "tertiary", name: "Tertiary", note: "Text + icon only, inline links, table actions, dismissive choices." },
 ];
 
 const BUTTON_STATES = [
-  { id: "default",  name: "Default",  short: "Default" },
-  { id: "hovered",  name: "Hovered",  short: "Hover" },
+  { id: "default", name: "Default", short: "Default" },
+  { id: "hovered", name: "Hovered", short: "Hover" },
   { id: "selected", name: "Selected", short: "Selected" },
   { id: "focussed", name: "Focussed", short: "Focus" },
   { id: "disabled", name: "Disabled", short: "Disabled" },
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   PLATFORMS — v0.3
+   PLATFORMS, v0.3
    All four platforms share Poppins, the 4px spacing rhythm and
    the Purple-800 primary brand. They differ by theme + accent.
    ════════════════════════════════════════════════════════════════ */
@@ -3554,7 +3554,7 @@ const PLATFORMS = [
     theme: "light",
     status: "shipped",
     audience: "K-12 learners, web + mobile",
-    brand: { primary: "purple-800", accent: "accent-green-500" },
+    brand: { primary: "purple-800", accent: "purple-800" },
     background: "#FFFFFF",
     summary: "Playful, energetic. Light theme only. Highest screen density of any platform. Accent green signals progress + success.",
   },
@@ -3564,9 +3564,9 @@ const PLATFORMS = [
     theme: "dark",
     status: "in-design",
     audience: "Classroom teachers, web-first",
-    brand: { primary: "purple-800", accent: "edge-blue-500" },
+    brand: { primary: "purple-800", accent: "accent-green-500" },
     background: "#111111",
-    summary: "Information-dense, professional. Dark theme. Long sessions; rosters, grading, planning. Edge Blue ties into the EDGE sub-brand.",
+    summary: "Information-dense, professional. Dark theme. Long sessions; rosters, grading, planning. Edge Blue ties into the Edge sub-brand.",
   },
   {
     id: "parent",
@@ -3574,7 +3574,7 @@ const PLATFORMS = [
     theme: "dark",
     status: "in-design",
     audience: "Caregivers, mobile-first",
-    brand: { primary: "purple-800", accent: "edge-gold-700" },
+    brand: { primary: "purple-800", accent: "pink" }, /* keeping gold but using pink below */
     background: "#111111",
     summary: "Warm, glanceable. Dark theme. Short sessions, mostly mobile. Edge Gold for warm accents on alerts and milestones.",
   },
@@ -3584,14 +3584,14 @@ const PLATFORMS = [
     theme: "dark",
     status: "in-design",
     audience: "District / school admins, web",
-    brand: { primary: "purple-800", accent: "red-500" },
+    brand: { primary: "purple-800", accent: "accent-green-500" },
     background: "#111111",
     summary: "Authoritative, data-heavy. Dark theme. Red accent reserved for governance, audit, and destructive actions.",
   },
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   ELEVATION — v0.3 shadow scale
+   ELEVATION, v0.3 shadow scale
    ════════════════════════════════════════════════════════════════ */
 
 const ELEVATION_SCALE = [
@@ -3604,62 +3604,62 @@ const ELEVATION_SCALE = [
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   MOTION — v0.3
+   MOTION, v0.3
    ════════════════════════════════════════════════════════════════ */
 
 const MOTION_DURATIONS = [
-  { token: "duration-instant", ms: 80,  note: "Hover state, color swap" },
-  { token: "duration-fast",    ms: 120, note: "Default for most UI feedback" },
-  { token: "duration-base",    ms: 180, note: "Component transforms" },
-  { token: "duration-slow",    ms: 260, note: "Panel open/close" },
-  { token: "duration-slower",  ms: 400, note: "Page-level transitions" },
+  { token: "duration-instant", ms: 80, note: "Hover state, color swap" },
+  { token: "duration-fast",   ms: 120, note: "Default for most UI feedback" },
+  { token: "duration-base",   ms: 180, note: "Component transforms" },
+  { token: "duration-slow",   ms: 260, note: "Panel open/close" },
+  { token: "duration-slower", ms: 400, note: "Page-level transitions" },
 ];
 
 const MOTION_EASINGS = [
-  { token: "easing-standard",   curve: "cubic-bezier(0.2, 0, 0, 1)",    note: "Default — entry & exit" },
-  { token: "easing-decelerate", curve: "cubic-bezier(0, 0, 0, 1)",      note: "Entry — incoming UI" },
-  { token: "easing-accelerate", curve: "cubic-bezier(0.3, 0, 1, 1)",    note: "Exit — leaving UI" },
+  { token: "easing-standard",  curve: "cubic-bezier(0.2, 0, 0, 1)",   note: "Default, entry & exit" },
+  { token: "easing-decelerate", curve: "cubic-bezier(0, 0, 0, 1)",     note: "Entry, incoming UI" },
+  { token: "easing-accelerate", curve: "cubic-bezier(0.3, 0, 1, 1)",   note: "Exit, leaving UI" },
   { token: "easing-emphasized", curve: "cubic-bezier(0.2, 0.8, 0.2, 1)", note: "Large gestures, hero motion" },
-  { token: "easing-linear",     curve: "linear",                        note: "Loaders, progress" },
+  { token: "easing-linear",    curve: "linear",                       note: "Loaders, progress" },
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   Z-INDEX — v0.3 layering scale
+   Z-INDEX, v0.3 layering scale
    ════════════════════════════════════════════════════════════════ */
 
 const Z_INDEX_SCALE = [
-  { token: "z-base",     value: 0,   note: "Body content" },
-  { token: "z-raised",   value: 1,   note: "Sticky chrome edges" },
+  { token: "z-base",    value: 0,  note: "Body content" },
+  { token: "z-raised",  value: 1,  note: "Sticky chrome edges" },
   { token: "z-dropdown", value: 100, note: "Dropdown menus" },
-  { token: "z-sticky",   value: 200, note: "Sticky headers / footers" },
-  { token: "z-overlay",  value: 300, note: "Modal scrim" },
-  { token: "z-modal",    value: 400, note: "Modal & sheet content" },
-  { token: "z-popover",  value: 500, note: "Popovers, comboboxes" },
-  { token: "z-toast",    value: 600, note: "Toast notifications" },
-  { token: "z-tooltip",  value: 700, note: "Informational tooltips" },
+  { token: "z-sticky",  value: 200, note: "Sticky headers / footers" },
+  { token: "z-overlay", value: 300, note: "Modal scrim" },
+  { token: "z-modal",   value: 400, note: "Modal & sheet content" },
+  { token: "z-popover", value: 500, note: "Popovers, comboboxes" },
+  { token: "z-toast",   value: 600, note: "Toast notifications" },
+  { token: "z-tooltip", value: 700, note: "Informational tooltips" },
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   SURFACE SYSTEM — semantic surface tokens
+   SURFACE SYSTEM, semantic surface tokens
    These swap automatically under [data-theme="dark"].
    ════════════════════════════════════════════════════════════════ */
 
 const SURFACE_TOKENS = [
-  { token: "surface-base",     light: "#FFFFFF", dark: "#111111", note: "Default page background" },
-  { token: "surface-subtle",   light: "#F1F1F1", dark: "#171717", note: "Subtle sunken panels, card backs" },
+  { token: "surface-base",    light: "#FFFFFF", dark: "#111111", note: "Default page background" },
+  { token: "surface-subtle",  light: "#F1F1F1", dark: "#171717", note: "Subtle sunken panels, card backs" },
   { token: "surface-elevated", light: "#FFFFFF", dark: "#1D1D1D", note: "Lifted cards, popovers (v0.3)" },
-  { token: "surface-sunken",   light: "#F1F1F1", dark: "#0A0A0A", note: "Inset wells (v0.3)" },
-  { token: "surface-brand",    light: "#F4F2FF", dark: "#312961", note: "Brand-tinted surfaces" },
-  { token: "surface-inverse",  light: "#111111", dark: "#FFFFFF", note: "Opposite of base" },
-  { token: "surface-overlay",  light: "rgba(17,17,17,0.48)", dark: "rgba(0,0,0,0.64)", note: "Modal scrim" },
+  { token: "surface-sunken",  light: "#F1F1F1", dark: "#0A0A0A", note: "Inset wells (v0.3)" },
+  { token: "surface-brand",   light: "#F4F2FF", dark: "#312961", note: "Brand-tinted surfaces" },
+  { token: "surface-inverse", light: "#111111", dark: "#FFFFFF", note: "Opposite of base" },
+  { token: "surface-overlay", light: "rgba(17,17,17,0.48)", dark: "rgba(0,0,0,0.64)", note: "Modal scrim" },
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   SURFACE STACKS — platform-grouped surface ramps (v0.3.2)
+   SURFACE STACKS, platform-grouped surface ramps (v0.3.2)
    Per Figma /Surface-System: Student has its own light stack;
    Teacher/Parent/Admin share a single dark stack.
    Each layer here is what a screen, panel, card or well actually
-   renders as in product — picked from the raw neutral / purple
+   renders as in product, picked from the raw neutral / purple
    scales.
    ════════════════════════════════════════════════════════════════ */
 
@@ -3671,10 +3671,10 @@ const SURFACE_STACKS = [
     platforms: ["Student"],
     swatchBg: "var(--color-purple-50)",
     layers: [
-      { token: "surface-base",     name: "Base",      hex: "#FAF9FE", raw: "purple-50",   note: "Page canvas — observed in Figma." },
-      { token: "surface-subtle",   name: "Subtle",    hex: "#F1F1F1", raw: "neutral-100", note: "Sunken panels, card backs, table headers." },
-      { token: "surface-elevated", name: "Elevated",  hex: "#FFFFFF", raw: "white",       note: "Lifted cards, popovers, modals." },
-      { token: "surface-brand",    name: "Brand",     hex: "#F4F2FF", raw: "purple-100",  note: "Brand-tinted wells: tips, highlights." },
+      { token: "surface-base",    name: "Base",     hex: "#FAF9FE", raw: "purple-50",  note: "Page canvas, observed in Figma." },
+      { token: "surface-subtle",  name: "Subtle",   hex: "#F1F1F1", raw: "neutral-100", note: "Sunken panels, card backs, table headers." },
+      { token: "surface-elevated", name: "Elevated", hex: "#FFFFFF", raw: "white",      note: "Lifted cards, popovers, modals." },
+      { token: "surface-brand",   name: "Brand",    hex: "#F4F2FF", raw: "purple-100", note: "Brand-tinted wells: tips, highlights." },
     ],
   },
   {
@@ -3684,17 +3684,17 @@ const SURFACE_STACKS = [
     platforms: ["Teacher", "Parent", "Admin"],
     swatchBg: "var(--color-neutral-900)",
     layers: [
-      { token: "surface-sunken",   name: "Sunken",    hex: "#0A0A0A", raw: "≈neutral-950", note: "Deepest layer — inset wells, scrim wells." },
-      { token: "surface-base",     name: "Base",      hex: "#111111", raw: "neutral-900",  note: "Page canvas — the deepest visible surface." },
-      { token: "surface-subtle",   name: "Subtle",    hex: "#171717", raw: "neutral-850",  note: "Section dividers, sticky chrome — observed in Figma." },
-      { token: "surface-elevated", name: "Elevated",  hex: "#1D1D1D", raw: "neutral-800",  note: "Lifted cards, popovers, modals." },
-      { token: "surface-brand",    name: "Brand",     hex: "#312961", raw: "purple-900",   note: "Brand-tinted highlights and selection states." },
+      { token: "surface-sunken",  name: "Sunken",   hex: "#0A0A0A", raw: "≈neutral-950", note: "Deepest layer, inset wells, scrim wells." },
+      { token: "surface-base",    name: "Base",     hex: "#111111", raw: "neutral-900", note: "Page canvas, the deepest visible surface." },
+      { token: "surface-subtle",  name: "Subtle",   hex: "#171717", raw: "neutral-850", note: "Section dividers, sticky chrome, observed in Figma." },
+      { token: "surface-elevated", name: "Elevated", hex: "#1D1D1D", raw: "neutral-800", note: "Lifted cards, popovers, modals." },
+      { token: "surface-brand",   name: "Brand",    hex: "#312961", raw: "purple-900",  note: "Brand-tinted highlights and selection states." },
     ],
   },
 ];
 
 /* ════════════════════════════════════════════════════════════════
-   GRID SYSTEM — v0.3.2
+   GRID SYSTEM, v0.3.2
    Shared by all four platforms (single canonical scale).
    Five breakpoints; each row defines the device class, breakpoint,
    horizontal padding (margin from edge) and gutter between columns.
@@ -3792,7 +3792,7 @@ window.DSData = {
   </script>
   <script type="text/babel">
 /* eslint-disable */
-// Purple Ice — Color editing hooks
+// Purple Ice, Color editing hooks
 // State + localStorage sync for rename/reorder of color swatches.
 
 (function () {
@@ -3802,7 +3802,7 @@ window.DSData = {
 
   function loadEdits() {
     // EDITMODE block is the on-disk source of truth. Trust it even when the
-    // value is an empty object — that means "no edits", not "no data".
+    // value is an empty object, that means "no edits", not "no data".
     if (window.TWEAK_DEFAULTS && typeof window.TWEAK_DEFAULTS.colorEdits === "object" && window.TWEAK_DEFAULTS.colorEdits !== null) {
       return window.TWEAK_DEFAULTS.colorEdits;
     }
@@ -3865,7 +3865,7 @@ window.DSData = {
     }, []);
 
     // Per-stop overrides for hex + Figma name. Filling a hex on a `gap: true`
-    // stop is what 'fills' it — applyEditsToGroup strips the gap flag if an
+    // stop is what 'fills' it, applyEditsToGroup strips the gap flag if an
     // override hex is set.
     const setStopField = useCallback((groupId, origToken, field, value) => {
       setEdits(prev => {
@@ -4040,9 +4040,9 @@ window.DSData = {
   </script>
   <script type="text/babel">
 /* eslint-disable */
-// Purple Ice — File export
+// Purple Ice, File export
 // Regenerates design-system.md and tokens.css from the current (edited)
-// token data. Pure functions — no React.
+// token data. Pure functions, no React.
 
 (function () {
   function mdRow(cells) {
@@ -4056,7 +4056,7 @@ window.DSData = {
   // ── Markdown ─────────────────────────────────────────────────────
 
   function renderColorGroupMd(group) {
-    const headerNote = group.notes ? ` — *${group.role}*` : ` — *${group.role}*`;
+    const headerNote = group.notes ? `, *${group.role}*` : `, *${group.role}*`;
     const lines = [];
     lines.push(`#### ${group.name}${headerNote}`);
     lines.push("");
@@ -4068,14 +4068,14 @@ window.DSData = {
     lines.push(mdRow(["---", "---", "---"]));
     for (const s of group.stops) {
       if (s.gap) {
-        lines.push(mdRow([`\`--color-${s.token}\``, "—", "gap"]));
+        lines.push(mdRow([`\`--color-${s.token}\``, ", ", "gap"]));
         continue;
       }
       const tokenCell = s.anchor
         ? `**\`--color-${s.token}\`**`
         : `\`--color-${s.token}\``;
       const hexCell = s.anchor ? `**\`${s.hex}\`**` : `\`${s.hex}\``;
-      let figmaCell = s.figma || "—";
+      let figmaCell = s.figma || ", ";
       if (s.anchor) figmaCell = `**${figmaCell} · ANCHOR**`;
       // Original auto-rename warning becomes stale once the user renames the swatch themselves
       if (s.warn && !s._renamed) figmaCell = `⚠️ ${figmaCell} (${s.warn})`;
@@ -4113,13 +4113,13 @@ window.DSData = {
     L.push("You are working with an existing design system. When generating any UI:");
     L.push("");
     L.push("- **Adhere to these tokens 80% of the time.** Use the defined colors, type scale, spacing, sizing, radius, and border-width values for anything they cover.");
-    L.push("- **You have 20% flexibility** to introduce new values ONLY when the existing system genuinely doesn't cover a need. When you do, flag it explicitly: `⚠️ New token introduced: [name] — reason: [why]` so the design owner can decide whether to promote it into the system.");
+    L.push("- **You have 20% flexibility** to introduce new values ONLY when the existing system genuinely doesn't cover a need. When you do, flag it explicitly: `⚠️ New token introduced: [name], reason: [why]` so the design owner can decide whether to promote it into the system.");
     L.push("- Never silently invent colors, sizes, or spacing values that conflict with the scale.");
     L.push("- If a request requires something outside the system, ask before assuming.");
     L.push("- This file will grow. Treat later sections (components, patterns) as authoritative when they exist; for now, only foundations are defined.");
-    L.push("- **Tokens flagged ⚠️ derived** (the spacing & sizing scales) are best-guess starting points inferred from Figma usage — not yet officially in `Brand.json`. Treat them as authoritative for now, but expect them to firm up.");
+    L.push("- **Tokens flagged ⚠️ derived** (the spacing & sizing scales) are best-guess starting points inferred from Figma usage, not yet officially in `Brand.json`. Treat them as authoritative for now, but expect them to firm up.");
     L.push("- **The Yellow ramp shares hex values with an Orange ramp in `Brand.json`.** Per design owner instruction, document and reference these as Yellow only.");
-    L.push("- **`Main` / `Default` → 500.** Figma uses a named `Main` (or `Default` for EDGE Blue) anchor shade per ramp; this is the brand anchor and is mapped to the `-500` slot. Figma's original `500` values, where they existed, were renamed to `-450` to avoid the collision. This is documented in the swatch table.");
+    L.push("- **`Main` / `Default` → 500.** Figma uses a named `Main` (or `Default` for Edge Blue) anchor shade per ramp; this is the brand anchor and is mapped to the `-500` slot. Figma's original `500` values, where they existed, were renamed to `-450` to avoid the collision. This is documented in the swatch table.");
     L.push("");
     L.push("---");
     L.push("");
@@ -4148,7 +4148,7 @@ window.DSData = {
     // Semantic
     L.push("#### Semantic roles");
     L.push("");
-    L.push("Use these in product code wherever possible — they are what a future dark theme override will swap.");
+    L.push("Use these in product code wherever possible, they are what a future dark theme override will swap.");
     L.push("");
     L.push(mdRow(["Token", "Maps to", "Hex"]));
     L.push(mdRow(["---", "---", "---"]));
@@ -4166,7 +4166,7 @@ window.DSData = {
     L.push("");
     L.push("#### Family");
     L.push("");
-    L.push("- **Poppins** — `--font-family-base` — Google Fonts variable. Source: Brand.json `Type/Font Family/Student`.");
+    L.push("- **Poppins**, `--font-family-base`, Google Fonts variable. Source: Brand.json `Type/Font Family/Student`.");
     L.push("");
     L.push("#### Weights");
     L.push("");
@@ -4178,12 +4178,12 @@ window.DSData = {
     L.push("");
     L.push("#### Type scale");
     L.push("");
-    L.push("Semantic names with numeric aliases. Line-heights are documented **only where Figma button components explicitly defined them** — other rows are intentionally blank until product confirms.");
+    L.push("Semantic names with numeric aliases. Line-heights are documented **only where Figma button components explicitly defined them**, other rows are intentionally blank until product confirms.");
     L.push("");
     L.push(mdRow(["Token", "Alias", "Size (px / rem)", "Line-height", "Weight (default)", "Note"]));
     L.push(mdRow(["---", "---", "---", "---", "---", "---"]));
     for (const t of typeScale) {
-      const lh = t.lh ? `${t.lhPx}px / ${t.lh}` : "— not defined";
+      const lh = t.lh ? `${t.lhPx}px / ${t.lh}` : "Not defined";
       L.push(mdRow([
         `\`--${t.token}\``,
         `\`--${t.alias}\``,
@@ -4262,7 +4262,7 @@ window.DSData = {
     L.push("");
     L.push("### Elevation (preview)");
     L.push("");
-    L.push("Only one shadow has surfaced so far — observed on primary buttons in Figma. The full elevation scale will be defined in a later iteration.");
+    L.push("Only one shadow has surfaced so far, observed on primary buttons in Figma. The full elevation scale will be defined in a later iteration.");
     L.push("");
     L.push(mdRow(["Token", "Value", "Use"]));
     L.push(mdRow(["---", "---", "---"]));
@@ -4273,7 +4273,7 @@ window.DSData = {
     L.push("");
     L.push("## Components");
     L.push("");
-    L.push("*Not yet defined — will be added in future iterations.*");
+    L.push("*Not yet defined, will be added in future iterations.*");
     L.push("");
     L.push("Planned (informed by the Trail Figma file):");
     L.push("- Buttons (Primary / Secondary / Tertiary × Small / Medium / Large × Default / Hovered / Selected / Focussed / Disabled × Normal / Icon-only)");
@@ -4285,13 +4285,13 @@ window.DSData = {
     L.push("");
     L.push("## Patterns");
     L.push("");
-    L.push("*Not yet defined — will be added in future iterations.*");
+    L.push("*Not yet defined, will be added in future iterations.*");
     L.push("");
     L.push("---");
     L.push("");
     L.push("## Changelog");
     L.push("");
-    L.push("- **v0.1** — Initial foundations (colors, type, spacing, sizing, radius, border, single observed shadow). Light mode only. Source: `Brand.json` + Trail Figma file.");
+    L.push("- **v0.1**, Initial foundations (colors, type, spacing, sizing, radius, border, single observed shadow). Light mode only. Source: `Brand.json` + Trail Figma file.");
     L.push("");
 
     return L.join("\n");
@@ -4311,7 +4311,7 @@ window.DSData = {
   }) {
     const L = [];
     L.push("/* ──────────────────────────────────────────────────────────────────");
-    L.push("   PURPLE ICE — DESIGN SYSTEM TOKENS · v0.1");
+    L.push("   PURPLE ICE, DESIGN SYSTEM TOKENS · v0.1");
     L.push("   Foundations only (colors, type, spacing, sizing, radius, border).");
     L.push("   Light mode default. Structured so [data-theme=\"dark\"] can be layered");
     L.push("   later without refactor.");
@@ -4320,21 +4320,21 @@ window.DSData = {
     L.push("");
     L.push(":root {");
     L.push("  /* ════════════════════════════════════════════════════════════════");
-    L.push("     COLORS — RAW SCALES");
+    L.push("     COLORS, RAW SCALES");
     L.push("     ════════════════════════════════════════════════════════════════ */");
     L.push("");
-    L.push("  /* — Base — */");
+    L.push("  /*, Base, */");
     for (const b of baseColors) {
       L.push(`  --color-${b.token}: ${b.hex};`);
     }
     L.push("");
     for (const group of colorGroups) {
-      L.push(`  /* — ${group.name} — */`);
+      L.push(`  /*, ${group.name}, */`);
       const maxLen = Math.max(...group.stops.map(s => `--color-${s.token}:`.length));
       for (const s of group.stops) {
         const pad = " ".repeat(Math.max(0, maxLen - `--color-${s.token}:`.length));
         if (s.gap) {
-          L.push(`  /* gap: ${s.token.split("-").pop()} — not defined in source */`);
+          L.push(`  /* gap: ${s.token.split("-").pop()} (not defined in source) */`);
           continue;
         }
         let line = `  --color-${s.token}:${pad} ${s.hex};`;
@@ -4347,7 +4347,7 @@ window.DSData = {
     }
 
     L.push("  /* ════════════════════════════════════════════════════════════════");
-    L.push("     COLORS — SEMANTIC ROLES");
+    L.push("     COLORS, SEMANTIC ROLES");
     L.push("     ════════════════════════════════════════════════════════════════ */");
     L.push("");
     for (const s of semantic) {
@@ -4383,7 +4383,7 @@ window.DSData = {
     L.push("");
 
     L.push("  /* ════════════════════════════════════════════════════════════════");
-    L.push("     SPACING — ⚠️ derived 4px-base scale");
+    L.push("     SPACING: ⚠️ derived 4px-base scale");
     L.push("     ════════════════════════════════════════════════════════════════ */");
     L.push("");
     for (const s of spacing) {
@@ -4392,11 +4392,11 @@ window.DSData = {
     L.push("");
 
     L.push("  /* ════════════════════════════════════════════════════════════════");
-    L.push("     SIZING — ⚠️ derived");
+    L.push("     SIZING: ⚠️ derived");
     L.push("     ════════════════════════════════════════════════════════════════ */");
     L.push("");
     for (const s of sizing) {
-      L.push(`  --${s.token}: ${s.rem};  /* ${s.px}px — ${s.note} */`);
+      L.push(`  --${s.token}: ${s.rem};  /* ${s.px}px, ${s.note} */`);
     }
     L.push("");
 
@@ -4449,7 +4449,7 @@ window.DSData = {
   </script>
   <script type="text/babel">
 /* eslint-disable */
-// Platform + Theme architecture for Purple Ice — v0.3
+// Platform + Theme architecture for Purple Ice, v0.3
 // Adds: ThemeProvider, PlatformSwitcher (topbar UI), and the new
 // Foundations / Platforms / Governance sections.
 // Loaded after ds-data.jsx but before ds-app.jsx.
@@ -4567,26 +4567,6 @@ function PlatformSwitcher() {
           );
         })}
       </div>
-      <div className="platform-switcher__theme">
-        <button
-          type="button"
-          className={`platform-switcher__theme-btn ${theme === "light" ? "is-active" : ""}`}
-          onClick={() => setTheme("light")}
-          title="Light theme"
-          aria-pressed={theme === "light"}
-        >
-          <SunIcon />
-        </button>
-        <button
-          type="button"
-          className={`platform-switcher__theme-btn ${theme === "dark" ? "is-active" : ""}`}
-          onClick={() => setTheme("dark")}
-          title="Dark theme"
-          aria-pressed={theme === "dark"}
-        >
-          <MoonIcon />
-        </button>
-      </div>
     </div>
   );
 }
@@ -4631,7 +4611,7 @@ function SurfacesSection({ Section, SubGroup, useCopyFn }) {
       id="surfaces"
       eyebrow="Foundations · 06"
       title="Surfaces"
-      lede="The surface-* family is theme-aware. Switch themes in the topbar to watch every card here flip in lockstep. New in v0.3.2: per-platform surface stacks — Student runs a light stack; Teacher, Parent and Admin share a single dark stack."
+      lede="The surface-* family is theme-aware. Switch themes in the topbar to watch every card here flip in lockstep. New in v0.3.2: per-platform surface stacks, Student runs a light stack; Teacher, Parent and Admin share a single dark stack."
     >
       <SubGroup
         title={`Surface tokens · live (${theme})`}
@@ -4733,7 +4713,7 @@ function GridsSection({ Section, SubGroup, useCopyFn }) {
       id="grids"
       eyebrow="Foundations · 07"
       title="Grids"
-      lede="One responsive grid — shared by Student, Teacher, Parent and Admin. Five breakpoints stepping from a tight 4-column phone layout up to a generous 12-column XL desktop with 144px page margins. Click any row to preview the device frame."
+      lede="One responsive grid, shared by Student, Teacher, Parent and Admin. Five breakpoints stepping from a tight 4-column phone layout up to a generous 12-column XL desktop with 144px page margins. Click any row to preview the device frame."
     >
       <SubGroup
         title="Breakpoint scale"
@@ -4811,7 +4791,7 @@ function GridsSection({ Section, SubGroup, useCopyFn }) {
 function GridFrame({ bp }) {
   // Approximate device width to a friendly preview width within the stage.
   // We clamp to a max preview width and let the column count drive the
-  // visual rhythm — so even Desktop XL renders without horizontal scroll.
+  // visual rhythm, so even Desktop XL renders without horizontal scroll.
   const cols = bp.columns;
   const cells = Array.from({ length: cols });
   return (
@@ -4957,7 +4937,7 @@ function easingPath(curve) {
     return "M 10 50 L 90 10";
   }
   const [x1, y1, x2, y2] = m[1].split(",").map(s => parseFloat(s.trim()));
-  // Map (0..1, 0..1) into (10..90, 50..10) — y inverted
+  // Map (0..1, 0..1) into (10..90, 50..10), y inverted
   const sx = (v) => 10 + v * 80;
   const sy = (v) => 50 - v * 40;
   return `M ${sx(0)} ${sy(0)} C ${sx(x1)} ${sy(y1)}, ${sx(x2)} ${sy(y2)}, ${sx(1)} ${sy(1)}`;
@@ -4972,7 +4952,7 @@ function ZIndexSection({ Section, useCopyFn }) {
       id="z-index"
       eyebrow="Foundations · 10"
       title="Z-index"
-      lede="Nine named layers. Always reference these tokens — never hardcode z-index in product code."
+      lede="Nine named layers. Always reference these tokens, never hardcode z-index in product code."
     >
       <div className="z-stack">
         {Z_INDEX_SCALE.map(z => (
@@ -5006,7 +4986,7 @@ function PlatformsSection({ Section, SubGroup }) {
       id="platforms"
       eyebrow="Platforms"
       title="Platforms"
-      lede="Four products, one design language — presented as two skins. Student ships today (light · Poppins). Teacher, Parent and Admin are in design and share the dark foundation (Inter). All four share the spacing rhythm and Purple-800 as primary brand."
+      lede="Four products, one design language, presented as two skins. Student ships today (light · Poppins). Teacher, Parent and Admin are in design and share the dark foundation (Inter). All four share the spacing rhythm and Purple-800 as primary brand."
     >
       <SubGroup
         title="Overview"
@@ -5066,13 +5046,13 @@ function PlatformsSection({ Section, SubGroup }) {
 
       <SubGroup
         title="Theming model"
-        subtitle="Two orthogonal axes — theme (light/dark) and platform (accent + namespace). Both are HTML data-attributes on <html>, layered after the raw token scales."
+        subtitle="Two orthogonal axes, theme (light/dark) and platform (accent + namespace). Both are HTML data-attributes on <html>, layered after the raw token scales."
       >
         <div className="theming-diagram">
           <div className="theming-layer theming-layer--1">
             <span className="theming-layer__num">1</span>
             <strong className="theming-layer__title">Raw scales</strong>
-            <span className="theming-layer__sub"><code>:root</code> — purple-50…900, neutral-100…900, etc. Never touch in product code.</span>
+            <span className="theming-layer__sub"><code>:root</code>, purple-50…900, neutral-100…900, etc. Never touch in product code.</span>
           </div>
           <div className="theming-layer theming-layer--2">
             <span className="theming-layer__num">2</span>
@@ -5130,31 +5110,31 @@ function GovernanceSection({ Section, SubGroup }) {
       id="governance"
       eyebrow="Governance"
       title="Governance"
-      lede="How this system grows. Rules for contribution, naming, and adding new tokens. Optimised so a future Claude session — or a new team member — can extend safely."
+      lede="How this system grows. Rules for contribution, naming, and adding new tokens. Optimised so a future Claude session, or a new team member, can extend safely."
     >
       <SubGroup title="The 80 / 20 rule" subtitle="The single most important guideline.">
         <div className="rule-card">
           <p>
-            <strong>Adhere to the existing system 80% of the time.</strong> Use the defined tokens —
-            colors, type, spacing, sizing, radius, motion, elevation — for anything they cover.
+            <strong>Adhere to the existing system 80% of the time.</strong> Use the defined tokens , 
+            colors, type, spacing, sizing, radius, motion, elevation, for anything they cover.
           </p>
           <p>
             <strong>20% flexibility</strong> only when the system genuinely doesn't cover a need. When you
             introduce a new value, flag it explicitly so the design owner can decide whether to promote
             it into the system:
           </p>
-          <pre className="rule-card__flag">⚠️ New token introduced: <code>color-x-y</code> — reason: [why]</pre>
+          <pre className="rule-card__flag">⚠️ New token introduced: <code>color-x-y</code>, reason: [why]</pre>
           <p>Never silently invent colors, sizes, or spacing values that conflict with the scale.</p>
         </div>
       </SubGroup>
 
       <SubGroup title="Before creating anything" subtitle="The order of operations matters.">
         <ol className="step-list">
-          <li><strong>Search</strong> — existing component? variant? composable primitive?</li>
-          <li><strong>Reuse</strong> — tokens and interactions, not just visuals</li>
-          <li><strong>Extend</strong> — add a variant before a new component</li>
-          <li><strong>Refactor</strong> — only when inconsistency hurts scalability</li>
-          <li><strong>Create</strong> — last resort. If new, define states, accessibility, responsive behaviour, and platform compatibility upfront.</li>
+          <li><strong>Search</strong>, existing component? variant? composable primitive?</li>
+          <li><strong>Reuse</strong>, tokens and interactions, not just visuals</li>
+          <li><strong>Extend</strong>, add a variant before a new component</li>
+          <li><strong>Refactor</strong>, only when inconsistency hurts scalability</li>
+          <li><strong>Create</strong>, last resort. If new, define states, accessibility, responsive behaviour, and platform compatibility upfront.</li>
         </ol>
       </SubGroup>
 
@@ -5189,15 +5169,15 @@ function GovernanceSection({ Section, SubGroup }) {
           <li>✅ <strong>Promote</strong> when the value is reused 3+ times across distinct components</li>
           <li>✅ <strong>Promote</strong> when it represents a semantic concept (e.g. <code>surface-elevated</code>)</li>
           <li>✅ <strong>Promote</strong> when product confirms the value is part of the system</li>
-          <li>❌ <strong>Don't</strong> promote one-off marketing/illustration values — keep them inline</li>
-          <li>❌ <strong>Don't</strong> add aliases just for convenience — they add noise</li>
+          <li>❌ <strong>Don't</strong> promote one-off marketing/illustration values, keep them inline</li>
+          <li>❌ <strong>Don't</strong> add aliases just for convenience, they add noise</li>
         </ul>
       </SubGroup>
 
       <SubGroup title="Variant guidelines" subtitle="Prefer variants over net-new components.">
         <p className="prose">
-          A button with an icon is not a new component — it's a variant. A dropdown showing avatars is
-          not a new component — it's a variant. Net-new components are reserved for genuinely new
+          A button with an icon is not a new component, it's a variant. A dropdown showing avatars is
+          not a new component, it's a variant. Net-new components are reserved for genuinely new
           behaviour (e.g. there is no Toast yet; that is a real new component).
         </p>
         <p className="prose">
@@ -5222,14 +5202,14 @@ function GovernanceSection({ Section, SubGroup }) {
   );
 }
 
-/* ─── AI Memory Section ────────────────────────────────────────── */
+/* ─── Ai Memory Section ────────────────────────────────────────── */
 
 function AIMemorySection({ Section }) {
   const memoryFiles = [
-    { file: "ai-memory/README.md", desc: "Entry point — start here. How AI sessions should consume the memory." },
+    { file: "ai-memory/README.md", desc: "Entry point, start here. How Ai sessions should consume the memory." },
     { file: "ai-memory/foundations.md", desc: "Token-level reference: colors, type, spacing, sizing, radius, motion, elevation." },
     { file: "ai-memory/components.md", desc: "Component-level reference: buttons (full), other components stub-only." },
-    { file: "ai-memory/platforms.md", desc: "Student / Teacher / Parent / Admin — theme, accent, density, audience." },
+    { file: "ai-memory/platforms.md", desc: "Student / Teacher / Parent / Admin, theme, accent, density, audience." },
     { file: "ai-memory/governance.md", desc: "Rules: 80/20, before creating, naming conventions, refactor policy." },
     { file: "design-system.md", desc: "Human-readable canonical reference. Detailed; v0.3." },
   ];
@@ -5238,7 +5218,7 @@ function AIMemorySection({ Section }) {
     <Section
       id="ai-memory"
       eyebrow="Reference · 02"
-      title="AI Memory"
+      title="Ai Memory"
       lede="Markdown files designed for future Claude sessions to load as persistent context. Paste any of these into a new chat to preserve continuity. design-system.md is the canonical human reference; the ai-memory/ folder is the AI-optimised split."
     >
       <div className="memory-grid">
@@ -5287,7 +5267,7 @@ Object.assign(window, {
   </script>
   <script type="text/babel">
 /* eslint-disable */
-// Components: Tables, Fields, Chips — v0.3
+// Components: Tables, Fields, Chips, v0.3
 // Built from Figma sources at /Tables/Tabular-View, /Fields/Fields, /Chips-Tags.
 // All variants use semantic tokens so they swap under [data-theme="dark"]
 // automatically.
@@ -5462,7 +5442,7 @@ const TABLE_DELETE = (
     <path d="M4 4l.5 9a1 1 0 0 0 1 .9h5a1 1 0 0 0 1-.9L12 4" />
   </svg>
 );
-const TABLE_AI = (
+const TABLE_Ai = (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M10 2v3M10 15v3M2 10h3M15 10h3M4.5 4.5l2 2M13.5 13.5l2 2M4.5 15.5l2-2M13.5 6.5l2-2" />
     <circle cx="10" cy="10" r="3" />
@@ -5480,11 +5460,11 @@ function FieldsSection({ Section, SubGroup, useCopyFn }) {
       id="fields"
       eyebrow="Components · 02"
       title="Fields"
-      lede="Text inputs across two sizes and five states. Use the topbar to switch theme — every field below swaps in lockstep. Built from Figma /Fields/Fields with semantic tokens so the same component serves all four platforms."
+      lede="Text inputs across two sizes and five states. Use the topbar to switch theme, every field below swaps in lockstep. Built from Figma /Fields/Fields with semantic tokens so the same component serves all four platforms."
     >
       <div className="btn-size-tabs" role="tablist" aria-label="Field size">
         {[
-          { id: "small",  name: "Small",  px: 40 },
+          { id: "small", name: "Small", px: 40 },
           { id: "medium", name: "Medium", px: 48 },
         ].map(s => (
           <button
@@ -5528,7 +5508,7 @@ function FieldsSection({ Section, SubGroup, useCopyFn }) {
       </SubGroup>
 
       <SubGroup
-        title="OTP variant"
+        title="Otp variant"
         subtitle="4 or 6 box pattern. Used for verification flows."
       >
         <div className="field-grid">
@@ -5543,16 +5523,16 @@ function FieldsSection({ Section, SubGroup, useCopyFn }) {
       >
         <div className="comp-token-grid">
           {[
-            { token: "--field-small-height",   val: "40px" },
-            { token: "--field-small-pad-y",    val: "10px" },
-            { token: "--field-small-pad-x",    val: "12px" },
-            { token: "--field-small-font",     val: "14px / 20px" },
-            { token: "--field-medium-height",  val: "48px" },
-            { token: "--field-medium-pad-y",   val: "12px" },
-            { token: "--field-medium-pad-x",   val: "16px" },
-            { token: "--field-medium-font",    val: "16px / 24px" },
-            { token: "--field-radius",         val: "6px" },
-            { token: "--field-border-width",   val: "1px" },
+            { token: "--field-small-height",  val: "40px" },
+            { token: "--field-small-pad-y",   val: "10px" },
+            { token: "--field-small-pad-x",   val: "12px" },
+            { token: "--field-small-font",    val: "14px / 20px" },
+            { token: "--field-medium-height", val: "48px" },
+            { token: "--field-medium-pad-y",  val: "12px" },
+            { token: "--field-medium-pad-x",  val: "16px" },
+            { token: "--field-medium-font",   val: "16px / 24px" },
+            { token: "--field-radius",        val: "6px" },
+            { token: "--field-border-width",  val: "1px" },
           ].map(t => (
             <button key={t.token} type="button" className="comp-token-card" onClick={() => copy(`var(${t.token})`, t.token)}>
               <code className="comp-token-card__name">{t.token}</code>
@@ -5572,10 +5552,10 @@ function ChipsSection({ Section, SubGroup, useCopyFn }) {
   const [size, setSize] = useStateC("mobile");
 
   const colors = [
-    { id: "neutral",   name: "Neutral",   note: "Default / metadata" },
-    { id: "primary",   name: "Primary",   note: "Brand-aligned filter" },
-    { id: "secondary", name: "Secondary", note: "EDGE Blue accent" },
-    { id: "success",   name: "Success",   note: "Status / completed" },
+    { id: "neutral",  name: "Neutral",  note: "Default / metadata" },
+    { id: "primary",  name: "Primary",  note: "Brand-aligned filter" },
+    { id: "secondary", name: "Secondary", note: "Edge Blue accent" },
+    { id: "success",  name: "Success",  note: "Status / completed" },
   ];
 
   return (
@@ -5587,9 +5567,9 @@ function ChipsSection({ Section, SubGroup, useCopyFn }) {
     >
       <div className="btn-size-tabs" role="tablist" aria-label="Chip size">
         {[
-          { id: "mobile",  name: "Mobile",  px: 32 },
-          { id: "small",   name: "Small",   px: 36 },
-          { id: "medium",  name: "Medium",  px: 40 },
+          { id: "mobile", name: "Mobile", px: 32 },
+          { id: "small",  name: "Small",  px: 36 },
+          { id: "medium", name: "Medium", px: 40 },
         ].map(s => (
           <button
             key={s.id}
@@ -5647,7 +5627,7 @@ function ChipsSection({ Section, SubGroup, useCopyFn }) {
             <div className="chip-cluster__items">
               <Chip size={size} style="outlined" color="neutral"   label="Grade 10" />
               <Chip size={size} style="filled"   color="success"   label="Submitted" leadingIcon={CHIP_CHECK} />
-              <Chip size={size} style="outlined" color="secondary" label="EDGE" />
+              <Chip size={size} style="outlined" color="secondary" label="Edge" />
               <Chip size={size} style="filled"   color="neutral"   label="Math 201" />
             </div>
           </div>
@@ -5670,13 +5650,13 @@ function ChipsSection({ Section, SubGroup, useCopyFn }) {
         <div className="comp-token-grid">
           {[
             { token: `--chip-${size}-height`, val: { mobile: "32px", small: "36px", medium: "40px" }[size] },
-            { token: `--chip-${size}-pad-y`,  val: { mobile: "8px",  small: "8px",  medium: "8px"  }[size] },
-            { token: `--chip-${size}-pad-x`,  val: { mobile: "12px", small: "14px", medium: "16px" }[size] },
-            { token: `--chip-${size}-font`,   val: { mobile: "12px / 16px", small: "14px / 20px", medium: "14px / 20px" }[size] },
-            { token: `--chip-${size}-icon`,   val: { mobile: "16px", small: "18px", medium: "20px" }[size] },
-            { token: `--chip-${size}-gap`,    val: { mobile: "6px",  small: "8px",  medium: "8px"  }[size] },
-            { token: "--chip-radius",         val: "4px" },
-            { token: "--chip-border-width",   val: "1px" },
+            { token: `--chip-${size}-pad-y`, val: { mobile: "8px", small: "8px", medium: "8px"  }[size] },
+            { token: `--chip-${size}-pad-x`, val: { mobile: "12px", small: "14px", medium: "16px" }[size] },
+            { token: `--chip-${size}-font`,  val: { mobile: "12px / 16px", small: "14px / 20px", medium: "14px / 20px" }[size] },
+            { token: `--chip-${size}-icon`,  val: { mobile: "16px", small: "18px", medium: "20px" }[size] },
+            { token: `--chip-${size}-gap`,   val: { mobile: "6px", small: "8px", medium: "8px"  }[size] },
+            { token: "--chip-radius",        val: "4px" },
+            { token: "--chip-border-width",  val: "1px" },
           ].map(t => (
             <button key={t.token} type="button" className="comp-token-card" onClick={() => copy(`var(${t.token})`, t.token)}>
               <code className="comp-token-card__name">{t.token}</code>
@@ -5692,12 +5672,12 @@ function ChipsSection({ Section, SubGroup, useCopyFn }) {
 /* ─── Tables Section ───────────────────────────────────────────── */
 
 const SAMPLE_STUDENTS = [
-  { id: "1021323356", name: "Prakash J",     grade: "Grade 10", subject: "Math 201", status: "Submitted", score: 92, ai: true },
-  { id: "1021323357", name: "Aanya Patel",   grade: "Grade 10", subject: "Math 201", status: "Pending",   score: null, ai: false },
-  { id: "1021323358", name: "Marcus Webb",   grade: "Grade 11", subject: "Math 201", status: "Submitted", score: 88, ai: true },
-  { id: "1021323359", name: "Sofia Reyes",   grade: "Grade 10", subject: "Math 201", status: "Reviewed",  score: 95, ai: true },
-  { id: "1021323360", name: "Yusuf Khan",    grade: "Grade 11", subject: "Math 201", status: "Submitted", score: 76, ai: false },
-  { id: "1021323361", name: "Ling Chen",     grade: "Grade 10", subject: "Math 201", status: "Pending",   score: null, ai: false },
+  { id: "1021323356", name: "Prakash J",    grade: "Grade 10", subject: "Math 201", status: "Submitted", score: 92, ai: true },
+  { id: "1021323357", name: "Aanya Patel",  grade: "Grade 10", subject: "Math 201", status: "Pending",  score: null, ai: false },
+  { id: "1021323358", name: "Marcus Webb",  grade: "Grade 11", subject: "Math 201", status: "Submitted", score: 88, ai: true },
+  { id: "1021323359", name: "Sofia Reyes",  grade: "Grade 10", subject: "Math 201", status: "Reviewed", score: 95, ai: true },
+  { id: "1021323360", name: "Yusuf Khan",   grade: "Grade 11", subject: "Math 201", status: "Submitted", score: 76, ai: false },
+  { id: "1021323361", name: "Ling Chen",    grade: "Grade 10", subject: "Math 201", status: "Pending",  score: null, ai: false },
 ];
 
 function TablesSection({ Section, SubGroup, useCopyFn }) {
@@ -5724,12 +5704,12 @@ function TablesSection({ Section, SubGroup, useCopyFn }) {
   };
 
   const columns = [
-    { key: "id",      label: "ID",       align: "left",   sortable: true },
-    { key: "name",    label: "Student",  align: "left",   sortable: true },
-    { key: "grade",   label: "Grade",    align: "left",   sortable: true },
-    { key: "subject", label: "Subject",  align: "left",   sortable: false },
-    { key: "status",  label: "Status",   align: "center", sortable: true },
-    { key: "score",   label: "Score",    align: "right",  sortable: true },
+    { key: "id",     label: "ID",      align: "left",  sortable: true },
+    { key: "name",   label: "Student", align: "left",  sortable: true },
+    { key: "grade",  label: "Grade",   align: "left",  sortable: true },
+    { key: "subject", label: "Subject", align: "left",  sortable: false },
+    { key: "status", label: "Status",  align: "center", sortable: true },
+    { key: "score",  label: "Score",   align: "right", sortable: true },
   ];
 
   return (
@@ -5742,7 +5722,7 @@ function TablesSection({ Section, SubGroup, useCopyFn }) {
       <div className="btn-size-tabs" role="tablist" aria-label="Table density">
         {[
           { id: "comfortable", name: "Comfortable", px: 64 },
-          { id: "compact",     name: "Compact",     px: 48 },
+          { id: "compact",    name: "Compact",    px: 48 },
         ].map(s => (
           <button
             key={s.id}
@@ -5760,7 +5740,7 @@ function TablesSection({ Section, SubGroup, useCopyFn }) {
 
       <SubGroup
         title="Tabular view"
-        subtitle="Click any column header to sort. Hover a row to reveal actions. Try toggling theme — the table follows."
+        subtitle="Click any column header to sort. Hover a row to reveal actions. Try toggling theme, the table follows."
       >
         <div className={`table-wrap table-wrap--${density}`}>
           <table className="ds-table" role="table">
@@ -5811,7 +5791,7 @@ function TablesSection({ Section, SubGroup, useCopyFn }) {
                     />
                   </td>
                   <td className="ds-table__td ds-table__td--right ds-table__td--mono">
-                    {row.score != null ? row.score : "—"}
+                    {row.score != null ? row.score : "-"}
                   </td>
                   <td className="ds-table__td ds-table__td--actions">
                     <button type="button" className="ds-table__action" aria-label="Edit row">{TABLE_EDIT}</button>
@@ -5831,12 +5811,12 @@ function TablesSection({ Section, SubGroup, useCopyFn }) {
         <div className="comp-token-grid">
           {[
             { token: "--table-header-height", val: "48px" },
-            { token: "--table-row-height",    val: "64px (comfortable)" },
-            { token: "--table-row-compact",   val: "48px (compact)" },
-            { token: "--table-cell-pad-y",    val: "12px" },
-            { token: "--table-cell-pad-x",    val: "24px" },
-            { token: "--table-radius",        val: "8px" },
-            { token: "--table-row-gap",       val: "1px" },
+            { token: "--table-row-height",   val: "64px (comfortable)" },
+            { token: "--table-row-compact",  val: "48px (compact)" },
+            { token: "--table-cell-pad-y",   val: "12px" },
+            { token: "--table-cell-pad-x",   val: "24px" },
+            { token: "--table-radius",       val: "8px" },
+            { token: "--table-row-gap",      val: "1px" },
           ].map(t => (
             <button key={t.token} type="button" className="comp-token-card" onClick={() => copy(`var(${t.token})`, t.token)}>
               <code className="comp-token-card__name">{t.token}</code>
@@ -5863,7 +5843,7 @@ Object.assign(window, {
   </script>
   <script type="text/babel">
 /* eslint-disable */
-// Purple Ice — Design System reference page
+// Purple Ice, Design System reference page
 // React, Babel-compiled in-browser. Single component tree.
 
 const { useState, useEffect, useCallback, useRef, useMemo } = React;
@@ -6019,10 +5999,10 @@ function ColorsSection() {
       eyebrow="Foundations · 01"
       title="Colors"
       lede={editMode
-        ? "Edit mode — hover a swatch to rename, drag-reorder or delete it within its band. Changes persist in design-system.html; ask Claude to sync design-system.md + tokens.css when you're done."
+        ? "Edit mode, hover a swatch to rename, drag-reorder or delete it within its band. Changes persist in design-system.html; ask Claude to sync design-system.md + tokens.css when you're done."
         : "Seven ramps plus base black & white, and the semantic roles product code should consume. Click any swatch to copy its hex; click a token name to copy the CSS variable."}
     >
-      <SubGroup title="Base" subtitle="Pure black & white — used as the foundation of inverse surfaces and high-contrast accents.">
+      <SubGroup title="Base" subtitle="Pure black & white, used as the foundation of inverse surfaces and high-contrast accents.">
         <BaseColorRow stops={BASE_COLORS} />
       </SubGroup>
 
@@ -6069,7 +6049,7 @@ function ColorsSection() {
 
       <SubGroup
         title="Semantic roles"
-        subtitle="Higher-level aliases derived from the raw ramps above. Use semantic tokens in product code wherever possible — they're what a future dark-theme override will swap. Aliases below auto-update if you rename a referenced token."
+        subtitle="Higher-level aliases derived from the raw ramps above. Use semantic tokens in product code wherever possible, they're what a future dark-theme override will swap. Aliases below auto-update if you rename a referenced token."
       >
         <SemanticTable rows={editedSemantic} />
       </SubGroup>
@@ -6173,7 +6153,7 @@ function Swatch({ stop, isDragging, dropSide, onDragStart, onDragEnd, onDragOver
     if (target) { target.focus(); target.select(); }
   }, [editing, stop.gap]);
 
-  // Normalise hex input — accept with or without #, validate 3 or 6 hex chars
+  // Normalise hex input, accept with or without #, validate 3 or 6 hex chars
   const normalisedHex = (raw) => {
     const v = (raw || "").trim().replace(/^#/, "").toUpperCase();
     if (!v) return "";
@@ -6245,7 +6225,7 @@ function Swatch({ stop, isDragging, dropSide, onDragStart, onDragEnd, onDragOver
               type="button"
               className="swatch__chip-fill"
               onClick={() => setEditing(true)}
-              aria-label="Fill this gap — add hex value"
+              aria-label="Fill this gap, add hex value"
               title="Click to add a hex value"
             >
               <span className="swatch__chip-gap-mark">+ add hex</span>
@@ -6385,7 +6365,7 @@ function Swatch({ stop, isDragging, dropSide, onDragStart, onDragEnd, onDragOver
                 gap · click to add hex
               </button>
             ) : (
-              <span className="swatch__hex swatch__hex--muted">gap — not defined</span>
+              <span className="swatch__hex swatch__hex--muted">gap (not defined)</span>
             )
           ) : (
             <button
@@ -6521,9 +6501,9 @@ function TypographySection() {
       id="type"
       eyebrow="Foundations · 02"
       title="Typography"
-      lede="Two families, split by platform — Poppins for Student, Inter for Teacher, Parent and Admin. Weights and the size scale are shared. Line-heights are only filled in where the Figma button components explicitly defined them."
+      lede="Two families, split by platform, Poppins for Student, Inter for Teacher, Parent and Admin. Weights and the size scale are shared. Line-heights are only filled in where the Figma button components explicitly defined them."
     >
-      <SubGroup title="Families" subtitle="The platform overlay swaps --font-family-base automatically — switch platforms in the topbar to see the whole site follow.">
+      <SubGroup title="Families" subtitle="The platform overlay swaps --font-family-base automatically, switch platforms in the topbar to see the whole site follow.">
         <div className="st-family-grid">
           <div className="family-card">
             <div className="family-card__big" style={{ fontFamily: "var(--font-family-poppins)" }}>Aa</div>
@@ -6546,7 +6526,7 @@ function TypographySection() {
         </div>
       </SubGroup>
 
-      <SubGroup title="Weights" subtitle="Four weights ship in the system — the CSS numeric maps to the same style name in both Poppins and Inter.">
+      <SubGroup title="Weights" subtitle="Four weights ship in the system, the CSS numeric maps to the same style name in both Poppins and Inter.">
         <div className="weights-grid">
           {FONT_WEIGHTS.map(w => (
             <div key={w.token} className="weight-card">
@@ -6593,7 +6573,7 @@ function TypeScaleTable({ rows }) {
                 <span className="num">{r.lhPx}px</span>
                 <span className="num num--muted">{r.lh}</span>
               </>
-            ) : <span className="blank-cell">— not defined</span>}
+            ) : <span className="blank-cell">Not defined</span>}
           </span>
           <span className="scale-table__val"><span className="num">{r.weight}</span></span>
           <span
@@ -6621,7 +6601,7 @@ function SpacingSection() {
       id="spacing"
       eyebrow="Foundations · 03"
       title="Spacing"
-      lede={<>⚠️ <strong>Derived scale</strong> — Brand.json has no explicit spacing tokens. The values here are a proposed 4px-base scale inferred from button padding and grid usage. Promote, replace or trim as the system formalises.</>}
+      lede={<>⚠️ <strong>Derived scale</strong>: Brand.json has no explicit spacing tokens. The values here are a proposed 4px-base scale inferred from button padding and grid usage. Promote, replace or trim as the system formalises.</>}
     >
       <ScaleBarsTable rows={SPACING_SCALE} kind="space" maxPx={96} />
     </Section>
@@ -6634,7 +6614,7 @@ function SizingSection() {
       id="sizing"
       eyebrow="Foundations · 04"
       title="Sizing"
-      lede={<>⚠️ <strong>Derived scale</strong> — also absent from Brand.json. Inferred from observed IconBox sizes (20/24/28) and button heights (40/48/60) in the Trail file.</>}
+      lede={<>⚠️ <strong>Derived scale</strong> (also absent from Brand.json). Inferred from observed IconBox sizes (20/24/28) and button heights (40/48/60) in the Trail file.</>}
     >
       <ScaleBarsTable rows={SIZING_SCALE} kind="size" maxPx={60} />
     </Section>
@@ -6747,7 +6727,7 @@ function CssVariablesSection() {
     fetch("tokens.css")
       .then(r => r.text())
       .then(setCss)
-      .catch(() => setCss("/* Could not load tokens.css — see file directly */"));
+      .catch(() => setCss("/* Could not load tokens.css, see file directly */"));
   }, []);
 
   const onCopyAll = useCallback(() => {
@@ -6784,16 +6764,16 @@ function CssVariablesSection() {
 
 // ─── Buttons ────────────────────────────────────────────────────
 
-// Tiny inline icon library — purposely simple so the swatch stays the focus.
+// Tiny inline icon library, purposely simple so the swatch stays the focus.
 const ICON_LIBRARY = {
-  plus:     { label: "Plus",     path: "M12 5v14M5 12h14" },
+  plus:     { label: "Plus",    path: "M12 5v14M5 12h14" },
   chevron:  { label: "Chevron ›", path: "M9 6l6 6-6 6" },
-  arrow:    { label: "Arrow →",   path: "M5 12h14M13 6l6 6-6 6" },
-  home:     { label: "Home",     path: "M3 11l9-8 9 8M5 9v11h5v-7h4v7h5V9" },
-  search:   { label: "Search",   path: "M10.5 17.5a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm5-2l4 4" },
+  arrow:    { label: "Arrow →",  path: "M5 12h14M13 6l6 6-6 6" },
+  home:     { label: "Home",    path: "M3 11l9-8 9 8M5 9v11h5v-7h4v7h5V9" },
+  search:   { label: "Search",  path: "M10.5 17.5a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm5-2l4 4" },
   download: { label: "Download", path: "M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" },
-  close:    { label: "Close ✕",  path: "M6 6l12 12M6 18L18 6" },
-  check:    { label: "Check",    path: "M5 12l5 5L20 7" },
+  close:    { label: "Close ✕", path: "M6 6l12 12M6 18L18 6" },
+  check:    { label: "Check",   path: "M5 12l5 5L20 7" },
 };
 const ICON_NONE = "none";
 
@@ -6820,10 +6800,10 @@ function ButtonIcon({ name, size = 24, style }) {
 }
 
 const PREVIEW_BGS = {
-  surface:   { name: "Surface",  bg: "var(--color-surface-base)",   text: "var(--color-text-primary)",   subtle: false },
-  subtle:    { name: "Subtle",   bg: "var(--color-surface-subtle)", text: "var(--color-text-primary)",   subtle: false },
-  brand:     { name: "Brand",    bg: "var(--color-purple-100)",     text: "var(--color-text-primary)",   subtle: false },
-  inverse:   { name: "Inverse",  bg: "var(--color-neutral-900)",    text: "var(--color-purple-100)",     subtle: true },
+  surface:   { name: "Surface", bg: "var(--color-surface-base)",  text: "var(--color-text-primary)",  subtle: false },
+  subtle:    { name: "Subtle",  bg: "var(--color-surface-subtle)", text: "var(--color-text-primary)",  subtle: false },
+  brand:     { name: "Brand",   bg: "var(--color-purple-100)",    text: "var(--color-text-primary)",  subtle: false },
+  inverse:   { name: "Inverse", bg: "var(--color-neutral-900)",   text: "var(--color-purple-100)",    subtle: true },
 };
 
 function ButtonsSection({ tweaks }) {
@@ -6836,7 +6816,7 @@ function ButtonsSection({ tweaks }) {
       id="buttons"
       eyebrow="Components · 01"
       title="Buttons"
-      lede="Three types (Primary, Secondary, Tertiary), five states (Default, Hovered, Selected, Focussed, Disabled) and four sizes (Mobile, Small, Medium, Large) — across six colour bands. Toggle Tweaks (top toolbar) to change labels, icons, or preview background."
+      lede="Three types (Primary, Secondary, Tertiary), five states (Default, Hovered, Selected, Focussed, Disabled) and four sizes (Mobile, Small, Medium, Large), across six colour bands. Toggle Tweaks (top toolbar) to change labels, icons, or preview background."
     >
       <div className="btn-size-tabs" role="tablist" aria-label="Button size">
         {BUTTON_SIZES.map(s => (
@@ -6879,15 +6859,15 @@ function ButtonsSection({ tweaks }) {
             return <span>Verbatim from the Trail Figma file. <strong>v0.3.2 fix:</strong> radius progression unified with Purple (was 2/2/4/8). Radius {radiusForSize}px at {sizeSpec.name}.</span>;
           }
           if (color.id === "gold") {
-            return <span>Figma-exact gradient (<code>edge-gold-200 → edge-gold-800</code>). Primary only — Secondary/Tertiary not defined in source. Radius {radiusForSize}px at {sizeSpec.name}.</span>;
+            return <span>Figma-exact gradient (<code>edge-gold-200 → edge-gold-800</code>). Primary only (Secondary/Tertiary not defined in source). Radius {radiusForSize}px at {sizeSpec.name}.</span>;
           }
           if (color.id === "white") {
-            return <span>⚠️ <strong>New in v0.3.2.</strong> Not in Figma yet — shipped to support white-on-dark CTAs. Always previewed on a dark surface. Radius {radiusForSize}px at {sizeSpec.name}.</span>;
+            return <span>⚠️ <strong>New in v0.3.2.</strong> Not in Figma yet, shipped to support white-on-dark CTAs. Always previewed on a dark surface. Radius {radiusForSize}px at {sizeSpec.name}.</span>;
           }
           if (isFigmaExact) {
             return <span>Verbatim from the Trail Figma file. Radius {radiusForSize}px at {sizeSpec.name}.</span>;
           }
-          return <span>⚠️ <strong>Derived</strong> from the {color.derivedFrom} recipe — Yellow/Red don't exist in Figma yet. Promote/adjust once product confirms.</span>;
+          return <span>⚠️ <strong>Derived</strong> from the {color.derivedFrom} recipe, Yellow/Red don't exist in Figma yet. Promote/adjust once product confirms.</span>;
         })();
         return (
           <SubGroup
@@ -6964,7 +6944,7 @@ function PreviewButton({ color, type, state, spec, sizeSpec, tweaks }) {
 
   const ring = isFocussed ? tokenVar(spec.ring) : null;
 
-  // For focus state we use a 4px outer ring via box-shadow — matches Figma's
+  // For focus state we use a 4px outer ring via box-shadow, matches Figma's
   // 4px border treatment without changing the button's box size.
   const shadows = [];
   if (showShadow === "drop") shadows.push("1px 1px 4px 0 rgba(23,23,23,0.4)");
@@ -7123,14 +7103,14 @@ Object.assign(window, {
   </script>
   <script type="text/babel">
 /* eslint-disable */
-// Purple Ice · V1 — Home, category index pages, changelog.
+// Purple Ice · V1, Home, category index pages, changelog.
 // Loaded after ds-app.jsx (needs window.Section) and before ds-shell.jsx.
 
 const { useMemo: useMemoH } = React;
 
 const DSD = window.DSData;
 
-/* ─── Shared counts (computed from live data — always truthful) ── */
+/* ─── Shared counts (computed from live data, always truthful) ── */
 
 function dsCounts() {
   const colorTokens =
@@ -7168,7 +7148,7 @@ const FOUNDATION_TOPICS = [
   },
   {
     path: "/foundations/type", label: "Typography",
-    desc: "Poppins for Student, Inter for the dark platforms — four shared weights and sizes.",
+    desc: "Poppins for Student, Inter for the dark platforms, four shared weights and sizes.",
     count: () => `${DSD.FONT_WEIGHTS.length} weights · ${DSD.TYPE_SCALE.length} sizes`,
     glyph: <span className="st-glyph-aa">Aa</span>,
   },
@@ -7186,7 +7166,7 @@ const FOUNDATION_TOPICS = [
   },
   {
     path: "/foundations/sizing", label: "Sizing",
-    desc: "Icon and control heights — paired so buttons, fields and icons line up by default.",
+    desc: "Icon and control heights, paired so buttons, fields and icons line up by default.",
     count: () => `${DSD.SIZING_SCALE.length} tokens`,
     glyph: (
       <React.Fragment>
@@ -7217,7 +7197,7 @@ const FOUNDATION_TOPICS = [
   },
   {
     path: "/foundations/grids", label: "Grids",
-    desc: "One responsive grid shared by all four platforms — five breakpoints, 4 to 12 columns.",
+    desc: "One responsive grid shared by all four platforms, five breakpoints, 4 to 12 columns.",
     count: () => `${DSD.GRID_BREAKPOINTS.length} breakpoints`,
     glyph: (
       <span className="st-glyph-cols">
@@ -7262,13 +7242,13 @@ const COMPONENT_TOPICS = [
   },
   {
     path: "/components/fields", label: "Fields",
-    desc: "Text inputs in two sizes and six states, plus OTP and expandable variants.",
+    desc: "Text inputs in two sizes and six states, plus Otp and expandable variants.",
     count: () => "2 sizes · 6 states",
     glyph: <span className="st-glyph-field"><span></span></span>,
   },
   {
     path: "/components/chips", label: "Chips & Tags",
-    desc: "Compact metadata and filter pills — three styles, four colors, three sizes.",
+    desc: "Compact metadata and filter pills, three styles, four colors, three sizes.",
     count: () => "3 styles · 4 colors",
     glyph: (
       <React.Fragment>
@@ -7295,9 +7275,9 @@ const CHANGELOG = [
   {
     version: "V1.1",
     tag: "Current",
-    summary: "Platform grouping and the typography split. The switcher now offers two skins — Student, and Teacher · Parent · Admin combined — and the type family follows the platform.",
+    summary: "Platform grouping and the typography split. The switcher now offers two skins, Student, and Teacher · Parent · Admin combined, and the type family follows the platform.",
     items: [
-      "Typography split — Poppins on Student; Inter on Teacher / Parent / Admin (the platform overlay swaps --font-family-base)",
+      "Typography split, Poppins on Student; Inter on Teacher / Parent / Admin (the platform overlay swaps --font-family-base)",
       "New raw tokens: --font-family-poppins, --font-family-inter",
       "Platform switcher simplified to two groups: Student (light · Poppins) and Teacher · Parent · Admin (dark · Inter)",
       "Sidebar scrollbar styled to match the system",
@@ -7306,24 +7286,24 @@ const CHANGELOG = [
   {
     version: "V1.0",
     tag: "Website experience",
-    summary: "The system graduates from a single long reference page to a routed Design System website. The underlying design language is untouched — V1 freezes the v0.3.2 tokens and components as the baseline.",
+    summary: "The system graduates from a single long reference page to a routed Design System website. The underlying design language is untouched, V1 freezes the v0.3.2 tokens and components as the baseline.",
     items: [
-      "Routed information architecture — every foundation, component and reference topic is its own focused view",
+      "Routed information architecture, every foundation, component and reference topic is its own focused view",
       "Persistent grouped sidebar with active-state indication; breadcrumbs and prev / next paging",
       "New home page with a live map of the system, platform strip and scope overview",
       "⌘K quick-search across all pages and every token in the system",
-      "Per-page source links tying each section to its AI-memory markdown file",
+      "Per-page source links tying each section to its Ai-memory markdown file",
       "Changelog surfaced on-site",
-      "Token editing moved behind an owner-only edit mode — hidden from viewers",
+      "Token editing moved behind an owner-only edit mode, hidden from viewers",
     ],
   },
   {
     version: "v0.3.2",
     summary: "Grids joined the foundations; surfaces were reorganised into platform stacks.",
     items: [
-      "Grids — one responsive scale shared by all four platforms (5 breakpoints, 4→12 columns)",
-      "Two surface stacks — Student light (4 rungs), Teacher/Parent/Admin dark (5 rungs)",
-      "EDGE Blue button radii unified with the Purple progression",
+      "Grids, one responsive scale shared by all four platforms (5 breakpoints, 4→12 columns)",
+      "Two surface stacks, Student light (4 rungs), Teacher/Parent/Admin dark (5 rungs)",
+      "Edge Blue button radii unified with the Purple progression",
       "Gold button band (Primary-only, gradient fill) and White on-dark band added",
       "Buttons default preview size flipped to Small",
     ],
@@ -7332,9 +7312,9 @@ const CHANGELOG = [
     version: "v0.3.1",
     summary: "Three new components from Figma sources, each with component-scoped tokens.",
     items: [
-      "Fields — 2 sizes × 6 states, plus OTP variant, theme-aware",
-      "Chips & Tags — 3 sizes × 3 styles × 4 colors with light + dark recipes",
-      "Tables — sortable headers, 2 density variants, hover-reveal actions, inline status chips",
+      "Fields, 2 sizes × 6 states, plus Otp variant, theme-aware",
+      "Chips & Tags, 3 sizes × 3 styles × 4 colors with light + dark recipes",
+      "Tables, sortable headers, 2 density variants, hover-reveal actions, inline status chips",
     ],
   },
   {
@@ -7343,22 +7323,22 @@ const CHANGELOG = [
     items: [
       "data-theme=\"dark\" overlay re-maps semantic roles; data-platform sets the accent",
       "Student / Teacher / Parent / Admin defined with theme, accent and density",
-      "New foundations — Surfaces, Elevation (shadow-0…5), Motion, Z-index",
+      "New foundations, Surfaces, Elevation (shadow-0…5), Motion, Z-index",
       "Governance: the 80/20 rule, naming conventions, token promotion guidelines",
-      "AI-memory split into a dedicated folder for AI-optimised consumption",
+      "Ai-memory split into a dedicated folder for AI-optimised consumption",
     ],
   },
   {
     version: "v0.2",
     summary: "The first component band, plus editable colour gap cards.",
     items: [
-      "Buttons — 3 types × 5 states × 4 sizes across Purple, EDGE Blue, Yellow, Red",
+      "Buttons, 3 types × 5 states × 4 sizes across Purple, Edge Blue, Yellow, Red",
       "Gap colour cards became fully editable so sparse ramps can be promoted",
     ],
   },
   {
     version: "v0.1",
-    summary: "Initial foundations — colors, type, spacing, sizing, radius, border. Light mode only. Source: Brand.json + the Trail Figma file.",
+    summary: "Initial foundations, colors, type, spacing, sizing, radius, border. Light mode only. Source: Brand.json + the Trail Figma file.",
     items: [],
   },
 ];
@@ -7372,11 +7352,11 @@ function HomePage() {
   return (
     <div className="page" data-screen-label="Home">
       <section className="st-home__hero">
-        <span className="st-home__eyebrow">Unified Design System · V1</span>
+        <span className="st-home__eyebrow">Unified Design System</span>
         <h1 className="st-home__title">Purple&nbsp;Ice<span className="st-home__title-mark">.</span></h1>
         <p className="st-home__lede">
           One design system, four platforms. Shared tokens and spacing rhythm
-          across Student, Teacher, Parent and Admin — each side with its own
+          across Student, Teacher, Parent and Admin, each side with its own
           theme, accent and type family. Explore the foundations, components and
           the theming model that keeps all four in lockstep.
         </p>
@@ -7389,7 +7369,7 @@ function HomePage() {
           <div className="st-stat"><span className="st-stat__label">Foundations</span><span className="st-stat__value">{FOUNDATION_TOPICS.length}</span></div>
           <div className="st-stat"><span className="st-stat__label">Components</span><span className="st-stat__value">{COMPONENT_TOPICS.length}</span></div>
           <div className="st-stat"><span className="st-stat__label">Tokens</span><span className="st-stat__value">{counts.total}+</span></div>
-          <div className="st-stat"><span className="st-stat__label">Version</span><span className="st-stat__value">V1</span></div>
+          <div className="st-stat"><span className="st-stat__label">Version</span><span className="st-stat__value">v1</span></div>
         </div>
       </section>
 
@@ -7403,7 +7383,7 @@ function HomePage() {
               <h3 className="st-map-card__title">Foundations</h3>
               <span className="st-map-card__count">{FOUNDATION_TOPICS.length} topics</span>
             </div>
-            <p className="st-map-card__desc">The atomic decisions every screen inherits — color, type, rhythm, depth and motion.</p>
+            <p className="st-map-card__desc">The atomic decisions every screen inherits, color, type, rhythm, depth and motion.</p>
             <div className="st-map-card__chips">
               {FOUNDATION_TOPICS.map(t => <span key={t.path} className="st-map-card__chip">{t.label}</span>)}
             </div>
@@ -7423,7 +7403,7 @@ function HomePage() {
               <h3 className="st-map-card__title">Platforms</h3>
               <span className="st-map-card__count">4 products</span>
             </div>
-            <p className="st-map-card__desc">Student, Teacher, Parent and Admin — one language, four skins via theme + accent overlays.</p>
+            <p className="st-map-card__desc">Student, Teacher, Parent and Admin, one language, four skins via theme + accent overlays.</p>
             <div className="st-map-card__chips">
               {platforms.map(p => <span key={p.id} className="st-map-card__chip">{p.name}</span>)}
             </div>
@@ -7443,10 +7423,10 @@ function HomePage() {
             <div className="st-map-card__head">
               <h3 className="st-map-card__title">Reference</h3>
             </div>
-            <p className="st-map-card__desc">Everything a consumer needs — the full CSS variable block, AI-memory files and the changelog.</p>
+            <p className="st-map-card__desc">Everything a consumer needs, the full CSS variable block, Ai-memory files and the changelog.</p>
             <div className="st-map-card__chips">
               <span className="st-map-card__chip">CSS Variables</span>
-              <span className="st-map-card__chip">AI Memory</span>
+              <span className="st-map-card__chip">Ai Memory</span>
               <span className="st-map-card__chip">Changelog</span>
             </div>
           </a>
@@ -7475,7 +7455,6 @@ function HomePage() {
                 <span className="st-platform-tile__row">
                   <span className="st-platform-tile__dot" style={{ background: `var(--color-${p.brand.accent})` }}></span>
                   <span className="st-platform-tile__name">{p.name}</span>
-                  <span className="st-platform-tile__badge">{p.status === "shipped" ? "Shipped" : "In design"}</span>
                 </span>
                 <span className="st-platform-tile__meta">{p.theme === "dark" ? "Dark" : "Light"} theme · {p.audience}</span>
               </a>
@@ -7493,7 +7472,7 @@ function HomePage() {
             <h4 className="info-card__title">In the system today</h4>
             <ul className="info-card__list">
               <li>7 colour ramps, base black / white, 23 semantic roles</li>
-              <li>Poppins (Student) + Inter (Teacher / Parent / Admin) — 4 weights, {DSD.TYPE_SCALE.length}-step scale</li>
+              <li>Poppins (Student) + Inter (Teacher / Parent / Admin), 4 weights, {DSD.TYPE_SCALE.length}-step scale</li>
               <li>Spacing, sizing, radius, border, elevation, motion, z-index scales</li>
               <li>Theme-aware surfaces + light / dark platform stacks</li>
               <li>One responsive grid across all breakpoints</li>
@@ -7513,8 +7492,8 @@ function HomePage() {
             <h4 className="info-card__title">The 80 / 20 rule</h4>
             <ul className="info-card__list">
               <li>Adhere to these tokens 80% of the time.</li>
-              <li>20% flexibility — only when the system genuinely doesn't cover a need.</li>
-              <li>New token? Flag it: ⚠️ New token introduced: [name] — reason: [why]</li>
+              <li>20% flexibility, only when the system genuinely doesn't cover a need.</li>
+              <li>New token? Flag it: ⚠️ New token introduced: [name], reason: [why]</li>
               <li>Never silently invent values that conflict.</li>
             </ul>
           </div>
@@ -7559,7 +7538,7 @@ function FoundationsIndex() {
       id="foundations-index"
       eyebrow="Foundations"
       title="Foundations"
-      lede="The atomic tokens every screen touches — pulled or derived from Brand.json and the Trail Figma file. Semantic roles sit on top of raw scales so the dark theme and platform accents swap automatically."
+      lede="The atomic tokens every screen touches, pulled or derived from Brand.json and the Trail Figma file. Semantic roles sit on top of raw scales so the dark theme and platform accents swap automatically."
     >
       <TopicIndexGrid topics={FOUNDATION_TOPICS} />
     </Section>
@@ -7573,7 +7552,7 @@ function ComponentsIndex() {
       id="components-index"
       eyebrow="Components"
       title="Components"
-      lede="Token-driven building blocks, specified state-by-state. Everything here is theme-aware — switch platforms in the topbar and every preview follows. Coming next: Checkboxes & Radios, Dropdowns, Tooltips, Toasts."
+      lede="Token-driven building blocks, specified state-by-state. Everything here is theme-aware, switch platforms in the topbar and every preview follows. Coming next: Checkboxes & Radios, Dropdowns, Tooltips, Toasts."
     >
       <TopicIndexGrid topics={COMPONENT_TOPICS} />
     </Section>
@@ -7589,7 +7568,7 @@ function ChangelogPage() {
       id="changelog"
       eyebrow="Reference · 03"
       title="Changelog"
-      lede="How the system grew, release by release. V1 is a website-experience release — the design language itself has been stable since v0.3.2."
+      lede="How the system grew, release by release. V1 is a website-experience release, the design language itself has been stable since v0.3.2."
     >
       <div className="st-changelog">
         {CHANGELOG.map((entry, i) => (
@@ -7624,9 +7603,9 @@ Object.assign(window, {
   </script>
   <script type="text/babel">
 /* eslint-disable */
-// Purple Ice · V1 — Site shell: hash router, sidebar, topbar, search,
+// Purple Ice · V1, Site shell: hash router, sidebar, topbar, search,
 // page frame (breadcrumbs, source links, prev/next), owner edit mode.
-// Loads LAST — mounts the app.
+// Loads LAST, mounts the app.
 
 const {
   useState: useStateSh,
@@ -7659,30 +7638,30 @@ const SRC_COMPONENTS  = ["ai-memory/components.md", "design-system.md"];
 const SITE_ROUTES = [
   { path: "/", label: "Home", groupLabel: null },
 
-  { path: "/foundations",            label: "Foundations",     groupLabel: null, src: SRC_FOUNDATIONS },
-  { path: "/foundations/colors",     label: "Colors",          groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/type",       label: "Typography",      groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/spacing",    label: "Spacing",         groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/sizing",     label: "Sizing",          groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/radius",     label: "Radius & Border", groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/surfaces",   label: "Surfaces",        groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/grids",      label: "Grids",           groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/elevation",  label: "Elevation",       groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/motion",     label: "Motion",          groupLabel: "Foundations", src: SRC_FOUNDATIONS },
-  { path: "/foundations/z-index",    label: "Z-index",         groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations",           label: "Foundations",    groupLabel: null, src: SRC_FOUNDATIONS },
+  { path: "/foundations/colors",    label: "Colors",         groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/type",      label: "Typography",     groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/spacing",   label: "Spacing",        groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/sizing",    label: "Sizing",         groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/radius",    label: "Radius & Border", groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/surfaces",  label: "Surfaces",       groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/grids",     label: "Grids",          groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/elevation", label: "Elevation",      groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/motion",    label: "Motion",         groupLabel: "Foundations", src: SRC_FOUNDATIONS },
+  { path: "/foundations/z-index",   label: "Z-index",        groupLabel: "Foundations", src: SRC_FOUNDATIONS },
 
-  { path: "/components",             label: "Components",      groupLabel: null, src: SRC_COMPONENTS },
-  { path: "/components/buttons",     label: "Buttons",         groupLabel: "Components", src: SRC_COMPONENTS },
-  { path: "/components/fields",      label: "Fields",          groupLabel: "Components", src: SRC_COMPONENTS },
-  { path: "/components/chips",       label: "Chips & Tags",    groupLabel: "Components", src: SRC_COMPONENTS },
-  { path: "/components/tables",      label: "Tables",          groupLabel: "Components", src: SRC_COMPONENTS },
+  { path: "/components",            label: "Components",     groupLabel: null, src: SRC_COMPONENTS },
+  { path: "/components/buttons",    label: "Buttons",        groupLabel: "Components", src: SRC_COMPONENTS },
+  { path: "/components/fields",     label: "Fields",         groupLabel: "Components", src: SRC_COMPONENTS },
+  { path: "/components/chips",      label: "Chips & Tags",   groupLabel: "Components", src: SRC_COMPONENTS },
+  { path: "/components/tables",     label: "Tables",         groupLabel: "Components", src: SRC_COMPONENTS },
 
-  { path: "/platforms",              label: "Platforms",       groupLabel: null, src: ["ai-memory/platforms.md", "design-system.md"] },
-  { path: "/governance",             label: "Governance",      groupLabel: null, src: ["ai-memory/governance.md", "design-system.md"] },
+  { path: "/platforms",             label: "Platforms",      groupLabel: null, src: ["ai-memory/platforms.md", "design-system.md"] },
+  { path: "/governance",            label: "Governance",     groupLabel: null, src: ["ai-memory/governance.md", "design-system.md"] },
 
-  { path: "/reference/css",          label: "CSS Variables",   groupLabel: "Reference", src: ["tokens.css"] },
-  { path: "/reference/ai-memory",    label: "AI Memory",       groupLabel: "Reference", src: ["ai-memory/README.md"] },
-  { path: "/reference/changelog",    label: "Changelog",       groupLabel: "Reference", src: ["design-system.md"] },
+  { path: "/reference/css",         label: "CSS Variables",  groupLabel: "Reference", src: ["tokens.css"] },
+  { path: "/reference/ai-memory",   label: "Ai Memory",      groupLabel: "Reference", src: ["ai-memory/README.md"] },
+  { path: "/reference/changelog",   label: "Changelog",      groupLabel: "Reference", src: ["design-system.md"] },
 ];
 
 const ROUTE_BY_PATH = Object.fromEntries(SITE_ROUTES.map(r => [r.path, r]));
@@ -7900,12 +7879,10 @@ function Sidebar({ path, editMode, onToggleEdit, onOpenSearch }) {
           <span className="st-brand__name">Purple Ice</span>
           <span className="st-brand__sub">Unified Design System</span>
         </span>
-        <span className="st-brand__ver">V1</span>
       </a>
       <button type="button" className="st-search-trigger" onClick={onOpenSearch}>
         <SearchIcon />
         <span className="st-search-trigger__label">Search…</span>
-        <span className="st-search-trigger__kbd">⌘K</span>
       </button>
       <nav className="st-nav">
         {SIDEBAR_GROUPS.map((g, gi) => (
@@ -7936,7 +7913,7 @@ function Sidebar({ path, editMode, onToggleEdit, onOpenSearch }) {
           type="button"
           className={`st-edit-toggle ${editMode ? "is-on" : ""}`}
           onClick={onToggleEdit}
-          title={editMode ? "Edit mode on — click to exit" : "Owner edit mode"}
+          title={editMode ? "Edit mode on, click to exit" : "Owner edit mode"}
           aria-label="Toggle owner edit mode"
         >
           <PencilIconSm />
@@ -8131,7 +8108,7 @@ function SiteApp() {
   const toggleEdit = useCallbackSh(() => {
     setEditMode(prev => {
       const next = !prev;
-      showToast(next ? "Edit mode on — token editing unlocked" : "Edit mode off");
+      showToast(next ? "Edit mode on, token editing unlocked" : "Edit mode off");
       return next;
     });
   }, [showToast]);

@@ -17,7 +17,7 @@ export const WorkTile: React.FC<WorkTileProps> = ({ item, onClick, onNavigate })
       k.includes(`/public/projects/${item.slug.replace(/-hsbc$/, '')}/`) ||
       k.includes(`/public/projects/${item.slug}-hsbc/`);
     const filename = k.split('/').pop() || '';
-    const isThumb = /thumb|thumbnail|cover/i.test(filename);
+    const isThumb = /thumb|thumbnail/i.test(filename);
     return isMatchingFolder && isThumb;
   });
   const thumbUrl = thumbKey ? thumbKey.replace('/public', '') : null;

@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────────────
-   PURPLE ICE — UNIFIED DESIGN SYSTEM TOKENS · v0.3
+   PURPLE ICE, UNIFIED DESIGN SYSTEM TOKENS · v0.3
    Foundations (colors, type, spacing, sizing, radius, border, motion,
    elevation, z-index) + Buttons + Surface System.
 
@@ -10,7 +10,7 @@
    3. Theme overlay      · [data-theme=dark] (re-maps semantic roles)
    4. Platform overlay   · [data-platform=*] (sets brand-primary accent)
 
-   Layer order matters — platform should win over theme should win over
+   Layer order matters, platform should win over theme should win over
    raw. CSS specificity (combined selectors) handles this.
 
    Default state = Student platform · light theme (backward compatible
@@ -19,17 +19,17 @@
 
 :root {
   /* ════════════════════════════════════════════════════════════════
-     COLORS — RAW SCALES
+     COLORS: RAW SCALES
      Naming: standard 50–900 scale. "Main"/"Default" from Figma map
      to the -500 slot as the brand anchor. The original Figma "500"
      stops (where present) are preserved as -450 (⚠️ renamed).
      ════════════════════════════════════════════════════════════════ */
 
-  /* — Base — */
+  /* Base */
   --color-black: #000000;
   --color-white: #FFFFFF;
 
-  /* — Purple (primary brand · shared across all platforms) — */
+  /* Purple (primary brand · shared across all platforms) */
   --color-purple-50:  #FAF9FE;
   --color-purple-100: #F4F2FF;
   --color-purple-150: #E9E5FF;
@@ -45,7 +45,9 @@
   --color-purple-850: #4A3BA3;
   --color-purple-900: #312961;
 
-  /* — EDGE Blue (secondary brand · Teacher accent) — */
+  --color-pink: #FFC5BA; /* added for parent accent */
+
+  /* EDGE Blue (secondary brand · Teacher accent) */
   --color-edge-blue-50:  #F3F2F7;
   --color-edge-blue-100: #E6E5EE;
   --color-edge-blue-150: #DAD9E6;
@@ -61,16 +63,16 @@
   --color-edge-blue-850: #231C5F;
   --color-edge-blue-900: #171157;
 
-  /* — EDGE Gold (accent · Parent accent) — sparse: no 50/400/500/600 — */
+  /* EDGE Gold (accent · Parent accent), sparse: no 50/400/500/600 */
   --color-edge-gold-100: #FFF2CC;
   --color-edge-gold-200: #F5E5B8;
   --color-edge-gold-300: #EBD3A4;
-  /* gap: 400, 500, 600 — no Main defined */
+  /* gap: 400, 500, 600, no Main defined */
   --color-edge-gold-700: #C2A56B;
   --color-edge-gold-800: #B8995C;
   --color-edge-gold-900: #AD8D4E;
 
-  /* — Accent Green (success / accent · Student accent) — */
+  /* Accent Green (success / accent · Student accent) */
   --color-accent-green-100: #DCEDC9;
   --color-accent-green-200: #C5E1A5;
   --color-accent-green-300: #AED581;
@@ -82,7 +84,7 @@
   --color-accent-green-900: #293A16;
   --color-accent-green-950: #1C270F;
 
-  /* — Yellow (warning) — */
+  /* Yellow (warning) */
   --color-yellow-50:  #FFF5E6;
   --color-yellow-100: #F8F3D8;
   --color-yellow-200: #FFD699;
@@ -94,7 +96,7 @@
   --color-yellow-800: #663D00;
   --color-yellow-900: #190F00;
 
-  /* — Red (danger · Admin accent) — */
+  /* Red (danger · Admin accent) */
   --color-red-100: #FCC7C3;
   --color-red-200: #FAA19B;
   --color-red-300: #F77C73;
@@ -105,7 +107,7 @@
   --color-red-800: #7A211B;
   --color-red-900: #491410;
 
-  /* — Neutral (Grey) — */
+  /* Neutral (Grey) */
   --color-neutral-100: #F1F1F1;
   --color-neutral-150: #DDDDDD;
   --color-neutral-200: #CFCFCF;
@@ -123,7 +125,7 @@
   --color-neutral-900: #111111;           /* ← Figma "Main" · ANCHOR */
 
   /* ════════════════════════════════════════════════════════════════
-     COLORS — SEMANTIC ROLES (light · Student default)
+     COLORS: SEMANTIC ROLES (light · Student default)
      Light-mode mapping. The [data-theme="dark"] block below re-maps
      these without touching raw scales.
      ════════════════════════════════════════════════════════════════ */
@@ -176,14 +178,14 @@
   --font-family-inter:   "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-family-base:    var(--font-family-poppins);
   --font-family-display: var(--font-family-poppins);
-  --font-family-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-family-mono:    "Poppins", sans-serif;
 
   --font-weight-regular:   400;
   --font-weight-medium:    500;
   --font-weight-semibold:  600;
   --font-weight-bold:      700;
 
-  /* — Type sizes (semantic + numeric alias) — */
+  /* Type sizes (semantic + numeric alias) */
   --text-2xs: 0.5rem;       /* 8px  */
   --text-xs:  0.625rem;     /* 10px */
   --text-sm:  0.75rem;      /* 12px */
@@ -192,8 +194,8 @@
   --text-lg:  1.25rem;      /* 20px */
   --text-xl:  1.5rem;       /* 24px */
   --text-2xl: 1.75rem;      /* 28px */
-  --text-3xl: 2rem;         /* 32px — new in v0.3, for display headings */
-  --text-4xl: 2.5rem;       /* 40px — new in v0.3, for marketing/hero */
+  --text-3xl: 2rem;         /* 32px, new in v0.3, for display headings */
+  --text-4xl: 2.5rem;       /* 40px, new in v0.3, for marketing/hero */
 
   /* numeric aliases */
   --text-8:  var(--text-2xs);
@@ -207,14 +209,14 @@
   --text-32: var(--text-3xl);
   --text-40: var(--text-4xl);
 
-  /* — Line heights (only those observed in Figma button components) — */
-  --line-height-base: 1.25rem;   /* 20px — pairs with text-base/14 */
-  --line-height-md:   1.5rem;    /* 24px — pairs with text-md/16   */
-  --line-height-lg:   1.75rem;   /* 28px — pairs with text-lg/20   */
-  /* line-heights for 8/10/12/24/28 — not yet defined in source */
+  /* Line heights (only those observed in Figma button components) */
+  --line-height-base: 1.25rem;   /* 20px, pairs with text-base/14 */
+  --line-height-md:   1.5rem;    /* 24px, pairs with text-md/16   */
+  --line-height-lg:   1.75rem;   /* 28px, pairs with text-lg/20   */
+  /* line-heights for 8/10/12/24/28, not yet defined in source */
 
   /* ════════════════════════════════════════════════════════════════
-     SPACING — ⚠️ DERIVED 4px-base scale
+     SPACING: ⚠️ DERIVED 4px-base scale
      ════════════════════════════════════════════════════════════════ */
 
   --space-0:  0;
@@ -228,23 +230,23 @@
   --space-10: 2.5rem;    /* 40px */
   --space-12: 3rem;      /* 48px */
   --space-16: 4rem;      /* 64px */
-  --space-20: 5rem;      /* 80px — new in v0.3, for section spacing in dense dashboards */
-  --space-24: 6rem;      /* 96px — new in v0.3 */
+  --space-20: 5rem;      /* 80px, new in v0.3, for section spacing in dense dashboards */
+  --space-24: 6rem;      /* 96px, new in v0.3 */
 
   /* ════════════════════════════════════════════════════════════════
-     SIZING — ⚠️ DERIVED from observed component dimensions
+     SIZING: ⚠️ DERIVED from observed component dimensions
      ════════════════════════════════════════════════════════════════ */
 
-  --size-icon-sm: 1.25rem;  /* 20px — small icon  */
-  --size-icon-md: 1.5rem;   /* 24px — medium icon */
-  --size-icon-lg: 1.75rem;  /* 28px — large icon  */
+  --size-icon-sm: 1.25rem;  /* 20px, small icon  */
+  --size-icon-md: 1.5rem;   /* 24px, medium icon */
+  --size-icon-lg: 1.75rem;  /* 28px, large icon  */
 
-  --size-control-sm: 2.5rem;  /* 40px — small button height  */
-  --size-control-md: 3rem;    /* 48px — medium button height */
-  --size-control-lg: 3.75rem; /* 60px — large button height  */
+  --size-control-sm: 2.5rem;  /* 40px, small button height  */
+  --size-control-md: 3rem;    /* 48px, medium button height */
+  --size-control-lg: 3.75rem; /* 60px, large button height  */
 
   /* ════════════════════════════════════════════════════════════════
-     BORDER RADIUS  (from Brand.json — exact)
+     BORDER RADIUS  (from Brand.json, exact)
      ════════════════════════════════════════════════════════════════ */
 
   --radius-none:  0;
@@ -257,7 +259,7 @@
   --radius-round: 1000px;
 
   /* ════════════════════════════════════════════════════════════════
-     BORDER WIDTH  (from Brand.json — exact)
+     BORDER WIDTH  (from Brand.json, exact)
      ════════════════════════════════════════════════════════════════ */
 
   --border-none: 0;
@@ -266,7 +268,7 @@
   --border-lg:   4px;
 
   /* ════════════════════════════════════════════════════════════════
-     ELEVATION — v0.3 full scale
+     ELEVATION: v0.3 full scale
      Light-mode shadows. Dark theme overrides below add stronger
      contrast. shadow-button (v0.2) preserved as alias.
      ════════════════════════════════════════════════════════════════ */
@@ -286,7 +288,7 @@
   --shadow-button-inset: inset 0 0 4px 0 rgba(0, 0, 0, 0.25);
 
   /* ════════════════════════════════════════════════════════════════
-     MOTION — v0.3
+     MOTION: v0.3
      Durations are short by default (subtle motion principle). Easings
      follow material/iOS interaction curves.
      ════════════════════════════════════════════════════════════════ */
@@ -297,19 +299,19 @@
   --duration-slow:    260ms;
   --duration-slower:  400ms;
 
-  --easing-standard: cubic-bezier(0.2, 0, 0, 1);        /* default — entry & exit */
-  --easing-decelerate: cubic-bezier(0, 0, 0, 1);         /* entry — incoming UI */
-  --easing-accelerate: cubic-bezier(0.3, 0, 1, 1);       /* exit — leaving UI */
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);        /* default, entry & exit */
+  --easing-decelerate: cubic-bezier(0, 0, 0, 1);         /* entry, incoming UI */
+  --easing-accelerate: cubic-bezier(0.3, 0, 1, 1);       /* exit, leaving UI */
   --easing-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);   /* large gestures */
   --easing-linear:     linear;
 
-  /* — Transition presets (use these so motion stays consistent) — */
+  /* Transition presets (use these so motion stays consistent) */
   --transition-color:    color var(--duration-fast) var(--easing-standard), background-color var(--duration-fast) var(--easing-standard), border-color var(--duration-fast) var(--easing-standard);
   --transition-transform: transform var(--duration-base) var(--easing-standard);
   --transition-opacity:  opacity var(--duration-fast) var(--easing-standard);
 
   /* ════════════════════════════════════════════════════════════════
-     Z-INDEX — v0.3 layering scale
+     Z-INDEX: v0.3 layering scale
      ════════════════════════════════════════════════════════════════ */
 
   --z-base:      0;
@@ -320,10 +322,10 @@
   --z-modal:     400;
   --z-popover:   500;   /* tooltips, popovers */
   --z-toast:     600;
-  --z-tooltip:   700;   /* highest — informational tooltips */
+  --z-tooltip:   700;   /* highest, informational tooltips */
 
   /* ════════════════════════════════════════════════════════════════
-     BUTTONS — size matrix (observed verbatim from Figma)
+     BUTTONS: size matrix (observed verbatim from Figma)
      ════════════════════════════════════════════════════════════════ */
 
   --btn-mobile-height:    2rem;     /* 32px */
@@ -359,7 +361,7 @@
   --btn-border-width:     var(--border-sm);
 
   /* ════════════════════════════════════════════════════════════════
-     FIELDS — v0.3
+     FIELDS: v0.3
      Observed verbatim from Figma /Fields/Fields/StateDefault*.
      Theme-aware: borders and fills via semantic surface tokens.
      ════════════════════════════════════════════════════════════════ */
@@ -388,7 +390,7 @@
   --field-gap-desc:        var(--space-2);
 
   /* ════════════════════════════════════════════════════════════════
-     CHIPS / TAGS — v0.3
+     CHIPS / TAGS: v0.3
      Observed from Figma /Chips-Tags. Heights match button t-shirts.
      ════════════════════════════════════════════════════════════════ */
 
@@ -420,22 +422,22 @@
   --chip-border-width:    var(--border-sm);
 
   /* ════════════════════════════════════════════════════════════════
-     TABLES — v0.3
+     TABLES: v0.3
      Observed from Figma /Tables/Tabular-View.
      ════════════════════════════════════════════════════════════════ */
 
-  --table-header-height:  3rem;     /* 48px (was 80 in figma — trimmed for web) */
+  --table-header-height:  3rem;     /* 48px (was 80 in figma, trimmed for web) */
   --table-row-height:     4rem;     /* 64px */
-  --table-row-compact:    3rem;     /* 48px — dense variant */
+  --table-row-compact:    3rem;     /* 48px, dense variant */
   --table-cell-pad-y:     var(--space-3);   /* 12px */
   --table-cell-pad-x:     var(--space-6);   /* 24px */
   --table-row-gap:        1px;
   --table-radius:         var(--radius-8);
 
   /* ════════════════════════════════════════════════════════════════
-     GRIDS — v0.3.2
+     GRIDS: v0.3.2
      Unified responsive scale shared by ALL platforms (Student,
-     Teacher, Parent, Admin). Source: Figma /Grids/Grids — promoted
+     Teacher, Parent, Admin). Source: Figma /Grids/Grids, promoted
      to the canonical system per v0.3.2 unification.
 
      Five breakpoints. Padding = horizontal margin from screen edge
@@ -471,7 +473,7 @@
   --grid-cols-desktop:    12;
   --grid-cols-desktop-xl: 12;
 
-  /* Live values — overridden by the media queries below. Use these in
+  /* Live values, overridden by the media queries below. Use these in
      product code: `padding-inline: var(--grid-pad)` etc. */
   --grid-pad:    var(--grid-pad-desktop);
   --grid-gutter: var(--grid-gutter-desktop);
@@ -479,7 +481,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   GRID — live responsive overrides
+   GRID: live responsive overrides
    ══════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 390px) {
@@ -589,7 +591,7 @@
 
 [data-platform="parent"] {
   --color-brand-primary:   var(--color-purple-800);
-  --color-brand-accent:    var(--color-edge-gold-700);
+  --color-brand-accent:    var(--color-pink);
   --platform-name:         "Parent";
   --font-family-base:      var(--font-family-inter);
   --font-family-display:   var(--font-family-inter);
@@ -597,7 +599,7 @@
 
 [data-platform="admin"] {
   --color-brand-primary:   var(--color-purple-800);
-  --color-brand-accent:    var(--color-red-500);
+  --color-brand-accent:    var(--color-accent-green-500);
   --platform-name:         "Admin";
   --font-family-base:      var(--font-family-inter);
   --font-family-display:   var(--font-family-inter);

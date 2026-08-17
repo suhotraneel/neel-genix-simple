@@ -50,13 +50,15 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               {/* Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.15] text-[#f5f5f7] mb-6 tracking-tight">
-                Designing human-centred experiences that simplify the complex
+              <h1 className="text-[68px] sm:text-[84px] lg:text-[120px] font-black leading-[0.85] text-white mb-6 tracking-tighter" style={{ fontFamily: 'Impact, sans-serif, system-ui' }}>
+                Complex?
+                <br />
+                <span className="block text-4xl sm:text-5xl lg:text-[72px] mt-4 lg:mt-6 font-bold tracking-tight" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>Let’s make it <span className="text-blue-600 relative inline-block">make sense.<svg className="absolute -bottom-1 lg:-bottom-2 left-0 w-full h-3 lg:h-5 text-blue-600" viewBox="0 0 200 20" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 15C50 5 150 5 195 15" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/></svg></span></span>
               </h1>
 
               {/* Tagline */}
               <p className="text-neutral-400 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
-                <span className="font-medium text-neutral-300">I'm Suhotra Chakraborty,</span> leading end-to-end product design from research to release. Expertise in UX research, testing, interaction design, design systems, strategy, developer handoff, cross-functional collaboration, conversational UX, and AI-native experiences.
+                I’m <span className="text-neutral-300 font-medium">Suhotra Chakraborty,</span> leading end-to-end product design from research to release. I bring a human-centred approach to research, testing, and interaction design—creating experiences that are intuitive, purposeful, and easy to engage with.
               </p>
 
               {/* Hero CTA Buttons - Samsung One UI smooth pill shapes */}
@@ -69,7 +71,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   className="bg-blue-600 text-white px-6 py-3 text-xs font-semibold rounded-full hover:bg-blue-500 transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-blue-600/25 active:scale-[0.98]"
                 >
                   <span>Selected work</span>
-                  <ArrowDown className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
                 {/* Get in Touch button -> copies email */}

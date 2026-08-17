@@ -15,6 +15,7 @@ export interface WorkItem {
   media?: { type: 'image' | 'youtube' | 'vimeo'; src: string; num?: number }[];
   isCustomHtml?: boolean;
   customHtmlPath?: string;
+  touchpointCover?: string;
 }
 
 export interface BrandItem {

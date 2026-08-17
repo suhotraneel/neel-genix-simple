@@ -9,7 +9,7 @@ interface ProjectDetailPageProps {
 }
 
 interface DisplayMedia {
-  type: 'image' | 'youtube' | 'vimeo';
+  type: 'image' | 'video' | 'youtube' | 'vimeo';
   num: number;
   filename: string;
   src: string;
@@ -43,10 +43,16 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
     const fileList = Array.from(e.target.files) as File[];
     
     const parsedMedia: DisplayMedia[] = fileList.map((file) => {
+      const isVideoFile = file.type.startsWith('video/') || /\.(mp4|webm|mov)$/i.test(file.name);
       const numMatch = file.name.match(/\d+/);
-      const num = numMatch ? parseInt(numMatch[0], 10) : 999;
+      let num = numMatch ? parseInt(numMatch[0], 10) : 999;
+      
+      if (isVideoFile) {
+        num = 1.5; // Always place local videos between 1 and 2
+      }
+      
       return {
-        type: 'image',
+        type: isVideoFile ? 'video' : 'image',
         num,
         filename: file.name,
         src: URL.createObjectURL(file),
@@ -63,7 +69,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
   // Get all project files dynamically from filesystem via Vite's glob import
   const staticProjectImages = useMemo(() => {
-    const files = import.meta.glob('/public/projects/**/*.{jpg,jpeg,png,webp,gif,svg,JPG,JPEG,PNG,WEBP,GIF,SVG}', { eager: true });
+    const files = import.meta.glob('/public/projects/**/*.{jpg,jpeg,png,webp,gif,svg,mp4,webm,mov,JPG,JPEG,PNG,WEBP,GIF,SVG,MP4,WEBM,MOV}', { eager: true });
     const paths = Object.keys(files);
     
     const images: DisplayMedia[] = [];
@@ -76,12 +82,18 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       if (isMatch) {
         const filename = path.split('/').pop() || '';
         const isThumb = /thumb|thumbnail|cover/i.test(filename);
+        const isVideo = /\.(mp4|webm|mov)$/i.test(filename);
         
         if (!isThumb) {
           const numMatch = filename.match(/\d+/);
-          const num = numMatch ? parseInt(numMatch[0], 10) : 999;
+          let num = numMatch ? parseInt(numMatch[0], 10) : 999;
+          
+          if (isVideo) {
+             num = 1.5; // Always place local videos between 1 and 2
+          }
+          
           const src = path.replace('/public', '');
-          images.push({ type: 'image', num, filename, src });
+          images.push({ type: isVideo ? 'video' : 'image', num, filename, src });
         }
       }
     });
@@ -93,7 +105,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
           type: m.type,
           src: m.src,
           filename: `media-${i}`,
-          num: m.num !== undefined ? m.num : 999 + i,
+          num: m.num !== undefined ? m.num : 1.5 + (i * 0.1),
         });
       });
     }
@@ -212,6 +224,44 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
       {/* Main Content Area */}
       <section className="px-4 sm:px-6 lg:px-8 pb-24 max-w-7xl mx-auto">
+        {/* External Link Touchpoint */}
+        {item.customHtmlPath && !item.isCustomHtml && (
+          <div className="relative mb-12 sm:mb-16 rounded-3xl overflow-hidden border border-neutral-800 text-center flex flex-col items-center group">
+            {/* Background Image Snippet */}
+            {item.touchpointCover && (
+              <div 
+                className="absolute inset-0 z-0 opacity-30 group-hover:opacity-40 transition-opacity duration-700 bg-cover bg-top"
+                style={{ backgroundImage: `url(${item.touchpointCover})` }}
+              />
+            )}
+            {/* Gradient Overlay for readability */}
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-neutral-900/80 to-neutral-900/40" />
+
+            <div className="relative z-20 w-full p-8 sm:p-16 flex flex-col items-center">
+              <div className="w-16 h-16 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 backdrop-blur-md">
+                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 drop-shadow-md">Interactive Design System</h2>
+              <p className="text-neutral-300 max-w-xl mx-auto mb-8 text-sm sm:text-base drop-shadow-sm font-medium">
+                Explore the living component library, tokens, and documentation for {item.title}. The app is fully interactive and responsive.
+              </p>
+              <a 
+                href={item.customHtmlPath} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-full transition-all shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95"
+              >
+                <span>Launch Design System App</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        )}
+
         {/* View Mode: Case Study Interactive Presentation when applicable */}
         {isGuidedPractice && !hasImages ? (
           <div>
@@ -219,28 +269,40 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
           </div>
         ) : (
           /* View Mode: Slides / Image Gallery */
-          <div className="space-y-8 sm:space-y-12">
+          <div className="space-y-10 sm:space-y-16">
             {hasImages ? (
               allProjectImages.map((mediaItem, idx) => (
                 <div 
                   key={idx} 
-                  className="relative group w-full rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors"
+                  className="relative group w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900/40 border border-neutral-800/80 hover:border-neutral-700/80 shadow-2xl shadow-black/50 hover:shadow-black/70 transition-all duration-500"
                 >
                   {mediaItem.type === 'image' ? (
                     <div 
                       onClick={() => setActiveImageIndex(idx)}
-                      className="cursor-zoom-in relative"
+                      className="cursor-zoom-in relative overflow-hidden"
                     >
                       <img 
                         src={mediaItem.src} 
                         alt={`${item.title} - Slide ${mediaItem.num}`}
-                        className="w-full h-auto object-cover"
+                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                         loading={idx < 2 ? "eager" : "lazy"}
                       />
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-neutral-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-700/80 flex items-center gap-1.5 text-xs text-neutral-200 pointer-events-none">
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-700/80 flex items-center gap-1.5 text-xs text-neutral-200 pointer-events-none">
                         <ZoomIn className="w-3.5 h-3.5" />
                         <span>Click to expand</span>
                       </div>
+                    </div>
+                  ) : mediaItem.type === 'video' ? (
+                    <div className="w-full">
+                      <video 
+                        src={mediaItem.src}
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline 
+                        controls
+                        className="w-full h-auto object-cover"
+                      />
                     </div>
                   ) : (
                     <div className="aspect-video w-full">
@@ -255,7 +317,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                   )}
                 </div>
               ))
-            ) : (
+            ) : !item.customHtmlPath ? (
               <div className="p-8 sm:p-12 text-center rounded-2xl border border-neutral-800 bg-neutral-900/30 text-neutral-400 max-w-2xl mx-auto">
                 <div className="w-12 h-12 rounded-2xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-neutral-300 mx-auto mb-4">
                   <ImageIcon className="w-6 h-6" />
@@ -272,22 +334,22 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                 >
                   <Upload className="w-6 h-6 text-neutral-400 group-hover:text-white mx-auto mb-2 transition-colors" />
                   <span className="text-xs font-medium text-white block mb-1">
-                    Select / Drop Slide Images to Preview Live
+                    Select / Drop Images or Videos to Preview Live
                   </span>
                   <span className="text-[11px] text-neutral-500">
-                    Supports PNG, JPG, WEBP slides (e.g. 1.png, 2.png)
+                    Supports images and videos (e.g. 1.png, video.mp4)
                   </span>
                   <input
                     ref={fileInputRef}
                     type="file"
                     multiple
-                    accept="image/*"
+                    accept="image/*,video/*"
                     onChange={handleFileUpload}
                     className="hidden"
                   />
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         )}
 

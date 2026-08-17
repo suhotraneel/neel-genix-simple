@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   Purple Ice · V1 site chrome — routed docs shell
+   Purple Ice · V1 site chrome (routed docs shell)
    Sidebar + topbar + home + index pages + search + changelog.
    Dogfoods tokens.css exclusively. All classes prefixed .st- to
    avoid collision with section-internal styles in design-system.html.
@@ -67,14 +67,14 @@
   line-height: 1.2;
 }
 .st-brand__sub {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   color: var(--color-text-muted);
   letter-spacing: 0.03em;
 }
 .st-brand__ver {
   margin-left: auto;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   font-weight: var(--font-weight-medium);
   color: var(--color-text-brand);
@@ -107,7 +107,7 @@
 }
 .st-search-trigger__label { flex: 1 1 auto; }
 .st-search-trigger__kbd {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   color: var(--color-text-muted);
   background: var(--color-surface-base);
@@ -135,7 +135,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -179,7 +179,7 @@ a.st-nav__group-label:hover {
 }
 .st-nav__item-badge {
   margin-left: auto;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   color: var(--color-text-muted);
 }
@@ -195,7 +195,7 @@ a.st-nav__group-label:hover {
   border-top: var(--border-sm) solid var(--color-border-subtle);
 }
 .st-sidefoot__text {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
@@ -323,7 +323,7 @@ a.st-nav__group-label:hover {
   border-top: var(--border-sm) solid var(--color-border-subtle);
 }
 .st-pagefoot__source a {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   background: var(--color-surface-subtle);
@@ -431,7 +431,7 @@ a.st-nav__group-label:hover {
 }
 .st-search__input::placeholder { color: var(--color-text-muted); }
 .st-search__esc {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   color: var(--color-text-muted);
   border: var(--border-sm) solid var(--color-border-subtle);
@@ -444,10 +444,10 @@ a.st-nav__group-label:hover {
   padding: var(--space-2);
 }
 .st-search__group-label {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--color-text-muted);
   padding: var(--space-2) var(--space-3) 4px;
 }
@@ -482,9 +482,9 @@ a.st-nav__group-label:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.st-search__item-label--mono { font-family: "JetBrains Mono", monospace; font-size: var(--text-sm); }
+.st-search__item-label--mono { font-family: "Poppins", sans-serif; font-size: var(--text-sm); }
 .st-search__item-meta {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   color: var(--color-text-muted);
   flex-shrink: 0;
@@ -504,7 +504,7 @@ a.st-nav__group-label:hover {
   color: var(--color-text-muted);
 }
 .st-search__hints kbd {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   border: var(--border-sm) solid var(--color-border-subtle);
   border-radius: var(--radius-4);
@@ -522,7 +522,7 @@ a.st-nav__group-label:hover {
   font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--color-text-brand);
   background: var(--color-surface-brand);
   padding: var(--space-1) var(--space-3);
@@ -594,7 +594,7 @@ a.st-nav__group-label:hover {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .st-stat__value {
   font-size: var(--text-md);
@@ -665,7 +665,7 @@ a.st-nav__group-label:hover {
   letter-spacing: -0.01em;
 }
 .st-map-card__count {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   color: var(--color-text-muted);
   background: var(--color-surface-subtle);
@@ -737,10 +737,10 @@ a.st-nav__group-label:hover {
 }
 .st-platform-tile__badge {
   margin-left: auto;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 10px;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+  text-transform: none;
   padding: 2px var(--space-2);
   border-radius: var(--radius-round);
   background: color-mix(in srgb, currentColor 10%, transparent);
@@ -763,7 +763,7 @@ a.st-nav__group-label:hover {
   flex-wrap: wrap;
 }
 .st-changelog-teaser__ver {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-brand);
@@ -822,7 +822,7 @@ a.st-nav__group-label:hover {
   color: var(--color-text-muted);
 }
 .st-index-card__count {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   color: var(--color-text-muted);
 }
@@ -946,7 +946,7 @@ a.st-nav__group-label:hover {
   margin-bottom: var(--space-2);
 }
 .st-changelog__ver {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: var(--text-md);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
