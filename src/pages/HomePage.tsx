@@ -58,7 +58,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               {/* Tagline */}
               <p className="text-neutral-400 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
-                I’m <span className="text-neutral-300 font-medium">Suhotra Chakraborty,</span> leading end-to-end product design from research to release. I bring a human-centred approach to research, testing, and interaction design, creating experiences that are intuitive, purposeful, and easy to engage with.
+                I’m <span className="text-neutral-300 font-medium">Suhotra Chakraborty,</span> leading end-to-end product design from research to release. I bring a human-centred approach to research, testing, and interaction design; creating experiences that are intuitive, purposeful, and easy to engage with.
               </p>
 
               {/* Hero CTA Buttons - Samsung One UI smooth pill shapes */}
