@@ -35,10 +35,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
   return (
     <header
       id="global-navbar"
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-[#0a0a0c]/85 backdrop-blur-xl border-b border-neutral-900/80 shadow-lg'
-          : 'bg-[#0a0a0c]/60 backdrop-blur-md border-b border-neutral-900/40'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
@@ -79,6 +79,19 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             }`}
           >
             About
+          </a>
+
+          <a
+            id="nav-blogs-link"
+            href="/blog"
+            onClick={(e) => handleLinkClick('/blog', e)}
+            className={`text-sm font-medium px-5 py-2 rounded-full transition-all ${
+              currentPath === '/blog' || currentPath.startsWith('/blog/')
+                ? 'text-white bg-neutral-800 shadow-sm'
+                : 'text-neutral-400 hover:text-white hover:bg-neutral-800/50'
+            }`}
+          >
+            Blog
           </a>
 
           <a
@@ -138,6 +151,18 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
               }`}
             >
               About
+            </a>
+            <a
+              id="mobile-nav-blogs-link"
+              href="/blog"
+              onClick={(e) => handleLinkClick('/blog', e)}
+              className={`px-5 py-3.5 text-base font-medium rounded-2xl transition-all ${
+                currentPath === '/blog' || currentPath.startsWith('/blog/')
+                  ? 'text-white bg-neutral-800/90 border border-neutral-700 shadow-sm'
+                  : 'text-neutral-300 hover:bg-neutral-900'
+              }`}
+            >
+              Blog
             </a>
             <a
               id="mobile-nav-resume-link"

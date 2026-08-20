@@ -158,13 +158,42 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
   const isGuidedPractice = slug === 'guided-practice-schoolai' || item.slug === 'guided-practice-schoolai';
   const hasImages = allProjectImages.length > 0;
+  
+  // Dynamically find thumbnail from public folder (supporting thumb.*, thumbnail.*, cover.*, etc.)
+  const thumbs = import.meta.glob('/public/projects/**/*.{jpg,jpeg,png,webp,gif,svg,JPG,JPEG,PNG,WEBP,GIF,SVG}', { eager: true });
+  const thumbKey = Object.keys(thumbs).find(k => {
+    const isMatchingFolder = k.includes(`/public/projects/${item.slug}/`) || 
+      k.includes(`/public/projects/${item.slug.replace(/-hsbc$/, '')}/`) ||
+      k.includes(`/public/projects/${item.slug}-hsbc/`);
+    const filename = k.split('/').pop() || '';
+    const isThumb = /thumb|thumbnail/i.test(filename);
+    return isMatchingFolder && isThumb;
+  });
+  const heroBackgroundImage = thumbKey ? thumbKey.replace('/public', '') : null;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]">
+    <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5] relative">
       <Navbar currentPath={`/project/${slug}`} onNavigate={onNavigate} />
 
+      {/* Background Image with Blur and Fade */}
+      {heroBackgroundImage && (
+        <div className="absolute top-0 left-0 right-0 z-0 pointer-events-none overflow-hidden">
+          <img 
+            src={heroBackgroundImage}
+            alt=""
+            className="w-full h-auto opacity-40"
+            style={{ 
+              filter: 'blur(24px)',
+              transform: 'scale(1.1)' // Prevent blurred edges from showing white
+            }}
+          />
+          {/* Gradient overlay to fade out at the bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
+        </div>
+      )}
+
       {/* Project Metadata Hero */}
-      <section className="pt-20 pb-6 sm:pt-24 sm:pb-8 mb-8 sm:mb-12 px-5 sm:px-8 max-w-6xl mx-auto relative text-center">
+      <section className="pt-20 pb-6 sm:pt-24 sm:pb-8 mb-8 sm:mb-12 px-5 sm:px-8 max-w-6xl mx-auto relative z-10 text-center">
         
         {/* Top Navigation & Metadata Row */}
         <div className="flex items-center justify-between mb-4 sm:mb-6">
@@ -225,7 +254,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       </section>
 
       {/* Main Content Area */}
-      <section className="px-5 sm:px-8 pb-24 max-w-6xl mx-auto">
+      <section className="relative z-10 px-5 sm:px-8 pb-24 max-w-6xl mx-auto">
         {/* External Link Touchpoint */}
         {item.customHtmlPath && !item.isCustomHtml && (
           <div className="relative mb-12 sm:mb-16 rounded-3xl overflow-hidden border border-neutral-800 text-center flex flex-col items-center group">

@@ -16,6 +16,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ onNavigate }) => {
           <h1 className="text-3xl sm:text-5xl font-light text-white">
             Work
           </h1>
+          <p className="text-neutral-400 text-lg mt-4">Selected digital product design, UX research, design systems, and interface projects.</p>
         </div>
 
         {/* Complete Body of Work */}
