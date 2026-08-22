@@ -17,6 +17,86 @@ interface DisplayMedia {
   isVideo?: boolean;
 }
 
+const TouchpointLink = ({ item, className = "" }: { item: any, className?: string }) => {
+  if (!item.customHtmlPath || item.isCustomHtml) return null;
+  return (
+    <div className={`relative rounded-3xl overflow-hidden border border-neutral-800 text-center flex flex-col items-center group ${className}`}>
+      {/* Background Image Snippet with Gradient Overlay */}
+      {item.touchpointCover ? (
+        <>
+          <div 
+            className="absolute inset-0 z-0 transition-all duration-700"
+            style={{ background: `linear-gradient(180deg, rgba(17, 17, 17, 0.40) 0%, #111 100%), url(${item.touchpointCover}) lightgray center top / cover no-repeat` }}
+          />
+          <div 
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{ 
+              backdropFilter: 'blur(1px)',
+              WebkitBackdropFilter: 'blur(1px)',
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)'
+            }}
+          />
+          <div 
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{ 
+              backdropFilter: 'blur(2px)',
+              WebkitBackdropFilter: 'blur(2px)',
+              maskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)'
+            }}
+          />
+          <div 
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{ 
+              backdropFilter: 'blur(4px)',
+              WebkitBackdropFilter: 'blur(4px)',
+              maskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)'
+            }}
+          />
+          <div 
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{ 
+              backdropFilter: 'blur(6px)',
+              WebkitBackdropFilter: 'blur(6px)',
+              maskImage: 'linear-gradient(to bottom, transparent 45%, black 80%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 45%, black 80%, black 100%)'
+            }}
+          />
+        </>
+      ) : (
+        <div className="absolute inset-0 z-0 bg-neutral-900" />
+      )}
+
+      <div className="relative z-20 w-full p-8 sm:p-16 flex flex-col items-center">
+        <div className="w-16 h-16 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 backdrop-blur-md">
+          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 drop-shadow-md">
+          {item.touchpointTitle || 'Interactive Design System'}
+        </h2>
+        <p className="text-neutral-300 max-w-xl mx-auto mb-8 text-sm sm:text-base drop-shadow-sm font-medium">
+          {item.touchpointDescription || `Explore the living component library, tokens, and documentation for ${item.title}. The app is fully interactive and responsive.`}
+        </p>
+        <a 
+          href={item.customHtmlPath} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-sm sm:text-base sm:px-8 sm:py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-full transition-all shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95"
+        >
+          <span>{item.touchpointButtonText || 'Launch Design System App'}</span>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNavigate }) => {
   const currentIndex = WORK_ITEMS.findIndex(
     (w) => w.slug === slug || w.slug.replace(/-hsbc$/, '') === slug || slug.replace(/-hsbc$/, '') === w.slug
@@ -125,6 +205,9 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
     return staticProjectImages;
   }, [localUploadedImages, staticProjectImages]);
 
+  const displayImages = useMemo(() => allProjectImages.filter(img => img.filename !== 'hero-trip.mp4'), [allProjectImages]);
+  const heroVideo = useMemo(() => allProjectImages.find(img => img.filename === 'hero-trip.mp4'), [allProjectImages]);
+
   // Keyboard navigation for lightbox
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -132,12 +215,12 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       if (e.key === 'Escape') {
         setActiveImageIndex(null);
       } else if (e.key === 'ArrowRight') {
-        setActiveImageIndex((prev) => (prev !== null && prev < allProjectImages.length - 1 ? prev + 1 : 0));
+        setActiveImageIndex((prev) => (prev !== null && prev < displayImages.length - 1 ? prev + 1 : 0));
       } else if (e.key === 'ArrowLeft') {
-        setActiveImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : allProjectImages.length - 1));
+        setActiveImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : displayImages.length - 1));
       }
     },
-    [activeImageIndex, allProjectImages.length]
+    [activeImageIndex, displayImages.length]
   );
 
   useEffect(() => {
@@ -255,84 +338,6 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
       {/* Main Content Area */}
       <section className="relative z-10 px-5 sm:px-8 pb-24 max-w-6xl mx-auto">
-        {/* External Link Touchpoint */}
-        {item.customHtmlPath && !item.isCustomHtml && (
-          <div className="relative mb-12 sm:mb-16 rounded-3xl overflow-hidden border border-neutral-800 text-center flex flex-col items-center group">
-            {/* Background Image Snippet with Gradient Overlay */}
-            {item.touchpointCover ? (
-              <>
-                <div 
-                  className="absolute inset-0 z-0 transition-all duration-700"
-                  style={{ background: `linear-gradient(180deg, rgba(17, 17, 17, 0.40) 0%, #111 100%), url(${item.touchpointCover}) lightgray center top / cover no-repeat` }}
-                />
-                <div 
-                  className="absolute inset-0 z-0 pointer-events-none"
-                  style={{ 
-                    backdropFilter: 'blur(1px)',
-                    WebkitBackdropFilter: 'blur(1px)',
-                    maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)'
-                  }}
-                />
-                <div 
-                  className="absolute inset-0 z-0 pointer-events-none"
-                  style={{ 
-                    backdropFilter: 'blur(2px)',
-                    WebkitBackdropFilter: 'blur(2px)',
-                    maskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)'
-                  }}
-                />
-                <div 
-                  className="absolute inset-0 z-0 pointer-events-none"
-                  style={{ 
-                    backdropFilter: 'blur(4px)',
-                    WebkitBackdropFilter: 'blur(4px)',
-                    maskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)'
-                  }}
-                />
-                <div 
-                  className="absolute inset-0 z-0 pointer-events-none"
-                  style={{ 
-                    backdropFilter: 'blur(6px)',
-                    WebkitBackdropFilter: 'blur(6px)',
-                    maskImage: 'linear-gradient(to bottom, transparent 45%, black 80%, black 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 45%, black 80%, black 100%)'
-                  }}
-                />
-              </>
-            ) : (
-              <div className="absolute inset-0 z-0 bg-neutral-900" />
-            )}
-
-            <div className="relative z-20 w-full p-8 sm:p-16 flex flex-col items-center">
-              <div className="w-16 h-16 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 backdrop-blur-md">
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 drop-shadow-md">
-                {item.touchpointTitle || 'Interactive Design System'}
-              </h2>
-              <p className="text-neutral-300 max-w-xl mx-auto mb-8 text-sm sm:text-base drop-shadow-sm font-medium">
-                {item.touchpointDescription || `Explore the living component library, tokens, and documentation for ${item.title}. The app is fully interactive and responsive.`}
-              </p>
-              <a 
-                href={item.customHtmlPath} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm sm:text-base sm:px-8 sm:py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-full transition-all shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95"
-              >
-                <span>{item.touchpointButtonText || 'Launch Design System App'}</span>
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        )}
-
         {/* View Mode: Case Study Interactive Presentation when applicable */}
         {isGuidedPractice && !hasImages ? (
           <div>
@@ -342,52 +347,81 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
           /* View Mode: Slides / Image Gallery */
           <div className="space-y-10 sm:space-y-16">
             {hasImages ? (
-              allProjectImages.map((mediaItem, idx) => (
-                <div 
-                  key={idx} 
-                  className="relative group w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900/40 border border-neutral-800/80 hover:border-neutral-700/80 shadow-2xl shadow-black/50 hover:shadow-black/70 transition-all duration-500"
-                >
-                  {mediaItem.type === 'image' ? (
-                    <div 
-                      onClick={() => setActiveImageIndex(idx)}
-                      className="cursor-zoom-in relative overflow-hidden"
-                    >
-                      <img 
-                        src={mediaItem.src} 
-                        alt={`${item.title} - Slide ${mediaItem.num}`}
-                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                        loading={idx < 2 ? "eager" : "lazy"}
-                      />
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-700/80 flex items-center gap-1.5 text-xs text-neutral-200 pointer-events-none">
-                        <ZoomIn className="w-3.5 h-3.5" />
-                        <span>Click to expand</span>
+              displayImages.map((mediaItem, idx) => {
+                const isImage5 = mediaItem.filename === '5.png' && item.slug === 'madtrip-storefront';
+                
+                return (
+                <React.Fragment key={idx}>
+                  <div 
+                    className="relative group w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900/40 border border-neutral-800/80 hover:border-neutral-700/80 shadow-2xl shadow-black/50 hover:shadow-black/70 transition-all duration-500"
+                  >
+                    {mediaItem.type === 'image' ? (
+                      <div 
+                        onClick={() => setActiveImageIndex(idx)}
+                        className="cursor-zoom-in relative overflow-hidden"
+                        style={{ containerType: 'inline-size' }}
+                      >
+                        <div className="relative w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]">
+                          <img 
+                            src={mediaItem.src} 
+                            alt={`${item.title} - Slide ${mediaItem.num}`}
+                            className="w-full h-auto object-cover"
+                            loading={idx < 2 ? "eager" : "lazy"}
+                          />
+                          {isImage5 && heroVideo && (
+                            <video 
+                              src={heroVideo.src}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="absolute z-20 pointer-events-none object-cover"
+                              style={{ 
+                                top: '26.2%', 
+                                left: '6.25%', 
+                                width: '87.5%', 
+                                height: 'auto',
+                                borderRadius: '2.5cqi',
+                                border: '0.15625cqi solid #FFDE17'
+                              }}
+                            />
+                          )}
+                        </div>
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-700/80 flex items-center gap-1.5 text-xs text-neutral-200 pointer-events-none">
+                          <ZoomIn className="w-3.5 h-3.5" />
+                          <span>Click to expand</span>
+                        </div>
                       </div>
+                    ) : mediaItem.type === 'video' ? (
+                      <div className="w-full">
+                          <video 
+                            src={mediaItem.src}
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline 
+                            controls
+                            className="w-full h-auto object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="aspect-video w-full">
+                          <iframe
+                            src={mediaItem.src}
+                            title={`${item.title} Video ${mediaItem.num}`}
+                            className="w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          ></iframe>
+                        </div>
+                      )}
                     </div>
-                  ) : mediaItem.type === 'video' ? (
-                    <div className="w-full">
-                      <video 
-                        src={mediaItem.src}
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline 
-                        controls
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="aspect-video w-full">
-                      <iframe
-                        src={mediaItem.src}
-                        title={`${item.title} Video ${mediaItem.num}`}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  )}
-                </div>
-              ))
+                    
+                    {/* Insert Touchpoint Link after first image */}
+                    {idx === 0 && <TouchpointLink item={item} />}
+                  </React.Fragment>
+                  );
+                })
             ) : !item.customHtmlPath ? (
               <div className="p-8 sm:p-12 text-center rounded-2xl border border-neutral-800 bg-neutral-900/30 text-neutral-400 max-w-2xl mx-auto">
                 <div className="w-12 h-12 rounded-2xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-neutral-300 mx-auto mb-4">
@@ -420,7 +454,9 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                   />
                 </div>
               </div>
-            ) : null}
+            ) : (
+              <TouchpointLink item={item} />
+            )}
           </div>
         )}
 
@@ -486,14 +522,14 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       </section>
 
       {/* Fullscreen Lightbox Modal */}
-      {activeImageIndex !== null && allProjectImages[activeImageIndex] && (
+      {activeImageIndex !== null && displayImages[activeImageIndex] && (
         <div 
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-8"
           onClick={() => setActiveImageIndex(null)}
         >
           <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
             <span className="text-xs text-neutral-400 font-mono">
-              {activeImageIndex + 1} / {allProjectImages.length}
+              {activeImageIndex + 1} / {displayImages.length}
             </span>
             <button
               onClick={() => setActiveImageIndex(null)}
@@ -505,12 +541,12 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
           </div>
 
           {/* Navigation Controls */}
-          {allProjectImages.length > 1 && (
+          {displayImages.length > 1 && (
             <>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  setActiveImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : allProjectImages.length - 1));
+                  setActiveImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : displayImages.length - 1));
                 }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-all z-50"
                 aria-label="Previous slide"
@@ -520,7 +556,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  setActiveImageIndex((prev) => (prev !== null && prev < allProjectImages.length - 1 ? prev + 1 : 0));
+                  setActiveImageIndex((prev) => (prev !== null && prev < displayImages.length - 1 ? prev + 1 : 0));
                 }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-all z-50"
                 aria-label="Next slide"
@@ -534,11 +570,31 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
             className="max-w-6xl max-h-[85vh] overflow-auto flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <img 
-              src={allProjectImages[activeImageIndex].src} 
-              alt={`${item.title} presentation slide ${activeImageIndex + 1}`}
-              className="max-h-[85vh] max-w-full object-contain rounded-xl shadow-2xl border border-neutral-800"
-            />
+            <div className="relative max-w-full max-h-[85vh] flex items-center justify-center shrink-0">
+              <img 
+                src={displayImages[activeImageIndex].src} 
+                alt={`${item.title} presentation slide ${activeImageIndex + 1}`}
+                className="max-h-[85vh] max-w-full object-contain rounded-xl shadow-2xl border border-neutral-800"
+              />
+              {displayImages[activeImageIndex].filename === '5.png' && item.slug === 'madtrip-storefront' && heroVideo && (
+                <video 
+                  src={heroVideo.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute z-20 pointer-events-none object-cover"
+                  style={{ 
+                    top: '26.2%', 
+                    left: '6.25%', 
+                    width: '87.5%', 
+                    height: 'auto',
+                    borderRadius: '16px',
+                    border: '2px solid #FFDE17'
+                  }}
+                />
+              )}
+            </div>
           </div>
         </div>
       )}
