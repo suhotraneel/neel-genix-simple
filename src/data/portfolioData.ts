@@ -25,7 +25,7 @@ export const PERSONAL_INFO = {
 
 export const SELECTED_WORK_IDS = [
   'guided-practice-schoolai',
-  'madtrip-storefront',
+  'madtrip-online-store',
   'the-edge-schoolai',
 ];
 
@@ -45,19 +45,19 @@ export const WORK_ITEMS: WorkItem[] = [
     role: 'Lead Product Designer',
   },
   {
-    id: 'madtrip-storefront',
+    id: 'madtrip-online-store',
     number: '02',
     title: 'MadTrip - Online Store',
     year: '2026',
     discipline: 'UX/UI Design',
-    slug: 'madtrip-storefront',
+    slug: 'madtrip-online-store',
     summary: 'A psychedelic streetwear and accessories brand.',
     tags: ['E-commerce', 'Web Design', 'Visual Identity'],
     isSelected: true,
     platform: 'Web Platform',
     role: 'Lead Designer',
     customHtmlPath: 'https://madtripstore.com/',
-    touchpointCover: '/projects/madtrip-storefront/cover.png',
+    touchpointCover: '/projects/madtrip-online-store/cover.png',
     touchpointTitle: 'Live Storefront',
     touchpointDescription: 'Visit the live online storefront for MadTrip to explore the UI components and overall experience. The app is fully interactive and responsive.',
     touchpointButtonText: 'Open Live Website',
