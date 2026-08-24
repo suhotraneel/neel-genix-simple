@@ -24,40 +24,40 @@ const TouchpointLink = ({ item, className = "" }: { item: any, className?: strin
       {/* Background Image Snippet with Gradient Overlay */}
       {item.touchpointCover ? (
         <>
-          <div
+          <div 
             className="absolute inset-0 z-0 transition-all duration-700"
             style={{ background: `linear-gradient(180deg, rgba(17, 17, 17, 0.40) 0%, #111 100%), url(${item.touchpointCover}) lightgray center top / cover no-repeat` }}
           />
-          <div
+          <div 
             className="absolute inset-0 z-0 pointer-events-none"
-            style={{
+            style={{ 
               backdropFilter: 'blur(1px)',
               WebkitBackdropFilter: 'blur(1px)',
               maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)',
               WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 100%)'
             }}
           />
-          <div
+          <div 
             className="absolute inset-0 z-0 pointer-events-none"
-            style={{
+            style={{ 
               backdropFilter: 'blur(2px)',
               WebkitBackdropFilter: 'blur(2px)',
               maskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)',
               WebkitMaskImage: 'linear-gradient(to bottom, transparent 15%, black 40%, black 100%)'
             }}
           />
-          <div
+          <div 
             className="absolute inset-0 z-0 pointer-events-none"
-            style={{
+            style={{ 
               backdropFilter: 'blur(4px)',
               WebkitBackdropFilter: 'blur(4px)',
               maskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)',
               WebkitMaskImage: 'linear-gradient(to bottom, transparent 30%, black 60%, black 100%)'
             }}
           />
-          <div
+          <div 
             className="absolute inset-0 z-0 pointer-events-none"
-            style={{
+            style={{ 
               backdropFilter: 'blur(6px)',
               WebkitBackdropFilter: 'blur(6px)',
               maskImage: 'linear-gradient(to bottom, transparent 45%, black 80%, black 100%)',
@@ -81,9 +81,9 @@ const TouchpointLink = ({ item, className = "" }: { item: any, className?: strin
         <p className="text-neutral-300 max-w-xl mx-auto mb-8 text-sm sm:text-base drop-shadow-sm font-medium">
           {item.touchpointDescription || `Explore the living component library, tokens, and documentation for ${item.title}. The app is fully interactive and responsive.`}
         </p>
-        <a
-          href={item.customHtmlPath}
-          target="_blank"
+        <a 
+          href={item.customHtmlPath} 
+          target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2.5 text-sm sm:text-base sm:px-8 sm:py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-full transition-all shadow-xl shadow-blue-900/20 hover:scale-105 active:scale-95"
         >
@@ -122,16 +122,16 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
     const fileList = Array.from(e.target.files) as File[];
-
+    
     const parsedMedia: DisplayMedia[] = fileList.map((file) => {
       const isVideoFile = file.type.startsWith('video/') || /\.(mp4|webm|mov)$/i.test(file.name);
       const numMatch = file.name.match(/\d+/);
       let num = numMatch ? parseInt(numMatch[0], 10) : 999;
-
+      
       if (isVideoFile) {
         num = 1.5; // Always place local videos between 1 and 2
       }
-
+      
       return {
         type: isVideoFile ? 'video' : 'image',
         num,
@@ -152,9 +152,9 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
   const staticProjectImages = useMemo(() => {
     const files = import.meta.glob('/public/projects/**/*.{jpg,jpeg,png,webp,gif,svg,mp4,webm,mov,JPG,JPEG,PNG,WEBP,GIF,SVG,MP4,WEBM,MOV}', { eager: true });
     const paths = Object.keys(files);
-
+    
     const images: DisplayMedia[] = [];
-
+    
     // Check possible matching folder names
     const targetSlugs = [slug, item?.slug, slug.replace(/-hsbc$/, ''), `${slug}-hsbc`].filter(Boolean) as string[];
 
@@ -164,21 +164,21 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
         const filename = path.split('/').pop() || '';
         const isThumb = /thumb|thumbnail|cover/i.test(filename);
         const isVideo = /\.(mp4|webm|mov)$/i.test(filename);
-
+        
         if (!isThumb) {
           const numMatch = filename.match(/\d+/);
           let num = numMatch ? parseInt(numMatch[0], 10) : 999;
-
+          
           if (isVideo) {
-            num = 1.5; // Always place local videos between 1 and 2
+             num = 1.5; // Always place local videos between 1 and 2
           }
-
+          
           const src = path.replace('/public', '');
           images.push({ type: isVideo ? 'video' : 'image', num, filename, src });
         }
       }
     });
-
+    
     // Add explicitly configured media (e.g. YouTube/Vimeo links)
     if (item?.media) {
       item.media.forEach((m, i) => {
@@ -241,11 +241,11 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
   const isGuidedPractice = slug === 'guided-practice-schoolai' || item.slug === 'guided-practice-schoolai';
   const hasImages = allProjectImages.length > 0;
-
+  
   // Dynamically find thumbnail from public folder (supporting thumb.*, thumbnail.*, cover.*, etc.)
   const thumbs = import.meta.glob('/public/projects/**/*.{jpg,jpeg,png,webp,gif,svg,JPG,JPEG,PNG,WEBP,GIF,SVG}', { eager: true });
   const thumbKey = Object.keys(thumbs).find(k => {
-    const isMatchingFolder = k.includes(`/public/projects/${item.slug}/`) ||
+    const isMatchingFolder = k.includes(`/public/projects/${item.slug}/`) || 
       k.includes(`/public/projects/${item.slug.replace(/-hsbc$/, '')}/`) ||
       k.includes(`/public/projects/${item.slug}-hsbc/`);
     const filename = k.split('/').pop() || '';
@@ -261,11 +261,11 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       {/* Background Image with Blur and Fade */}
       {heroBackgroundImage && (
         <div className="absolute top-0 left-0 right-0 z-0 pointer-events-none overflow-hidden">
-          <img
+          <img 
             src={heroBackgroundImage}
             alt=""
             className="w-full h-auto opacity-40"
-            style={{
+            style={{ 
               filter: 'blur(24px)',
               transform: 'scale(1.1)' // Prevent blurred edges from showing white
             }}
@@ -277,7 +277,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
       {/* Project Metadata Hero */}
       <section className="pt-20 pb-6 sm:pt-24 sm:pb-8 mb-8 sm:mb-12 px-5 sm:px-8 max-w-6xl mx-auto relative z-10 text-center">
-
+        
         {/* Top Navigation & Metadata Row */}
         <div className="flex items-center justify-between mb-4 sm:mb-6">
           <div className="flex-shrink-0">
@@ -349,57 +349,57 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
             {hasImages ? (
               displayImages.map((mediaItem, idx) => {
                 const isImage5 = mediaItem.filename === '5.png' && item.slug === 'madtrip-online-store';
-
+                
                 return (
-                  <React.Fragment key={idx}>
-                    <div
-                      className="relative group w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900/40 border border-neutral-800/80 hover:border-neutral-700/80 shadow-2xl shadow-black/50 hover:shadow-black/70 transition-all duration-500"
-                    >
-                      {mediaItem.type === 'image' ? (
-                        <div
-                          onClick={() => setActiveImageIndex(idx)}
-                          className="cursor-zoom-in relative overflow-hidden"
-                          style={{ containerType: 'inline-size' }}
-                        >
-                          <div className="relative w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]">
-                            <img
-                              src={mediaItem.src}
-                              alt={`${item.title} - Slide ${mediaItem.num}`}
-                              className="w-full h-auto object-cover"
-                              loading={idx < 2 ? "eager" : "lazy"}
+                <React.Fragment key={idx}>
+                  <div 
+                    className="relative group w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900/40 border border-neutral-800/80 hover:border-neutral-700/80 shadow-2xl shadow-black/50 hover:shadow-black/70 transition-all duration-500"
+                  >
+                    {mediaItem.type === 'image' ? (
+                      <div 
+                        onClick={() => setActiveImageIndex(idx)}
+                        className="cursor-zoom-in relative overflow-hidden"
+                        style={{ containerType: 'inline-size' }}
+                      >
+                        <div className="relative w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]">
+                          <img 
+                            src={mediaItem.src} 
+                            alt={`${item.title} - Slide ${mediaItem.num}`}
+                            className="w-full h-auto object-cover"
+                            loading={idx < 2 ? "eager" : "lazy"}
+                          />
+                          {isImage5 && heroVideo && (
+                            <video 
+                              src={heroVideo.src}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="absolute z-20 pointer-events-none object-cover"
+                              style={{ 
+                                top: '26.2%', 
+                                left: '6.25%', 
+                                width: '87.5%', 
+                                height: 'auto',
+                                borderRadius: '2.5cqi',
+                                border: '0.15625cqi solid #FFDE17'
+                              }}
                             />
-                            {isImage5 && heroVideo && (
-                              <video
-                                src={heroVideo.src}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="absolute z-20 pointer-events-none object-cover"
-                                style={{
-                                  top: '26.2%',
-                                  left: '6.25%',
-                                  width: '87.5%',
-                                  height: 'auto',
-                                  borderRadius: '2.5cqi',
-                                  border: '0.15625cqi solid #FFDE17'
-                                }}
-                              />
-                            )}
-                          </div>
-                          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-700/80 flex items-center gap-1.5 text-xs text-neutral-200 pointer-events-none">
-                            <ZoomIn className="w-3.5 h-3.5" />
-                            <span>Click to expand</span>
-                          </div>
+                          )}
                         </div>
-                      ) : mediaItem.type === 'video' ? (
-                        <div className="w-full">
-                          <video
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-950/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-700/80 flex items-center gap-1.5 text-xs text-neutral-200 pointer-events-none">
+                          <ZoomIn className="w-3.5 h-3.5" />
+                          <span>Click to expand</span>
+                        </div>
+                      </div>
+                    ) : mediaItem.type === 'video' ? (
+                      <div className="w-full">
+                          <video 
                             src={mediaItem.src}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline 
                             controls
                             className="w-full h-auto object-cover"
                           />
@@ -416,12 +416,12 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                         </div>
                       )}
                     </div>
-
+                    
                     {/* Insert Touchpoint Link after first image */}
                     {idx === 0 && <TouchpointLink item={item} />}
                   </React.Fragment>
-                );
-              })
+                  );
+                })
             ) : !item.customHtmlPath ? (
               <div className="p-8 sm:p-12 text-center rounded-2xl border border-neutral-800 bg-neutral-900/30 text-neutral-400 max-w-2xl mx-auto">
                 <div className="w-12 h-12 rounded-2xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-neutral-300 mx-auto mb-4">
@@ -433,7 +433,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                 </p>
 
                 {/* Instant Local Image Upload / Dropzone */}
-                <div
+                <div 
                   onClick={() => fileInputRef.current?.click()}
                   className="p-6 rounded-xl border border-dashed border-neutral-700 bg-neutral-900/60 hover:bg-neutral-900 hover:border-neutral-500 transition-all cursor-pointer group mb-6"
                 >
@@ -523,7 +523,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
       {/* Fullscreen Lightbox Modal */}
       {activeImageIndex !== null && displayImages[activeImageIndex] && (
-        <div
+        <div 
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-8"
           onClick={() => setActiveImageIndex(null)}
         >
@@ -566,28 +566,28 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
             </>
           )}
 
-          <div
+          <div 
             className="max-w-6xl max-h-[85vh] overflow-auto flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative max-w-full max-h-[85vh] flex items-center justify-center shrink-0">
-              <img
-                src={displayImages[activeImageIndex].src}
+              <img 
+                src={displayImages[activeImageIndex].src} 
                 alt={`${item.title} presentation slide ${activeImageIndex + 1}`}
                 className="max-h-[85vh] max-w-full object-contain rounded-xl shadow-2xl border border-neutral-800"
               />
               {displayImages[activeImageIndex].filename === '5.png' && item.slug === 'madtrip-online-store' && heroVideo && (
-                <video
+                <video 
                   src={heroVideo.src}
                   autoPlay
                   loop
                   muted
                   playsInline
                   className="absolute z-20 pointer-events-none object-cover"
-                  style={{
-                    top: '26.2%',
-                    left: '6.25%',
-                    width: '87.5%',
+                  style={{ 
+                    top: '26.2%', 
+                    left: '6.25%', 
+                    width: '87.5%', 
                     height: 'auto',
                     borderRadius: '16px',
                     border: '2px solid #FFDE17'
