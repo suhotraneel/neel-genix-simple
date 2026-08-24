@@ -646,6 +646,7 @@ export default function App() {
     let title = 'Suhotra Chakraborty - UX/UI & Product Designer';
     let description =
       'Portfolio of Suhotra Chakraborty, a UX/UI & Product Designer working across digital products, user experience, interaction design, design systems and emerging technologies.';
+    let image = '/about.webp'; // Default image for home, about, work, blog
 
     if (currentPath === '/work') {
       title = 'Work - Suhotra Chakraborty';
@@ -662,11 +663,33 @@ export default function App() {
     } else if (currentPath.startsWith('/blog/')) {
       const slug = currentPath.replace('/blog/', '');
       const blog = BLOG_ITEMS.find((b) => b.slug === slug);
-      title = blog ? `${blog.title} - Suhotra Chakraborty` : 'Blog - Suhotra Chakraborty';
+      if (blog) {
+        title = `${blog.title} - Suhotra Chakraborty`;
+        description = blog.summary || description;
+      } else {
+        title = 'Blog - Suhotra Chakraborty';
+      }
+      const blogThumbs = import.meta.glob('/public/blogs/**/*.{jpg,jpeg,png,webp,gif,svg,JPG,JPEG,PNG,WEBP,GIF,SVG}', { eager: true });
+      const thumbKey = Object.keys(blogThumbs).find(k => {
+        const parts = k.split('/');
+        return parts[parts.length - 2] === slug && /^thumb\./i.test(parts[parts.length - 1]);
+      });
+      if (thumbKey) image = thumbKey.replace('/public', '');
     } else if (currentPath.startsWith('/project/')) {
       const slug = currentPath.replace('/project/', '');
       const project = WORK_ITEMS.find((w) => w.slug === slug || w.slug.replace(/-hsbc$/, '') === slug || slug.replace(/-hsbc$/, '') === w.slug);
-      title = project ? `${project.title} - Suhotra Chakraborty` : 'Project - Suhotra Chakraborty';
+      if (project) {
+        title = `${project.title} - Suhotra Chakraborty`;
+        description = project.summary || description;
+      } else {
+        title = 'Project - Suhotra Chakraborty';
+      }
+      const projectThumbs = import.meta.glob('/public/projects/**/*.{jpg,jpeg,png,webp,gif,svg,JPG,JPEG,PNG,WEBP,GIF,SVG}', { eager: true });
+      const thumbKey = Object.keys(projectThumbs).find(k => {
+        const parts = k.split('/');
+        return parts[parts.length - 2] === slug && /^thumb\./i.test(parts[parts.length - 1]);
+      });
+      if (thumbKey) image = thumbKey.replace('/public', '');
     }
 
     document.title = title;
@@ -680,10 +703,52 @@ export default function App() {
     metaDesc.setAttribute('content', description);
 
     let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', title);
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute('content', title);
 
     let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', description);
+    if (!ogDesc) {
+      ogDesc = document.createElement('meta');
+      ogDesc.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDesc);
+    }
+    ogDesc.setAttribute('content', description);
+    
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (!ogImage) {
+      ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImage);
+    }
+    ogImage.setAttribute('content', image);
+    
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (!twitterTitle) {
+      twitterTitle = document.createElement('meta');
+      twitterTitle.setAttribute('name', 'twitter:title');
+      document.head.appendChild(twitterTitle);
+    }
+    twitterTitle.setAttribute('content', title);
+    
+    let twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (!twitterDesc) {
+      twitterDesc = document.createElement('meta');
+      twitterDesc.setAttribute('name', 'twitter:description');
+      document.head.appendChild(twitterDesc);
+    }
+    twitterDesc.setAttribute('content', description);
+    
+    let twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (!twitterImage) {
+      twitterImage = document.createElement('meta');
+      twitterImage.setAttribute('name', 'twitter:image');
+      document.head.appendChild(twitterImage);
+    }
+    twitterImage.setAttribute('content', image);
   }, [currentPath]);
 
   const handleNavigate = (path: string) => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowLeft, ArrowRight, X, ZoomIn, ChevronLeft, ChevronRight, Upload, Image as ImageIcon, RefreshCw } from 'lucide-react';
 import { WORK_ITEMS } from '../data/portfolioData';
 import { GuidedPracticeCaseStudy } from '../components/GuidedPracticeCaseStudy';
@@ -522,12 +523,12 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       </section>
 
       {/* Fullscreen Lightbox Modal */}
-      {activeImageIndex !== null && displayImages[activeImageIndex] && (
+      {activeImageIndex !== null && displayImages[activeImageIndex] && createPortal(
         <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-8"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-8"
           onClick={() => setActiveImageIndex(null)}
         >
-          <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
+          <div className="absolute top-4 right-4 z-[110] flex items-center gap-3">
             <span className="text-xs text-neutral-400 font-mono">
               {activeImageIndex + 1} / {displayImages.length}
             </span>
@@ -548,7 +549,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                   e.stopPropagation();
                   setActiveImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : displayImages.length - 1));
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-all z-50"
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-all z-[110]"
                 aria-label="Previous slide"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -558,7 +559,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                   e.stopPropagation();
                   setActiveImageIndex((prev) => (prev !== null && prev < displayImages.length - 1 ? prev + 1 : 0));
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-all z-50"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-all z-[110]"
                 aria-label="Next slide"
               >
                 <ChevronRight className="w-6 h-6" />
@@ -567,15 +568,37 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
           )}
 
           <div 
-            className="max-w-6xl max-h-[85vh] overflow-auto flex items-center justify-center"
+            className="max-w-7xl max-h-[90vh] overflow-auto flex items-center justify-center w-full"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative max-w-full max-h-[85vh] flex items-center justify-center shrink-0">
-              <img 
-                src={displayImages[activeImageIndex].src} 
-                alt={`${item.title} presentation slide ${activeImageIndex + 1}`}
-                className="max-h-[85vh] max-w-full object-contain rounded-xl shadow-2xl border border-neutral-800"
-              />
+            <div className="relative max-w-full max-h-[90vh] flex items-center justify-center shrink-0 w-full">
+              {displayImages[activeImageIndex].type === 'image' ? (
+                <img 
+                  src={displayImages[activeImageIndex].src} 
+                  alt={`${item.title} presentation slide ${activeImageIndex + 1}`}
+                  className="max-h-[90vh] max-w-full object-contain rounded-xl shadow-2xl border border-neutral-800"
+                />
+              ) : displayImages[activeImageIndex].type === 'video' ? (
+                <video 
+                  src={displayImages[activeImageIndex].src}
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  controls
+                  className="max-h-[90vh] max-w-full object-contain rounded-xl shadow-2xl border border-neutral-800"
+                />
+              ) : (
+                <div className="aspect-video w-full max-w-5xl">
+                  <iframe
+                    src={displayImages[activeImageIndex].src}
+                    title={`${item.title} Video ${activeImageIndex + 1}`}
+                    className="w-full h-full rounded-xl border border-neutral-800"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )}
               {displayImages[activeImageIndex].filename === '5.png' && item.slug === 'madtrip-online-store' && heroVideo && (
                 <video 
                   src={heroVideo.src}
@@ -596,7 +619,8 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
