@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState, useCallback, useRef } from 'react'
 import { ArrowLeft, ArrowRight, X, ZoomIn, ChevronLeft, ChevronRight, Upload, Image as ImageIcon, RefreshCw } from 'lucide-react';
 import { WORK_ITEMS } from '../data/portfolioData';
 import { GuidedPracticeCaseStudy } from '../components/GuidedPracticeCaseStudy';
-import { Navbar } from '../components/Navbar';
 
 interface ProjectDetailPageProps {
   slug: string;
@@ -98,8 +97,9 @@ const TouchpointLink = ({ item, className = "" }: { item: any, className?: strin
 }
 
 export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNavigate }) => {
+  const cleanSlug = (slug || '').trim().replace(/\/+$/, '');
   const currentIndex = WORK_ITEMS.findIndex(
-    (w) => w.slug === slug || w.slug.replace(/-hsbc$/, '') === slug || slug.replace(/-hsbc$/, '') === w.slug
+    (w) => w.slug === cleanSlug || w.slug.replace(/-hsbc$/, '') === cleanSlug || cleanSlug.replace(/-hsbc$/, '') === w.slug || w.id === cleanSlug
   );
   const item = currentIndex !== -1 ? WORK_ITEMS[currentIndex] : null;
 
@@ -116,7 +116,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
     if (item) {
       document.title = `${item.title} - Suhotra Chakraborty`;
     }
-  }, [slug, item]);
+  }, [cleanSlug, item]);
 
   // Handle client-side drag & drop or file upload for instant preview
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -156,7 +156,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
     const images: DisplayMedia[] = [];
     
     // Check possible matching folder names
-    const targetSlugs = [slug, item?.slug, slug.replace(/-hsbc$/, ''), `${slug}-hsbc`].filter(Boolean) as string[];
+    const targetSlugs = [cleanSlug, item?.slug, cleanSlug.replace(/-hsbc$/, ''), `${cleanSlug}-hsbc`].filter(Boolean) as string[];
 
     paths.forEach((path) => {
       const isMatch = targetSlugs.some((s) => path.startsWith(`/public/projects/${s}/`));
@@ -195,7 +195,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       if (a.num !== b.num) return a.num - b.num;
       return a.filename.localeCompare(b.filename, undefined, { numeric: true, sensitivity: 'base' });
     });
-  }, [slug, item]);
+  }, [cleanSlug, item]);
 
   // Combine static filesystem images and locally uploaded preview images
   const allProjectImages = useMemo(() => {
@@ -239,7 +239,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
     );
   }
 
-  const isGuidedPractice = slug === 'guided-practice-schoolai' || item.slug === 'guided-practice-schoolai';
+  const isGuidedPractice = cleanSlug === 'guided-practice-schoolai' || item.slug === 'guided-practice-schoolai';
   const hasImages = allProjectImages.length > 0;
   
   // Dynamically find thumbnail from public folder (supporting thumb.*, thumbnail.*, cover.*, etc.)
@@ -247,7 +247,8 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
   const thumbKey = Object.keys(thumbs).find(k => {
     const isMatchingFolder = k.includes(`/public/projects/${item.slug}/`) || 
       k.includes(`/public/projects/${item.slug.replace(/-hsbc$/, '')}/`) ||
-      k.includes(`/public/projects/${item.slug}-hsbc/`);
+      k.includes(`/public/projects/${item.slug}-hsbc/`) ||
+      k.includes(`/public/projects/${cleanSlug}/`);
     const filename = k.split('/').pop() || '';
     const isThumb = /thumb|thumbnail/i.test(filename);
     return isMatchingFolder && isThumb;
@@ -256,7 +257,6 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5] relative">
-      <Navbar currentPath={`/project/${slug}`} onNavigate={onNavigate} />
 
       {/* Background Image with Blur and Fade */}
       {heroBackgroundImage && (

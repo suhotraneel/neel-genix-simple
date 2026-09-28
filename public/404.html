@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Single Page App redirect for static hosts (e.g. GitHub Pages)
+      var path = window.location.pathname;
+      var query = window.location.search;
+      var hash = window.location.hash;
+      sessionStorage.setItem('redirect_path', path + query + hash);
+      window.location.replace('/');
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

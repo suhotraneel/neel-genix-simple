@@ -130,6 +130,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onCopyEmail }) => {
             >
               About
             </a>
+
+            <a
+              id="footer-nav-blogs-link"
+              href="/blog"
+              onClick={(e) => handleNav('/blog', e)}
+              className="text-xs font-medium text-neutral-400 hover:text-white transition-colors"
+            >
+              Blog
+            </a>
           </div>
 
           <div id="footer-copyright-text" className="text-xs text-neutral-500 font-normal">

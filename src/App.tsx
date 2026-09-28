@@ -86,7 +86,8 @@ const BlogsPage: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigat
 };
 
 const BlogDetailPage: React.FC<{ slug: string; onNavigate: (path: string) => void }> = ({ slug, onNavigate }) => {
-  const currentIndex = BLOG_ITEMS.findIndex((b) => b.slug === slug);
+  const cleanSlug = (slug || '').trim().replace(/\/+$/, '');
+  const currentIndex = BLOG_ITEMS.findIndex((b) => b.slug === cleanSlug || b.id === cleanSlug);
   const item = currentIndex !== -1 ? BLOG_ITEMS[currentIndex] : null;
 
   const prevItem = currentIndex > 0 ? BLOG_ITEMS[currentIndex - 1] : BLOG_ITEMS[BLOG_ITEMS.length - 1];
@@ -94,10 +95,17 @@ const BlogDetailPage: React.FC<{ slug: string; onNavigate: (path: string) => voi
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
+  }, [cleanSlug]);
 
   if (!item) {
-    return <div className="pt-24 text-center text-white min-h-screen">Blog not found.</div>;
+    return (
+      <div className="pt-32 pb-24 text-center text-white min-h-[60vh] flex flex-col items-center justify-center">
+        <h1 className="text-2xl mb-4 font-light">Blog post not found.</h1>
+        <a href="/blog" onClick={(e) => { e.preventDefault(); onNavigate('/blog'); }} className="text-blue-400 hover:underline">
+          Return to Blog
+        </a>
+      </div>
+    );
   }
 
   const heroBackgroundImage = `/blogs/${item.slug}/thumb.webp`;
@@ -615,26 +623,63 @@ const BlogDetailPage: React.FC<{ slug: string; onNavigate: (path: string) => voi
   );
 };
 
-export default function App() {
-  const [currentPath, setCurrentPath] = useState<string>(() => {
-    const path = window.location.pathname;
-    if (path === '/work' || path === '/about' || path === '/blog' || path.startsWith('/project/') || path.startsWith('/blog/')) {
-      return path;
-    }
-    return '/';
-  });
+const normalizeRoutePath = (rawPath: string): string => {
+  if (!rawPath) return '/';
+  // Strip query string and hash
+  let path = rawPath.split('?')[0].split('#')[0].trim();
+  // Ensure starting slash
+  if (!path.startsWith('/')) {
+    path = '/' + path;
+  }
+  // Replace multiple slashes with a single slash
+  path = path.replace(/\/+/g, '/');
+  // Remove trailing slash if longer than 1 character
+  if (path.length > 1 && path.endsWith('/')) {
+    path = path.slice(0, -1);
+  }
+  return path || '/';
+};
 
+const getInitialPath = (): string => {
+  if (typeof window === 'undefined') return '/';
+
+  // 1. Check if redirect path was stored (e.g. from 404 fallback on static hosts)
+  const redirectPath = sessionStorage.getItem('redirect_path');
+  if (redirectPath) {
+    sessionStorage.removeItem('redirect_path');
+    const normalized = normalizeRoutePath(redirectPath);
+    window.history.replaceState({}, '', normalized);
+    return normalized;
+  }
+
+  // 2. Check query parameter redirect (e.g. /?p=/work or /?path=/project/xyz)
+  const searchParams = new URLSearchParams(window.location.search);
+  const pParam = searchParams.get('p') || searchParams.get('path') || searchParams.get('route');
+  if (pParam) {
+    const normalized = normalizeRoutePath(pParam);
+    window.history.replaceState({}, '', normalized);
+    return normalized;
+  }
+
+  // 3. Check hash fallback (e.g. /#/work or #/project/xyz)
+  if (window.location.hash.startsWith('#/')) {
+    const hashRoute = window.location.hash.slice(1);
+    const normalized = normalizeRoutePath(hashRoute);
+    window.history.replaceState({}, '', normalized);
+    return normalized;
+  }
+
+  return normalizeRoutePath(window.location.pathname);
+};
+
+export default function App() {
+  const [currentPath, setCurrentPath] = useState<string>(getInitialPath);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Sync route with browser history & update SEO meta tags
+  // Sync route with browser history (back/forward navigation)
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname;
-      if (path === '/work' || path === '/about' || path === '/blog' || path.startsWith('/project/') || path.startsWith('/blog/')) {
-        setCurrentPath(path);
-      } else {
-        setCurrentPath('/');
-      }
+      setCurrentPath(getInitialPath());
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -660,12 +705,14 @@ export default function App() {
       description =
         'Thoughts on design, systems, and engineering by Suhotra Chakraborty.';
     } else if (currentPath.startsWith('/blog/')) {
-      const slug = currentPath.replace('/blog/', '');
-      const blog = BLOG_ITEMS.find((b) => b.slug === slug);
+      const slug = currentPath.slice('/blog/'.length).replace(/\/+$/, '');
+      const blog = BLOG_ITEMS.find((b) => b.slug === slug || b.id === slug);
       title = blog ? `${blog.title} - Suhotra Chakraborty` : 'Blog - Suhotra Chakraborty';
     } else if (currentPath.startsWith('/project/')) {
-      const slug = currentPath.replace('/project/', '');
-      const project = WORK_ITEMS.find((w) => w.slug === slug || w.slug.replace(/-hsbc$/, '') === slug || slug.replace(/-hsbc$/, '') === w.slug);
+      const slug = currentPath.slice('/project/'.length).replace(/\/+$/, '');
+      const project = WORK_ITEMS.find(
+        (w) => w.slug === slug || w.slug.replace(/-hsbc$/, '') === slug || slug.replace(/-hsbc$/, '') === w.slug || w.id === slug
+      );
       title = project ? `${project.title} - Suhotra Chakraborty` : 'Project - Suhotra Chakraborty';
     }
 
@@ -687,9 +734,12 @@ export default function App() {
   }, [currentPath]);
 
   const handleNavigate = (path: string) => {
-    if (path !== currentPath) {
-      window.history.pushState({}, '', path);
-      setCurrentPath(path);
+    const targetPath = normalizeRoutePath(path);
+    if (targetPath !== currentPath) {
+      window.history.pushState({}, '', targetPath);
+      setCurrentPath(targetPath);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -702,7 +752,7 @@ export default function App() {
   };
 
   if (currentPath.startsWith('/project/')) {
-    const slug = currentPath.replace('/project/', '');
+    const slug = currentPath.slice('/project/'.length).replace(/\/+$/, '');
     return (
       <div id="portfolio-app" className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#f5f5f5] selection:bg-neutral-800 selection:text-white">
         <Navbar currentPath={currentPath} onNavigate={handleNavigate} />
@@ -716,7 +766,7 @@ export default function App() {
   }
 
   if (currentPath.startsWith('/blog/') && currentPath !== '/blog') {
-    const slug = currentPath.replace('/blog/', '');
+    const slug = currentPath.slice('/blog/'.length).replace(/\/+$/, '');
     return (
       <div id="portfolio-app" className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#f5f5f5] selection:bg-neutral-800 selection:text-white">
         <Navbar currentPath={currentPath} onNavigate={handleNavigate} />
@@ -731,7 +781,7 @@ export default function App() {
 
   return (
     <div id="portfolio-app" className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#f5f5f5] selection:bg-neutral-800 selection:text-white">
-      {/* Global Navigation - No Home link, brand goes to / */}
+      {/* Global Navigation */}
       <Navbar currentPath={currentPath} onNavigate={handleNavigate} />
 
       {/* Main View Area */}
@@ -753,6 +803,14 @@ export default function App() {
 
         {currentPath === '/blog' && (
           <BlogsPage onNavigate={handleNavigate} />
+        )}
+
+        {/* Fallback for unmatched routes */}
+        {currentPath !== '/' && currentPath !== '/work' && currentPath !== '/about' && currentPath !== '/blog' && (
+          <HomePage
+            onNavigate={handleNavigate}
+            onCopyEmail={() => triggerToast('Email copied to clipboard')}
+          />
         )}
       </main>
 
